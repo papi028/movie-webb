@@ -4,4 +4,5 @@ export const PATH_API = {
   trending: "search/v1/searchLeaderboard",
   media: "media/previewInfo",
   loklok: "https://loklok.com",
+  srtToVtt: "https://convert-srt-to-vtt.vercel.app/?url=",
 };

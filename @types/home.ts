@@ -1,3 +1,9 @@
+export interface IBanner {
+  id: string;
+  name: string;
+  imageUrl: string;
+}
+
 export interface IRecommendVO {
   category: number;
   contentType: string;

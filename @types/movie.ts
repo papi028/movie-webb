@@ -1,0 +1,80 @@
+import { IEpisodeRoom, IEpisodeVo, IQuality, ISubtitle } from "./episode";
+
+export interface IObjIdName {
+  id: number;
+  name: string;
+}
+
+export interface ICast {
+  image: string;
+  localName: string;
+  role: string;
+  roleName: string;
+  starId: number;
+}
+
+export interface IRefItem {
+  category: number;
+  coverHorizontalUrl: string;
+  coverVerticalUrl: string;
+  drameTypeVo?: any;
+  id: string;
+  name: string;
+  seriesNo: number;
+}
+
+export interface ILikeMovie {
+  areaList: IObjIdName[];
+  areaNameList: string[];
+  category: number;
+  coverHorizontalUrl: string;
+  coverVerticalUrl: string;
+  drameTypeVo?: any;
+  id: string;
+  name: string;
+  seriesNo: number;
+  score: number;
+  tagList: IObjIdName[];
+  tagNameList: string[];
+  upImgUrl: string;
+  upName: string;
+  year: number;
+}
+
+export interface IMovieDetailsLoklok {
+  aliasName: string;
+  areaNameList: string[];
+  areaList: IObjIdName[];
+  collect: boolean;
+  category: number;
+  coverHorizontalUrl: string;
+  coverHorizontalUrlJson: string;
+  coverVerticalUrl: string;
+  drameTypeVo: { drameName: string; drameType: string };
+  episodeCount?: number;
+  episodeRoomListVo: IEpisodeRoom;
+  episodeVo: IEpisodeVo[];
+  id: string;
+  introduction: string;
+  likeList: ILikeMovie[];
+  name: string;
+  nameJson: string;
+  refList: IRefItem[];
+  reserved: boolean;
+  score: number;
+  showSetName: boolean;
+  starList: ICast[];
+  tagList: IObjIdName[];
+  length: number;
+  tagNameList: string[];
+  translateType: number;
+  upInfo: { upId: number; upImgUrl: string; upName: string };
+  updateInfo?: any;
+  year: number;
+}
+
+export interface IMovieDetails extends IMovieDetailsLoklok {
+  qualities: IQuality[];
+  subtitles: ISubtitle[];
+  currentEpName: number;
+}

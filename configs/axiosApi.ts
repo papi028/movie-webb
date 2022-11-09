@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const axiosClient = axios.create({
+const axiosApi = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL_API,
   headers: {
     lang: "en",
@@ -9,11 +9,9 @@ const axiosClient = axios.create({
   },
 });
 
-axiosClient.interceptors.response.use(
+axiosApi.interceptors.response.use(
   async (response) => {
-    if (response && response.data) {
-      return response.data;
-    }
+    if (response && response.data) return response.data;
     return response;
   },
   async (error) => {
@@ -23,4 +21,4 @@ axiosClient.interceptors.response.use(
   }
 );
 
-export default axiosClient;
+export default axiosApi;

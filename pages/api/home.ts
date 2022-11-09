@@ -1,7 +1,7 @@
 import { IResponseHome } from "@types";
 import axios from "axios";
 import * as cheerio from "cheerio";
-import axiosClient from "configs/axiosClient";
+import axiosApi from "configs/axiosApi";
 import { PATH_API } from "configs/path.api";
 import { STATUS } from "constants/status";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -19,7 +19,7 @@ const HomePageApi = async (req: NextApiRequest, res: NextApiResponse) => {
     page: currentPage,
     recommendItems,
     searchKeyWord,
-  }: IResponseHome = (await axiosClient(PATH_API.home, { params: { page } })).data;
+  }: IResponseHome = (await axiosApi(PATH_API.home, { params: { page } })).data;
   const homeSections = recommendItems.filter(
     (section) => section.homeSectionType !== "BLOCK_GROUP" && section.homeSectionName !== ""
   );

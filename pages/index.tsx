@@ -1,5 +1,7 @@
 import axios from "axios";
 import { server } from "configs/server";
+import { LayoutHome } from "layouts/LayoutHome";
+import { HomeBanner } from "modules/HomeBanner";
 import { GetServerSidePropsContext } from "next";
 
 interface HomePageProps {
@@ -8,7 +10,11 @@ interface HomePageProps {
 
 const HomePage = ({ banners }: HomePageProps) => {
   console.log("banners: ", banners);
-  return <>test</>;
+  return (
+    <LayoutHome>
+      <HomeBanner banners={banners} />
+    </LayoutHome>
+  );
 };
 
 export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {

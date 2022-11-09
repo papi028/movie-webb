@@ -1,0 +1,34 @@
+.header {
+  background-image: linear-gradient(180deg, #0f0f0f 0%, rgba(15, 15, 15, 0) 100%);
+  position: relative;
+  z-index: 10;
+}
+.navbar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.left {
+  display: flex;
+  align-items: center;
+  gap: 0 40px;
+}
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+.link {
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  transition: all 0.2s linear;
+  position: relative;
+  font-weight: 600;
+  font-size: 1.6rem;
+  &:hover {
+    color: var(--purple);
+  }
+}

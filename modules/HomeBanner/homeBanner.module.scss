@@ -1,0 +1,19 @@
+.section {
+  margin-top: -64px;
+}
+.container {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 15px;
+  margin: 0 auto;
+  height: 512px;
+}
+.thumbnail {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  overflow: hidden;
+  height: 512px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}

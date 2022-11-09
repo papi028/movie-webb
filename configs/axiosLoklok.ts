@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const axiosApi = axios.create({
+const axiosLoklok = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL_API,
   headers: {
     lang: "en",
@@ -9,7 +9,7 @@ const axiosApi = axios.create({
   },
 });
 
-axiosApi.interceptors.response.use(
+axiosLoklok.interceptors.response.use(
   async (response) => {
     if (response && response.data) return response.data;
     return response;
@@ -21,4 +21,4 @@ axiosApi.interceptors.response.use(
   }
 );
 
-export default axiosApi;
+export default axiosLoklok;

@@ -1,7 +1,7 @@
-import { IResponseHome } from "@types";
+import { IBanner, IResponseHome } from "@types";
 import axios from "axios";
 import * as cheerio from "cheerio";
-import axiosApi from "configs/axiosApi";
+import axiosLoklok from "configs/axiosLoklok";
 import { PATH_API } from "configs/path.api";
 import { STATUS } from "constants/status";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -19,7 +19,7 @@ const HomePageApi = async (req: NextApiRequest, res: NextApiResponse) => {
     page: currentPage,
     recommendItems,
     searchKeyWord,
-  }: IResponseHome = (await axiosApi(PATH_API.home, { params: { page } })).data;
+  }: IResponseHome = (await axiosLoklok(PATH_API.home, { params: { page } })).data;
   const homeSections = recommendItems.filter(
     (section) => section.homeSectionType !== "BLOCK_GROUP" && section.homeSectionName !== ""
   );
@@ -44,7 +44,7 @@ async function getBanners() {
   const response = await axios.get(PATH_API.loklok);
   const html = response.data;
   const $ = cheerio.load(html);
-  let banners: any[] = [];
+  let banners: IBanner[] = [];
   let scriptStr = $("#__nuxt + script").text();
   scriptStr = scriptStr.slice(scriptStr.indexOf("banners:[") + 8, scriptStr.indexOf(",indexData:"));
   scriptStr = scriptStr.replace(/[\[\]]/g, "");

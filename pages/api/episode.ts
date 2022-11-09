@@ -1,5 +1,5 @@
 import { IMovieDetailsLoklok, ISubtitle } from "@types";
-import axiosApi from "configs/axiosApi";
+import axiosLoklok from "configs/axiosLoklok";
 import { PATH_API } from "configs/path.api";
 import { STATUS } from "constants/status";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -13,7 +13,7 @@ const getEpisodeApi = async (req: NextApiRequest, res: NextApiResponse) => {
     const error = new ApiError(STATUS.METHOD_NOT_ALLOWED, "Method not allowed");
     return responseError(error, res);
   }
-  const { data } = await axiosApi.get(PATH_API.detail, {
+  const { data } = await axiosLoklok.get(PATH_API.detail, {
     params: { id, category, episode },
   });
   const movieDetails: IMovieDetailsLoklok = data;
@@ -32,7 +32,7 @@ const getEpisodeApi = async (req: NextApiRequest, res: NextApiResponse) => {
       episodeId: currentEpisode?.id,
       definition: code,
     };
-    return await axiosApi.get(PATH_API.media, { params });
+    return await axiosLoklok.get(PATH_API.media, { params });
   };
   const qualities = await Promise.all(
     definitionList.map(async (definition) => {

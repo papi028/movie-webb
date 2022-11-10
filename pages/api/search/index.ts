@@ -21,7 +21,7 @@ const searchWithKeywordApi = async (req: NextApiRequest, res: NextApiResponse) =
   const results = data.searchResults;
   const response = {
     message: "Get search successfully !",
-    data: results,
+    data: { keyword, results },
   };
   responseSuccess(res, response);
 };

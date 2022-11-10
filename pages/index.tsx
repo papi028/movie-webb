@@ -25,7 +25,6 @@ const HomePage = ({ banners, homeSections }: HomePageProps) => {
 
 export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
   const { data } = (await axios.get(`${server}/api/home`)).data;
-  console.log("data: ", data);
   return {
     props: {
       banners: data.banners,

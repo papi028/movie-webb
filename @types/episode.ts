@@ -1,3 +1,5 @@
+import { ICast, ILikeMovie, IObjIdName } from "./movie";
+
 export interface IDefinitionLoklok {
   code: string;
   description: string;
@@ -40,4 +42,51 @@ export interface IEpisodeRoom {
   roomId: string;
   seasonID: string;
   seasonName: string;
+}
+
+export interface IEpisode {
+  aliasName: string;
+  areaList: IObjIdName[];
+  areaNameList: string[];
+  category: number;
+  collect: boolean;
+  currentEpisode: number;
+  contentTagResourceList: [];
+  coverHorizontalUrl: string;
+  coverHorizontalUrlJson: string;
+  coverVerticalUrl: string;
+  drameTypeVo: {
+    drameName: string;
+    drameType: string;
+  };
+  episodeCount: number;
+  episodeRoomListVo: IEpisodeRoom;
+  episodeVo: IEpisodeVo[];
+  id: string;
+  introduction: string;
+  likeList: ILikeMovie[];
+  name: string;
+  nameJson: string;
+  refList: [];
+  reserved: boolean;
+  score: number;
+  seriesNo: number | any;
+  showSetName: boolean;
+  starList: ICast[];
+  tagList: IObjIdName[];
+  tagNameList: string[];
+  translateType: number;
+  upInfo: {
+    upId: number;
+    upImgUrl: string;
+    upName: string;
+  };
+  updateInfo: {
+    updatePeriod: string;
+    updateStatus: number;
+  };
+  year: number;
+  currentEpName: number;
+  qualities: IQuality[];
+  subtitles: ISubtitle[];
 }

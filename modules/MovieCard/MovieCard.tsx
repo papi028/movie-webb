@@ -1,5 +1,4 @@
 import { CustomLink } from "components/CustomLink";
-import { resizeImage } from "constants/global";
 import { PATH } from "constants/path";
 import { MovieTitle } from "modules/MovieTitle";
 import Image from "next/image";
@@ -16,7 +15,7 @@ const MovieCard = ({
   domainType: number;
   coverVerticalUrl: string;
 }) => {
-  const href = `${PATH.detail}/${domainType}/${id}`;
+  const href = `${PATH.watch}/${domainType}/${id}`;
   return (
     <div className={styles.movieCard}>
       <CustomLink href={href} className={styles.movieCardMedia}>

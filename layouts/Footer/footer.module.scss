@@ -1,0 +1,14 @@
+.footer {
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footerContact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  a {
+    color: white;
+  }
+}

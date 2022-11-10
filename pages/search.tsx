@@ -1,6 +1,6 @@
 import { IMovieSearch } from "@types";
 import axiosClient from "configs/axiosClient";
-import { LayoutHome } from "layouts/LayoutHome";
+import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
 import { SearchBox } from "modules/SearchBox";
@@ -13,7 +13,7 @@ interface SearchPageProps {
 
 const SearchPage = ({ results, keyword }: SearchPageProps) => {
   return (
-    <LayoutHome>
+    <LayoutPrimary>
       <div className="container">
         <SearchBox className="searchBox-large" />
         <MovieList heading={keyword && `Keyword: ${keyword}`}>
@@ -28,7 +28,7 @@ const SearchPage = ({ results, keyword }: SearchPageProps) => {
           ))}
         </MovieList>
       </div>
-    </LayoutHome>
+    </LayoutPrimary>
   );
 };
 

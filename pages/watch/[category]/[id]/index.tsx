@@ -1,7 +1,7 @@
 import { IEpisode } from "@types";
 import axiosClient from "configs/axiosClient";
 import { server } from "configs/server";
-import { LayoutHome } from "layouts/LayoutHome";
+import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MediaPlayer } from "modules/MediaPlayer";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
@@ -19,7 +19,7 @@ interface WatchPageProps {
 const WatchPage = ({ data }: WatchPageProps) => {
   const playerRef = useRef<HTMLVideoElement>(null);
   return (
-    <LayoutHome>
+    <LayoutPrimary>
       <div className="container">
         <div className="layout-watch">
           <div className="layout-watch-main">
@@ -64,7 +64,7 @@ const WatchPage = ({ data }: WatchPageProps) => {
           font-size: 2.3rem;
         }
       `}</style>
-    </LayoutHome>
+    </LayoutPrimary>
   );
 };
 

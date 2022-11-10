@@ -1,9 +1,9 @@
 import { Footer } from "layouts/Footer";
 import { Header } from "layouts/Header";
 import React from "react";
-import styles from "./layoutHome.module.scss";
+import styles from "./layoutPrimary.module.scss";
 
-const LayoutHome = ({ children }: { children: React.ReactNode }) => {
+const LayoutPrimary = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className={styles.layout}>
       <Header />
@@ -13,4 +13,4 @@ const LayoutHome = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default LayoutHome;
+export default LayoutPrimary;

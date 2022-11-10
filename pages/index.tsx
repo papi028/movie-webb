@@ -1,7 +1,7 @@
 import { IBanner, IHomeSection } from "@types";
 import axios from "axios";
 import { server } from "configs/server";
-import { LayoutHome } from "layouts/LayoutHome";
+import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { HomeBanner } from "modules/HomeBanner";
 import { HomeSection } from "modules/HomeSection";
 import { GetServerSidePropsContext } from "next";
@@ -13,12 +13,12 @@ interface HomePageProps {
 
 const HomePage = ({ banners, homeSections }: HomePageProps) => {
   return (
-    <LayoutHome>
+    <LayoutPrimary>
       <HomeBanner banners={banners} />
       {homeSections.map((homeSection) => (
         <HomeSection key={homeSection.homeSectionId} homeSection={homeSection} />
       ))}
-    </LayoutHome>
+    </LayoutPrimary>
   );
 };
 

@@ -3,6 +3,7 @@ import axiosClient from "configs/axiosClient";
 import { LayoutHome } from "layouts/LayoutHome";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
+import { SearchBox } from "modules/SearchBox";
 import { GetServerSidePropsContext } from "next";
 
 interface SearchPageProps {
@@ -14,14 +15,15 @@ const SearchPage = ({ results, keyword }: SearchPageProps) => {
   return (
     <LayoutHome>
       <div className="container">
-        <MovieList heading={`Keyword: ${keyword}`}>
+        <SearchBox className="searchBox-large" />
+        <MovieList heading={keyword && `Keyword: ${keyword}`}>
           {results.map((result) => (
             <MovieCard
               id={result.id}
               key={result.id}
               title={result.name}
               domainType={result.domainType}
-              coverVerticalUrl={result.coverVerticalUrl}
+              poster={result.coverVerticalUrl}
             />
           ))}
         </MovieList>

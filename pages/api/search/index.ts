@@ -7,7 +7,7 @@ import { PATH_API } from "configs/path.api";
 
 const searchWithKeywordApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, query } = req;
-  const { keyword, size = 50, sort = "", searchType = "" } = query;
+  const { keyword = "", size = 50, sort = "", searchType = "" } = query;
   if (method !== "GET") {
     const error = new ApiError(STATUS.METHOD_NOT_ALLOWED, "Method not allowed");
     return responseError(error, res);

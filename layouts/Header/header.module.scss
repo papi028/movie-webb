@@ -27,3 +27,13 @@
     color: var(--purple);
   }
 }
+.searchBox {
+  @media screen and (max-width: 767.98px) {
+    display: none;
+  }
+}
+.searchIcon {
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+}

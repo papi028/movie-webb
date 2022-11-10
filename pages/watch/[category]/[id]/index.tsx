@@ -50,7 +50,7 @@ const WatchPage = ({ data }: WatchPageProps) => {
               key={movie.id}
               id={movie.id}
               title={movie.name}
-              coverVerticalUrl={movie.coverVerticalUrl}
+              poster={movie.coverVerticalUrl}
               domainType={movie.category}
             />
           ))}

@@ -8,12 +8,12 @@ const MovieCard = ({
   id,
   domainType,
   title,
-  coverVerticalUrl,
+  poster,
 }: {
   id: string;
   title: string;
   domainType: number;
-  coverVerticalUrl: string;
+  poster: string;
 }) => {
   const href = `${PATH.watch}/${domainType}/${id}`;
   return (
@@ -23,7 +23,7 @@ const MovieCard = ({
           alt={title}
           width={190}
           height={266}
-          src={coverVerticalUrl}
+          src={poster}
           className={styles.movieCardPoster}
         />
         <picture>

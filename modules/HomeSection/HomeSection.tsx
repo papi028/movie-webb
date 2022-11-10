@@ -19,7 +19,7 @@ const HomeSection = ({ homeSection }: HomeListProps) => {
               key={arrayIdAndCate?.split("&type=")[0]}
               id={arrayIdAndCate?.split("&type=")[0]}
               title={section.title}
-              coverVerticalUrl={section.imageUrl}
+              poster={section.imageUrl}
               domainType={category}
             />
           );

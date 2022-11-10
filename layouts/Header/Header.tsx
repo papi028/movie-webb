@@ -1,4 +1,5 @@
 import { CustomLink } from "components/CustomLink";
+import { IconSearch } from "components/icons";
 import { PATH } from "constants/path";
 import { SearchBox } from "modules/SearchBox";
 import styles from "./header.module.scss";
@@ -18,7 +19,12 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <SearchBox />
+          <div className={styles.searchBox}>
+            <SearchBox />
+          </div>
+          <CustomLink className={styles.searchIcon} href={PATH.search}>
+            <IconSearch fill="#fff" />
+          </CustomLink>
         </nav>
       </div>
     </header>

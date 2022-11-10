@@ -2,6 +2,9 @@
   width: 300px;
   height: 38px;
   position: relative;
+  @media screen and (max-width: 767.98px) {
+    display: none;
+  }
 }
 .searchBar {
   background-color: #39354d;

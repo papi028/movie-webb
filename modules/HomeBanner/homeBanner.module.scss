@@ -6,13 +6,19 @@
   max-width: 1270px;
   padding: 0 15px;
   margin: 0 auto;
-  height: 450px;
 }
 .thumbnail {
   border-radius: 8px;
   overflow: hidden;
-  height: 450px;
   width: 100%;
   object-fit: cover;
   object-position: center;
+  height: 450px;
+  min-height: 200px;
+  @media screen and (max-width: 1023.98px) {
+    height: 40vw;
+  }
+  @media screen and (max-width: 767.98px) {
+    height: 54vw;
+  }
 }

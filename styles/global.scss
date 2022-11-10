@@ -2,6 +2,7 @@
 
 :root {
   --purple: #995aff;
+  --gradient-primary: linear-gradient(270deg, #c042ff, #8a3cff);
 }
 html {
   font-size: 62.5%;
@@ -36,4 +37,8 @@ body {
   height: 46px !important;
   margin-left: auto;
   margin-right: auto;
+}
+.text-gradient {
+  color: transparent;
+  background-clip: text;
 }

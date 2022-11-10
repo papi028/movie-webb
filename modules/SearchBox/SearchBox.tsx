@@ -1,5 +1,5 @@
 import { CustomLink } from "components/CustomLink";
-import { IconSearch } from "components/Iconss";
+import { IconSearch } from "components/Icons";
 import axiosClient from "configs/axiosClient";
 import { PATH } from "constants/path";
 import useClickOutside from "hooks/useClickOutside";

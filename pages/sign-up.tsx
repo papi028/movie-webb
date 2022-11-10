@@ -7,10 +7,10 @@ import { FormEvent } from "react";
 import styles from "styles/auth.module.scss";
 import classNames from "utils/classNames";
 
-const SignInPage = () => {
-  const handleSignIn = (e: FormEvent<HTMLFormElement>) => {
+const SignUpPage = () => {
+  const handleSignUp = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("handleSignIn");
+    console.log("handleSignUp");
   };
   return (
     <div className={styles.section}>
@@ -18,9 +18,9 @@ const SignInPage = () => {
         {null ? (
           "Null"
         ) : (
-          <form onSubmit={handleSignIn}>
+          <form onSubmit={handleSignUp}>
             <h1 className={styles.heading}>Welcome to Filmlok</h1>
-            <span className={styles.label}>SignIn to continue</span>
+            <span className={styles.label}>SignUp to continue</span>
             <div className={styles.main}>
               <FormGroup>
                 <Label htmlFor="email">Email</Label>
@@ -28,14 +28,18 @@ const SignInPage = () => {
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="password">Password</Label>
-                <Input name="password" type="password" placeholder="Password" />
+                <Input name="password" type="password" placeholder="Min 8 characters" />
+              </FormGroup>
+              <FormGroup>
+                <Label htmlFor="repeat-password">Re-password</Label>
+                <Input name="repeat-password" type="password" placeholder="Min 8 characters" />
               </FormGroup>
               <button type="button" className={classNames(styles.button, styles.buttonLarge)}>
-                Sign In
+                Sign Up
               </button>
             </div>
             <div className={styles.alreadyAccount}>
-              Do not have an account? <CustomLink href={PATH.signUp}>Sign Up Here</CustomLink>
+              Have an account? <CustomLink href={PATH.signIn}>Sign In Here</CustomLink>
             </div>
           </form>
         )}
@@ -44,4 +48,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default SignUpPage;

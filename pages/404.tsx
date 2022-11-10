@@ -24,7 +24,7 @@ const PageNotFound = () => {
         .heading {
           font-size: 8rem;
           line-height: 1;
-          background-image: var(--gradient-primary);
+          background-image: var(--gradient-purple);
         }
         .title {
           color: #f6eafb;

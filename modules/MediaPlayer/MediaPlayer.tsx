@@ -10,14 +10,13 @@ interface MediaPlayerProps {
   playerRef: React.RefObject<HTMLVideoElement>;
   subtitles: ISubtitle[];
   qualities: IQuality[];
+  poster: string;
 }
 
-const MediaPlayer = ({ subtitles, qualities }: MediaPlayerProps) => {
-  console.log("qualities: ", qualities);
-  console.log("subtitles: ", subtitles);
+const MediaPlayer = ({ subtitles, qualities, poster }: MediaPlayerProps) => {
   return (
     <Player src={qualities} subtitles={subtitles}>
-      {(ref, props) => <ReactHlsPlayer playerRef={ref} {...props} autoPlay />}
+      {(ref, props) => <ReactHlsPlayer playerRef={ref} {...props} autoPlay poster={poster} />}
     </Player>
   );
 };

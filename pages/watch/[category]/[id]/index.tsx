@@ -1,5 +1,5 @@
 import { IEpisode } from "@types";
-import axios from "axios";
+import axiosClient from "configs/axiosClient";
 import { server } from "configs/server";
 import { LayoutHome } from "layouts/LayoutHome";
 import { MediaPlayer } from "modules/MediaPlayer";
@@ -11,7 +11,6 @@ import { WatchMeta } from "modules/WatchMeta";
 import { WatchSummary } from "modules/WatchSummary";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
 import { useRef } from "react";
-import styles from "styles/watch.module.scss";
 
 interface WatchPageProps {
   data: IEpisode;
@@ -22,14 +21,17 @@ const WatchPage = ({ data }: WatchPageProps) => {
   return (
     <LayoutHome>
       <div className="container">
-        <div className={styles.box}>
-          <div className={styles.box1}>
+        <div className="layout-watch">
+          <div className="layout-watch-main">
             <MediaPlayer
               playerRef={playerRef}
               qualities={data.qualities}
               subtitles={data.subtitles}
+              poster={data.coverHorizontalUrl}
             />
-            <h1 className={styles.heading}>{data.name}</h1>
+            <h1 className="heading">
+              {data.name} {data.currentEpName && `- Ep ${data.currentEpName}`}
+            </h1>
             <WatchMeta
               areaList={data.areaList}
               currentEpisode={data.currentEpisode}
@@ -40,7 +42,7 @@ const WatchPage = ({ data }: WatchPageProps) => {
             <WatchCategory categories={data.tagList} />
             <WatchSummary introduction={data.introduction} />
           </div>
-          <div className={styles.box2}>
+          <div className="layout-watch-sub">
             <WatchAnthology detailMovie={data} />
           </div>
         </div>
@@ -56,6 +58,12 @@ const WatchPage = ({ data }: WatchPageProps) => {
           ))}
         </MovieList>
       </div>
+      <style jsx>{`
+        .heading {
+          margin-top: 14px;
+          font-size: 2.3rem;
+        }
+      `}</style>
     </LayoutHome>
   );
 };
@@ -71,11 +79,11 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   const category = params?.category as string;
   const id = params?.id as string;
   try {
-    const { data } = await axios.get(`${server}/api/episode/`, {
+    const { data } = await axiosClient.get(`${server}/api/episode/`, {
       params: { category, id },
     });
     return {
-      props: { data: data.data },
+      props: { data },
       revalidate: 300,
     };
   } catch (error) {

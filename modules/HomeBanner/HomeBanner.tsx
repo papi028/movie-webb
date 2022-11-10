@@ -10,8 +10,7 @@ interface HomeBannerProps {
 }
 
 const stylesSwiper = {
-  borderBottomLeftRadius: "8px",
-  borderBottomRightRadius: "8px",
+  borderRadius: "8px",
   overflow: "hidden",
 };
 

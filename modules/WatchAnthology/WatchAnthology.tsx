@@ -1,4 +1,4 @@
-import { IconPlay } from "components/icons";
+import { IconPlay } from "components/Iconss";
 import { CustomLink } from "components/CustomLink";
 import { PATH } from "constants/path";
 import { useRouter } from "next/router";

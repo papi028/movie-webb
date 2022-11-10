@@ -1,5 +1,5 @@
 import { CustomLink } from "components/CustomLink";
-import { IconSearch } from "components/icons";
+import { IconSearch } from "components/Iconss";
 import { PATH } from "constants/path";
 import { SearchBox } from "modules/SearchBox";
 import styles from "./header.module.scss";

@@ -1,4 +1,4 @@
-import { IconStar } from "components/icons";
+import { IconStar } from "components/Iconss";
 import styles from "./watchMeta.module.scss";
 
 interface WatchMetaProps {

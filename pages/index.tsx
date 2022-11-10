@@ -12,7 +12,6 @@ interface HomePageProps {
 }
 
 const HomePage = ({ banners, homeSections }: HomePageProps) => {
-  console.log("banners: ", banners);
   return (
     <LayoutHome>
       <HomeBanner banners={banners} />

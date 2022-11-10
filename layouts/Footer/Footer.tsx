@@ -1,4 +1,4 @@
-import { IconGithub } from "components/icons";
+import { IconGithub } from "components/Iconss";
 import { PATH } from "constants/path";
 import classNames from "utils/classNames";
 import styles from "./footer.module.scss";

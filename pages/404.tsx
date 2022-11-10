@@ -40,7 +40,7 @@ const PageNotFound = () => {
           color: white;
           padding: 10px 24px;
           border-radius: 8px;
-          background-image: var(--gradient-primary);
+          background-image: var(--gradient-purple);
         }
         @media screen and (max-width: 767.98px) {
           .title {

@@ -11,10 +11,7 @@ const axiosLoklok = axios.create({
 
 axiosLoklok.interceptors.response.use(
   async (response) => {
-    console.log("response: ", response);
-    if (response && response.data) {
-      return response.data;
-    }
+    if (response && response.data) return response.data;
     return response;
   },
   async (error) => {

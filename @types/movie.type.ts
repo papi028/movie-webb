@@ -1,4 +1,4 @@
-import { IEpisodeRoom, IEpisodeVo, IQuality, ISubtitle } from "./episode";
+import { IEpisodeRoom, IEpisodeVo, IQuality, ISubtitle } from "./episode.type";
 
 export interface IObjIdName {
   id: number;

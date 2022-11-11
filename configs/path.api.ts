@@ -3,6 +3,7 @@ export const PATH_API = {
   detail: "/movieDrama/get",
   trending: "/search/v1/searchLeaderboard",
   searchWithKeyword: "/search/v1/searchWithKeyWord",
+  searchWithCategory: "/search/v1/search",
   searchSuggest: "/search/searchLenovo",
   media: "/media/previewInfo",
   loklok: "https://loklok.com",

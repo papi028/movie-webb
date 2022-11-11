@@ -1,3 +1,3 @@
-export * from "./home";
-export * from "./movie";
-export * from "./episode";
+export * from "./home.type";
+export * from "./movie.type";
+export * from "./episode.type";

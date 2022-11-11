@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosLoklok = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL_API,
+  baseURL: "https://ga-mobile-api.loklok.tv/cms/app",
   headers: {
     lang: "en",
     versioncode: "11",

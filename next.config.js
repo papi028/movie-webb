@@ -8,9 +8,6 @@ const nextConfig = {
     includePaths: [path.join(__dirname, "styles")],
   },
   images: { domains: ["images.weserv.nl", "img.netpop.app"] },
-  i18n: {
-    localeDetection: false,
-  },
 };
 
 module.exports = nextConfig;

@@ -5,6 +5,7 @@ import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { HomeBanner } from "modules/HomeBanner";
 import { HomeSection } from "modules/HomeSection";
 import { GetServerSidePropsContext } from "next";
+import { useEffect } from "react";
 
 interface HomePageProps {
   banners: IBanner[];
@@ -12,6 +13,13 @@ interface HomePageProps {
 }
 
 const HomePage = ({ banners, homeSections }: HomePageProps) => {
+  useEffect(() => {
+    const fetchHomes = async () => {
+      const { data } = await axios.get(`https://ga-mobile-api.loklok.tv/cms/app/homePage/getHome`);
+      console.log("data: ", data);
+    };
+    fetchHomes();
+  }, []);
   return (
     <LayoutPrimary>
       <HomeBanner banners={banners} />

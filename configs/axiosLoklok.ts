@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosLoklok = axios.create({
-  baseURL: "https://ga-mobile-api.loklok.tv/cms/app",
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL_API,
   headers: {
     lang: "en",
     versioncode: "11",
@@ -11,6 +11,7 @@ const axiosLoklok = axios.create({
 
 axiosLoklok.interceptors.response.use(
   async (response) => {
+    console.log("response: ", response);
     if (response && response.data) {
       return response.data;
     }

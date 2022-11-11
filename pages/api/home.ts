@@ -98,7 +98,7 @@ const HomePageApi = async (req: NextApiRequest, res: NextApiResponse) => {
   }
   const { data } = await axios.get(`https://ga-mobile-api.loklok.tv/cms/app/homePage/getHome`, {
     headers: { lang: "en", versioncode: "11", clienttype: "ios_jike_default" },
-    params: { page },
+    params: { page: 1 },
   });
   const response = {
     message: "Get home successfully!",

@@ -83,6 +83,7 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import axiosLoklok from "configs/axiosLoklok";
 import { PATH_API } from "configs/path.api";
+import { server } from "configs/server";
 import { STATUS } from "constants/status";
 import type { NextApiRequest, NextApiResponse } from "next";
 import catchAsync from "utils/catch-async";
@@ -95,10 +96,13 @@ const HomePageApi = async (req: NextApiRequest, res: NextApiResponse) => {
     const error = new ApiError(STATUS.METHOD_NOT_ALLOWED, "Method not allowed");
     return responseError(error, res);
   }
-  const responseData = await axiosLoklok(PATH_API.home, { params: { page } });
+  const { data } = await axios.get(`https://ga-mobile-api.loklok.tv/cms/app/homePage/getHome`, {
+    headers: { lang: "en", versioncode: "11", clienttype: "ios_jike_default" },
+    params: { page },
+  });
   const response = {
     message: "Get home successfully!",
-    data: responseData,
+    data,
   };
   responseSuccess(res, response);
 };

@@ -13,13 +13,6 @@ interface HomePageProps {
 }
 
 const HomePage = ({ banners, homeSections }: HomePageProps) => {
-  useEffect(() => {
-    const fetchHomes = async () => {
-      const { data } = await axios.get(`https://ga-mobile-api.loklok.tv/cms/app/homePage/getHome`);
-      console.log("data: ", data);
-    };
-    fetchHomes();
-  }, []);
   return (
     <LayoutPrimary>
       <HomeBanner banners={banners} />
@@ -31,7 +24,7 @@ const HomePage = ({ banners, homeSections }: HomePageProps) => {
 };
 
 export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
-  const { data } = (await axios.get(`${server}/api/home`)).data;
+  const { data } = (await axios.get(`${server}/api/home`, { params: query })).data;
   return {
     props: {
       banners: data.banners,

@@ -9,6 +9,16 @@ const axiosLoklok = axios.create({
   },
 });
 
+axiosLoklok.interceptors.request.use(
+  async (config) => {
+    console.log("config: ", config);
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
+
 axiosLoklok.interceptors.response.use(
   async (response) => {
     if (response && response.data) return response.data;

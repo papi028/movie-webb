@@ -1,11 +1,12 @@
 import { IBanner, IHomeSection } from "@types";
 import axios from "axios";
+import axiosLoklok from "configs/axiosLoklok";
+import { getHome } from "configs/home.api";
 import { server } from "configs/server";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { HomeBanner } from "modules/HomeBanner";
 import { HomeSection } from "modules/HomeSection";
 import { GetServerSidePropsContext } from "next";
-import { useEffect } from "react";
 
 interface HomePageProps {
   banners: IBanner[];
@@ -28,7 +29,7 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   return {
     props: {
       banners: data.banners,
-      homeSections: data.homeSections,
+      homeSections: await getHome(0),
     },
   };
 };

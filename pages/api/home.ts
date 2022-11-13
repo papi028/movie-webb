@@ -20,7 +20,9 @@ const HomePageApi = async (req: NextApiRequest, res: NextApiResponse) => {
     recommendItems,
     searchKeyWord,
   }: IResponseHome = (await axiosLoklok(PATH_API.home, { params: { page } })).data;
-  const homeSections = recommendItems;
+  const homeSections = recommendItems.filter(
+    (section) => section.homeSectionType !== "BLOCK_GROUP" && section.homeSectionName !== ""
+  );
   const banners = await getBanners();
   const response = {
     message: "Get home successfully!",

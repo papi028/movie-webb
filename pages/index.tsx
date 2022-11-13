@@ -1,7 +1,5 @@
 import { IBanner, IHomeSection } from "@types";
 import axios from "axios";
-import axiosLoklok from "configs/axiosLoklok";
-import { getHome } from "configs/home.api";
 import { server } from "configs/server";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { HomeBanner } from "modules/HomeBanner";
@@ -29,7 +27,7 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   return {
     props: {
       banners: data.banners,
-      homeSections: await getHome(0),
+      homeSections: data.homeSections,
     },
   };
 };

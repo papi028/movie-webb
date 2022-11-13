@@ -1,5 +1,5 @@
 import { IBanner, IHomeSection } from "@types";
-import axios from "axios";
+import axiosClient from "configs/axiosClient";
 import { server } from "configs/server";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { HomeBanner } from "modules/HomeBanner";
@@ -23,7 +23,7 @@ const HomePage = ({ banners, homeSections }: HomePageProps) => {
 };
 
 export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
-  const { data } = (await axios.get(`${server}/api/home`, { params: query })).data;
+  const { data } = await axiosClient.get(`${server}/api/home`, { params: query });
   return {
     props: {
       banners: data.banners,

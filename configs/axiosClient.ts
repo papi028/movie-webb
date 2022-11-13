@@ -7,9 +7,7 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.response.use(
   async (response) => {
-    if (response && response.data) {
-      return response.data;
-    }
+    if (response && response.data) return response.data;
     return response;
   },
   async (error) => {

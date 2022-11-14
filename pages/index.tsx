@@ -25,13 +25,13 @@ const HomePage = ({ banners, homeSections }: HomePageProps) => {
       {homeSections.map((homeSection) => (
         <HomeSection key={homeSection.homeSectionId} homeSection={homeSection} />
       ))}
-      {moreSections.map((homeSection: any) => (
+      {moreSections.map((homeSection: IHomeSection) => (
         <HomeSection key={homeSection.homeSectionId} homeSection={homeSection} />
       ))}
       {hasNextPage && (
         <CheckInView onInView={handleInview}>
           <div className="container">
-            <MovieListSkeleton />
+            <MovieListSkeleton hasHeading />
           </div>
         </CheckInView>
       )}

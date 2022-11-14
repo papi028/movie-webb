@@ -7,7 +7,7 @@ import { PATH_API } from "configs/path.api";
 
 const searchWithCategoryApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, query } = req;
-  const { category = 1, size = 14, params = "", sort = "" } = query;
+  const { category = 1, size = 12, params = "", sort = "" } = query;
   if (method !== "GET") {
     const error = new ApiError(STATUS.METHOD_NOT_ALLOWED, "Method not allowed");
     return responseError(error, res);
@@ -18,10 +18,10 @@ const searchWithCategoryApi = async (req: NextApiRequest, res: NextApiResponse) 
     size,
     sort,
   });
-  const results = data.searchResults;
+  const { data: filters } = await axiosLoklok(PATH_API.filters);
   const response = {
     message: "Get search by category successfully!",
-    data: { results },
+    data: { filters, results: data.searchResults },
   };
   responseSuccess(res, response);
 };

@@ -4,13 +4,14 @@ import styles from "./movieSkeleton.module.scss";
 import stylesMovieList from "../MovieList/movieList.module.scss";
 
 interface MovieListSkeletonProps {
+  hasHeading?: boolean;
   count?: number;
 }
 
-const MovieListSkeleton = ({ count = 6 }: MovieListSkeletonProps) => {
+const MovieListSkeleton = ({ hasHeading = false, count = 6 }: MovieListSkeletonProps) => {
   return (
     <div className={styles.section}>
-      <div className={styles.heading}></div>
+      {hasHeading && <div className={styles.heading}></div>}
       <div className={stylesMovieList.list}>
         {Array(count)
           .fill(0)

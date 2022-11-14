@@ -4,6 +4,21 @@ import { PATH } from "constants/path";
 import { SearchBox } from "modules/SearchBox";
 import styles from "./header.module.scss";
 
+const links = [
+  {
+    path: PATH.home,
+    display: "Home",
+  },
+  {
+    path: PATH.profile,
+    display: "Profile",
+  },
+  {
+    path: PATH.search,
+    display: "Search",
+  },
+];
+
 const Header = () => {
   return (
     <header className={styles.header}>
@@ -11,12 +26,14 @@ const Header = () => {
         <nav className={styles.navbar}>
           <div className={styles.left}>
             <CustomLink className={styles.logo}>Filmlok</CustomLink>
-            <ul>
-              <li>
-                <CustomLink className={styles.link} href={PATH.home}>
-                  Home
-                </CustomLink>
-              </li>
+            <ul className={styles.links}>
+              {links.map((link) => (
+                <li key={link.path}>
+                  <CustomLink className={styles.link} href={link.path}>
+                    {link.display}
+                  </CustomLink>
+                </li>
+              ))}
             </ul>
           </div>
           <div className={styles.searchBox}>

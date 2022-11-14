@@ -1,12 +1,12 @@
 import Image from "next/image";
-import styles from "./cast.module.scss";
+import styles from "./castItem.module.scss";
 
 interface CastProps {
   image: string;
   name: string;
 }
 
-const Cast = ({ image, name }: CastProps) => {
+const CastItem = ({ image, name }: CastProps) => {
   return (
     <div className={styles.cast}>
       <div className={styles.avatar}>
@@ -17,4 +17,4 @@ const Cast = ({ image, name }: CastProps) => {
   );
 };
 
-export default Cast;
+export default CastItem;

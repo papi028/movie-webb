@@ -5,6 +5,7 @@ import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { CheckInView } from "modules/CheckInView";
 import { HomeBanner } from "modules/HomeBanner";
 import { HomeSection } from "modules/HomeSection";
+import { MovieListSkeleton } from "modules/MovieSkeleton";
 import { GetServerSidePropsContext } from "next";
 import { useCallback } from "react";
 
@@ -14,8 +15,7 @@ interface HomePageProps {
 }
 
 const HomePage = ({ banners, homeSections }: HomePageProps) => {
-  const { data: dataCSR, setSize, hasNextPage } = useFetchHome();
-  console.log("dataCSR: ", dataCSR);
+  const { data: moreSections, setSize, hasNextPage } = useFetchHome();
   const handleInview = useCallback(() => {
     setSize((prev) => prev + 1);
   }, [setSize]);
@@ -25,12 +25,14 @@ const HomePage = ({ banners, homeSections }: HomePageProps) => {
       {homeSections.map((homeSection) => (
         <HomeSection key={homeSection.homeSectionId} homeSection={homeSection} />
       ))}
-      {dataCSR.map((homeSection: any) => (
+      {moreSections.map((homeSection: any) => (
         <HomeSection key={homeSection.homeSectionId} homeSection={homeSection} />
       ))}
       {hasNextPage && (
         <CheckInView onInView={handleInview}>
-          <div>Skeleton</div>
+          <div className="container">
+            <MovieListSkeleton />
+          </div>
         </CheckInView>
       )}
     </LayoutPrimary>

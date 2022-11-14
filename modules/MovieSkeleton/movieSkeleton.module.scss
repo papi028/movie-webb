@@ -1,0 +1,28 @@
+.poster {
+  width: 190px;
+  height: 266px;
+  background-color: #333;
+  border-radius: 6px;
+}
+.heading {
+  margin: 20px 0;
+  width: 200px;
+  height: 28px;
+  background-color: #333;
+  border-radius: 4px;
+}
+.title {
+  margin-top: 10px;
+  height: 20px;
+  background-color: #333;
+  width: 190px;
+  border-radius: 4px;
+}
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  grid-gap: 16px;
+  @media screen and (max-width: 640px) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}

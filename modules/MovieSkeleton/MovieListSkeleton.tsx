@@ -12,7 +12,7 @@ const MovieListSkeleton = ({ hasHeading = false, count = 6 }: MovieListSkeletonP
   return (
     <div className={styles.section}>
       {hasHeading && <div className={styles.heading}></div>}
-      <div className={stylesMovieList.list}>
+      <div className="movie-list">
         {Array(count)
           .fill(0)
           .map((item, index) => (

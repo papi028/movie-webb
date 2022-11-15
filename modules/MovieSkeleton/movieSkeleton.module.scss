@@ -18,11 +18,3 @@
   width: 190px;
   border-radius: 4px;
 }
-.list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  grid-gap: 16px;
-  @media screen and (max-width: 640px) {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
-}

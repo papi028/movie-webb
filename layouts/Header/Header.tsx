@@ -17,6 +17,10 @@ const links = [
     path: PATH.search,
     display: "Search",
   },
+  {
+    path: PATH.explore,
+    display: "Explore",
+  },
 ];
 
 const Header = () => {

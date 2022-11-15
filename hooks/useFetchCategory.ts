@@ -4,7 +4,18 @@ import useSWRInfinite from "swr/infinite";
 
 const COUNT_FIRST_FETCH = 12;
 
-const useFetchCategory = () => {
+const useFetchCategory = (query?: { [key: string]: string | number }) => {
+  const params = {
+    area: "",
+    category: "",
+    order: "up",
+    size: "12",
+    params: "",
+    sort: "",
+    subtitles: "",
+    year: "",
+    ...query,
+  };
   const getCategorySortKey = (index: number, prevResults: ICategoryResult[] | null) => {
     const isEmpty = prevResults?.length === 0;
     if (isEmpty) return null;
@@ -15,7 +26,7 @@ const useFetchCategory = () => {
     getCategorySortKey,
     async (key) => {
       const sort = key.split("category-")[1];
-      const { data } = await axiosClient.get("/api/category", { params: { sort } });
+      const { data } = await axiosClient.get("/api/category", { params: { ...params, sort } });
       return data.results;
     },
     { revalidateFirstPage: false } // set false to not called first fetcher api

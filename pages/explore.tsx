@@ -1,4 +1,4 @@
-import { ICategoryResult, IFilter, IFilterOptionItem, IFilterOptions } from "@types";
+import { ICategoryResult, IFilter, IFilterOptions } from "@types";
 import { Dropdown } from "components/Dropdown";
 import axiosClient from "configs/axiosClient";
 import useFetchCategory from "hooks/useFetchCategory";
@@ -17,7 +17,7 @@ interface CategoryPageProps {
 
 const CategoryPage = ({ filters, results }: CategoryPageProps) => {
   const [movies, setMovies] = useState(results);
-  const { data: moreCategories, setSize, hasNextPage } = useFetchCategory();
+  const [options, setOptions] = useState<IFilterOptions[]>(filters[0].screeningItems);
   const [params, setParams] = useState({
     area: "",
     category: 1,
@@ -28,13 +28,10 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
     subtitles: "",
     year: "",
   });
-  const [options, setOptions] = useState<IFilterOptions[]>(filters[0].screeningItems);
+  const { data: moreCategories, setSize, hasNextPage } = useFetchCategory(params);
   const handleInview = useCallback(() => {
     setSize((prev) => prev + 1);
   }, [setSize]);
-  const handleClickOption = (option: IFilterOptionItem) => {
-    setParams({ ...params, [option.screeningType]: option.params });
-  };
   useEffect(() => {
     const fetchMovies = async () => {
       try {

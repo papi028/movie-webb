@@ -10,7 +10,7 @@ const MovieList = ({ heading, children }: MovieListProps) => {
   return (
     <div className={styles.section}>
       {heading && <h3 className={styles.heading}>{heading}</h3>}
-      <div className={styles.list}>{children}</div>
+      <div className="movie-list">{children}</div>
     </div>
   );
 };

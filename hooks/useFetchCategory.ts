@@ -4,7 +4,11 @@ import useSWRInfinite from "swr/infinite";
 
 const COUNT_FIRST_FETCH = 12;
 
-const useFetchCategory = (query?: { [key: string]: string | number }) => {
+interface IQueryParams {
+  [key: string]: string | number;
+}
+
+const useFetchCategory = (initialData: any[], query?: IQueryParams) => {
   const params = {
     area: "",
     category: "",
@@ -34,7 +38,7 @@ const useFetchCategory = (query?: { [key: string]: string | number }) => {
   const isReachingEnd = data?.[data.length - 1]?.length === 0;
   const hasNextPage = data && !error && !isReachingEnd;
   return {
-    data: data?.flat()?.slice(COUNT_FIRST_FETCH) || [],
+    data: data ? data?.flat() : initialData,
     size,
     setSize,
     error,

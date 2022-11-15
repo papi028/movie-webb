@@ -1,14 +1,14 @@
 import { ICategoryResult, IFilter, IFilterOptions } from "@types";
 import { Dropdown } from "components/Dropdown";
 import axiosClient from "configs/axiosClient";
-import useFetchCategory from "hooks/useFetchCategory";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { CheckInView } from "modules/CheckInView";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
-import { MovieListSkeleton } from "modules/MovieSkeleton";
+import { MovieListSkeleton, MovieSkeleton } from "modules/MovieSkeleton";
 import { GetServerSidePropsContext } from "next";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
+import useSWRInfinite from "swr/infinite";
 
 interface CategoryPageProps {
   filters: IFilter[];
@@ -16,7 +16,6 @@ interface CategoryPageProps {
 }
 
 const CategoryPage = ({ filters, results }: CategoryPageProps) => {
-  const [movies, setMovies] = useState(results);
   const [options, setOptions] = useState<IFilterOptions[]>(filters[0].screeningItems);
   const [params, setParams] = useState({
     area: "",
@@ -28,21 +27,27 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
     subtitles: "",
     year: "",
   });
-  const { data: moreCategories, setSize, hasNextPage } = useFetchCategory(params);
+  const getSortKey = (index: number, prevData: ICategoryResult[] | null) => {
+    const isEmptyData = prevData?.length === 0;
+    if (isEmptyData) return null;
+    const sort = prevData?.[prevData.length - 1]?.sort || "";
+    return `${JSON.stringify(params)}explore-${sort}`;
+  };
+  const { data, setSize, error } = useSWRInfinite(
+    getSortKey,
+    async (key: string) => {
+      const sort = key.split("explore-")[1];
+      const { data } = await axiosClient.get("/api/category", { params: { ...params, sort } });
+      return data.results;
+    },
+    { revalidateFirstPage: false }
+  );
+  const isReachingEnd = data?.[data.length - 1]?.length === 0;
+  const hasNextPage = data && !error && !isReachingEnd;
+  const movies = data?.flat();
   const handleInview = useCallback(() => {
     setSize((prev) => prev + 1);
   }, [setSize]);
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const { data } = await axiosClient.get("/api/category", { params });
-        setMovies(data.results);
-      } catch (error) {
-        console.log("error: ", error);
-      }
-    };
-    fetchMovies();
-  }, [params]);
   return (
     <LayoutPrimary>
       <div className="container">
@@ -85,26 +90,21 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
             </Dropdown>
           ))}
         </div>
-        <MovieList>
-          {movies.map((result) => (
-            <MovieCard
-              key={result.id}
-              id={result.id}
-              title={result.name}
-              domainType={result.domainType}
-              poster={result.coverVerticalUrl}
-            />
-          ))}
-          {moreCategories.map((result: ICategoryResult) => (
-            <MovieCard
-              key={result.id}
-              id={result.id}
-              title={result.name}
-              domainType={result.domainType}
-              poster={result.coverVerticalUrl}
-            />
-          ))}
-        </MovieList>
+        {(movies?.length as number) > 0 ? (
+          <MovieList>
+            {movies?.map((result: ICategoryResult) => (
+              <MovieCard
+                key={result.id}
+                id={result.id}
+                title={result.name}
+                domainType={result.domainType}
+                poster={result.coverVerticalUrl}
+              />
+            ))}
+          </MovieList>
+        ) : (
+          <MovieListSkeleton count={12} />
+        )}
         {hasNextPage && (
           <CheckInView onInView={handleInview}>
             <MovieListSkeleton />

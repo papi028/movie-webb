@@ -7,16 +7,21 @@ export interface ICategoryResult {
   sort: string;
 }
 
+export interface IFilterOptionItem {
+  name: string;
+  params: string;
+  screeningType: string;
+}
+
+export interface IFilterOptions {
+  id: number;
+  name: string;
+  items: IFilterOptionItem[];
+}
+
 export interface IFilter {
   id: number;
   name: string;
   params: string;
-  screeningItems: {
-    id: number;
-    items: {
-      name: string;
-      params: string;
-      screeningType: string;
-    }[];
-  }[];
+  screeningItems: IFilterOptions[];
 }

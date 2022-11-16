@@ -1,6 +1,7 @@
 import { IEpisode } from "@types";
 import axiosClient from "configs/axiosClient";
 import { server } from "configs/server";
+import useSaveHistoryView from "hooks/useSaveHistoryView";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MediaPlayer } from "modules/MediaPlayer";
 import { MovieCard } from "modules/MovieCard";
@@ -10,21 +11,28 @@ import { WatchCategory } from "modules/WatchCategory";
 import { WatchMeta } from "modules/WatchMeta";
 import { WatchSummary } from "modules/WatchSummary";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
-import { useRef } from "react";
 
 interface WatchPageProps {
   data: IEpisode;
 }
 
+interface IHistory {
+  id: string;
+  name: string;
+  coverVerticalUrl: string;
+  coverHorizontalUrl: string;
+  episode: number;
+  episodeName: number;
+}
+
 const WatchPage = ({ data }: WatchPageProps) => {
-  const playerRef = useRef<HTMLVideoElement>(null);
+  useSaveHistoryView(data);
   return (
     <LayoutPrimary>
       <div className="container">
         <div className="layout-watch">
           <div className="layout-watch-main">
             <MediaPlayer
-              playerRef={playerRef}
               qualities={data.qualities}
               subtitles={data.subtitles}
               poster={data.coverHorizontalUrl}

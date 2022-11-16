@@ -1,13 +1,12 @@
 const ReactHlsPlayer = dynamic(() => import("react-hls-player"), {
   ssr: false,
 });
-import { Player } from "react-tuby";
-import "react-tuby/css/main.css";
 import { IQuality, ISubtitle } from "@types";
 import dynamic from "next/dynamic";
+import { Player } from "react-tuby";
+import "react-tuby/css/main.css";
 
 interface MediaPlayerProps {
-  playerRef: React.RefObject<HTMLVideoElement>;
   subtitles: ISubtitle[];
   qualities: IQuality[];
   poster: string;

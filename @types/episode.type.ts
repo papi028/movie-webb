@@ -89,4 +89,5 @@ export interface IEpisode {
   currentEpName: number;
   qualities: IQuality[];
   subtitles: ISubtitle[];
+  episode: number;
 }

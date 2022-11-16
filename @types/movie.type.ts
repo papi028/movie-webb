@@ -102,3 +102,12 @@ export interface IMovieSearch {
     userId: string | null;
   };
 }
+
+export interface IHistoryView {
+  id: string;
+  name: string;
+  coverVerticalUrl: string;
+  coverHorizontalUrl: string;
+  episode: number;
+  episodeName: number;
+}

@@ -64,6 +64,7 @@ const getEpisodeApi = async (req: NextApiRequest, res: NextApiResponse) => {
       currentEpName: currentEpisode?.seriesNo,
       qualities,
       subtitles,
+      episode,
     },
   };
   responseSuccess(res, response);

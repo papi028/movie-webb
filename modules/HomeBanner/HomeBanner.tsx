@@ -20,7 +20,7 @@ const HomeBanner = ({ banners }: HomeBannerProps) => {
       <Swiper loop navigation={true} modules={[Navigation]} style={stylesSwiper}>
         {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
-            <CustomLink href={`${PATH.watch}/1/${banner.id}`}>
+            <CustomLink href={`${PATH.watch}/${banner.jumpType}/${banner.id}`}>
               <picture>
                 <img alt={banner.title} src={banner.imageUrl} className={styles.thumbnail} />
               </picture>

@@ -1,7 +1,5 @@
-import React from "react";
 import MovieSkeleton from "./MovieSkeleton";
 import styles from "./movieSkeleton.module.scss";
-import stylesMovieList from "../MovieList/movieList.module.scss";
 
 interface MovieListSkeletonProps {
   hasHeading?: boolean;

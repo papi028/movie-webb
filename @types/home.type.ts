@@ -2,6 +2,7 @@ export interface IBanner {
   id: number;
   title: string;
   imageUrl: string;
+  jumpType: number;
 }
 
 export interface IRecommendVO {

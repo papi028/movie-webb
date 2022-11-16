@@ -42,9 +42,7 @@ const HomePage = ({ banners, homeSections }: HomePageProps) => {
         ))}
         {hasNextPage && (
           <CheckInView onInView={handleInview}>
-            <div className="container">
-              <MovieListSkeleton hasHeading />
-            </div>
+            <MovieListSkeleton hasHeading />
           </CheckInView>
         )}
       </div>

@@ -17,6 +17,7 @@ interface WatchPageProps {
 }
 
 const WatchPage = ({ data }: WatchPageProps) => {
+  console.log("data: ", data);
   useSaveHistoryView(data);
   return (
     <LayoutPrimary>

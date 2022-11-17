@@ -112,4 +112,5 @@ export interface IHistoryView {
   coverHorizontalUrl: string;
   episode: number;
   episodeName: number;
+  currentEpName: string;
 }

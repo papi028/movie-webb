@@ -11,6 +11,10 @@ import styles from "styles/history.module.scss";
 const HistoryPage = () => {
   const [loading, setLoading] = useState(true);
   const [history, setHistory] = useState<IHistoryView[]>([]);
+  const handleClearHistory = () => {
+    localStorage.removeItem("history");
+    setHistory([]);
+  };
   useEffect(() => {
     const historyLocalStorage = JSON.parse(localStorage.getItem("history") || "[]");
     setHistory(historyLocalStorage);
@@ -22,30 +26,35 @@ const HistoryPage = () => {
         {loading ? (
           <MovieListSkeleton count={6} />
         ) : (
-          <div className="history-list">
-            {history.map((movie) => {
-              const href = `${PATH.watch}/${movie.category}/${movie.id}`;
-              return (
-                <div className={styles.movieCard} key={movie.key}>
-                  <CustomLink href={href} className={styles.movieCardMedia}>
-                    <Image
-                      alt={movie.name}
-                      width={312}
-                      height={175}
-                      src={movie.coverHorizontalUrl}
-                      className={styles.movieCardPoster}
-                    />
-                    <picture>
-                      <img src="/icon-play.png" alt="play" className={styles.movieCardPlay} />
-                    </picture>
-                  </CustomLink>
-                  <MovieTitle href={href} className={styles.movieCardTitle}>
-                    {movie.name}
-                  </MovieTitle>
-                </div>
-              );
-            })}
-          </div>
+          <>
+            <button className={styles.cleanHistory} onClick={handleClearHistory}>
+              Clear history
+            </button>
+            <div className="history-list">
+              {history.map((movie) => {
+                const href = `${PATH.watch}/${movie.category}/${movie.id}`;
+                return (
+                  <div className={styles.movieCard} key={movie.key}>
+                    <CustomLink href={href} className={styles.movieCardMedia}>
+                      <Image
+                        alt={movie.name}
+                        width={312}
+                        height={175}
+                        src={movie.coverHorizontalUrl}
+                        className={styles.movieCardPoster}
+                      />
+                      <picture>
+                        <img src="/icon-play.png" alt="play" className={styles.movieCardPlay} />
+                      </picture>
+                    </CustomLink>
+                    <MovieTitle href={href} className={styles.movieCardTitle}>
+                      {movie.name} {movie.currentEpName && `- Ep ${movie.currentEpName}`}
+                    </MovieTitle>
+                  </div>
+                );
+              })}
+            </div>
+          </>
         )}
       </div>
     </LayoutPrimary>

@@ -7,7 +7,7 @@ const useSaveHistoryView = (data: IEpisode) => {
   const router = useRouter();
   const { id, category, episode } = router.query;
   useEffect(() => {
-    const historyLocalStorage: IHistoryView[] = JSON.parse(localStorage.getItem("history") || "[]");
+    const historyLocalStorage = JSON.parse(localStorage.getItem("history") || "[]");
     const history = {
       key: uuidv4(),
       id: data.id,
@@ -17,6 +17,7 @@ const useSaveHistoryView = (data: IEpisode) => {
       coverHorizontalUrl: data.coverHorizontalUrl,
       episode: data.episode,
       episodeName: data.currentEpName,
+      currentEpName: data.currentEpName,
     };
     const firstHistory = historyLocalStorage[0];
     if (!firstHistory) {
@@ -26,7 +27,7 @@ const useSaveHistoryView = (data: IEpisode) => {
     const isExist = firstHistory.id === data.id && firstHistory.episode === data.episode;
     if (isExist) return;
     localStorage.setItem("history", JSON.stringify([history, ...historyLocalStorage]));
-  }, [id, category, episode]);
+  }, [data, id, category, episode]);
 };
 
 export default useSaveHistoryView;

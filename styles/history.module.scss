@@ -1,3 +1,9 @@
+.cleanHistory {
+  color: white;
+  border: none;
+  background-color: transparent;
+  margin-bottom: 20px;
+}
 .movieCard {
   max-width: 312px;
   transition: all 0.25s linear;
@@ -20,6 +26,7 @@
   display: flex;
   transition: all 0.25s linear;
   object-fit: cover;
+  border: 1px solid gray;
 }
 .movieCardPoster {
   height: 100%;

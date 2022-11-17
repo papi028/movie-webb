@@ -16,15 +16,6 @@ interface WatchPageProps {
   data: IEpisode;
 }
 
-interface IHistory {
-  id: string;
-  name: string;
-  coverVerticalUrl: string;
-  coverHorizontalUrl: string;
-  episode: number;
-  episodeName: number;
-}
-
 const WatchPage = ({ data }: WatchPageProps) => {
   useSaveHistoryView(data);
   return (

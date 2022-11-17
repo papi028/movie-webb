@@ -104,8 +104,10 @@ export interface IMovieSearch {
 }
 
 export interface IHistoryView {
+  key: string;
   id: string;
   name: string;
+  category: string;
   coverVerticalUrl: string;
   coverHorizontalUrl: string;
   episode: number;

@@ -1,6 +1,7 @@
 import { IEpisode, IHistoryView } from "@types";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const useSaveHistoryView = (data: IEpisode) => {
   const router = useRouter();
@@ -8,7 +9,9 @@ const useSaveHistoryView = (data: IEpisode) => {
   useEffect(() => {
     const historyLocalStorage: IHistoryView[] = JSON.parse(localStorage.getItem("history") || "[]");
     const history = {
+      key: uuidv4(),
       id: data.id,
+      category: category,
       name: data.name,
       coverVerticalUrl: data.coverVerticalUrl,
       coverHorizontalUrl: data.coverHorizontalUrl,

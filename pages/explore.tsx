@@ -51,7 +51,7 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
   return (
     <LayoutPrimary>
       <div className="container">
-        <div className="movie-list mt-20">
+        <div className="movie-list">
           <Dropdown placeholder="All type">
             <Dropdown.Select />
             <Dropdown.List>

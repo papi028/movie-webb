@@ -22,7 +22,7 @@ const HistoryPage = () => {
   }, []);
   return (
     <LayoutPrimary>
-      <div className="container mt-20">
+      <div className="container">
         {loading ? (
           <MovieListSkeleton count={6} />
         ) : (

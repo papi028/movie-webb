@@ -3,6 +3,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: 767.98px) {
+    height: 60px;
+  }
 }
 .left {
   display: flex;

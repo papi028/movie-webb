@@ -16,7 +16,7 @@ const stylesSwiper = {
 
 const HomeBanner = ({ banners }: HomeBannerProps) => {
   return (
-    <section className={styles.section}>
+    <section>
       <Swiper loop navigation={true} modules={[Navigation]} style={stylesSwiper}>
         {banners.map((banner) => (
           <SwiperSlide key={banner.id}>

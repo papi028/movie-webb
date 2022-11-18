@@ -11,25 +11,27 @@ import { WatchCategory } from "modules/WatchCategory";
 import { WatchMeta } from "modules/WatchMeta";
 import { WatchSummary } from "modules/WatchSummary";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
+import styles from "styles/watch.module.scss";
+import classNames from "utils/classNames";
 
-interface WatchPageProps {
+interface WatchMoviePageProps {
   data: IEpisode;
 }
 
-const WatchPage = ({ data }: WatchPageProps) => {
+const WatchMoviePage = ({ data }: WatchMoviePageProps) => {
   useSaveHistoryView(data);
   return (
     <LayoutPrimary>
       <div className="container">
-        <div className="layout-watch">
-          <div className="layout-watch-main">
+        <div className={styles.layout}>
+          <div className={styles.layoutMain}>
             <MediaPlayer
               qualities={data.qualities}
               subtitles={data.subtitles}
               poster={data.coverHorizontalUrl}
             />
-            <h1 className="heading">
-              {data.name} {data.currentEpName && `- Ep ${data.currentEpName}`}
+            <h1 className={styles.heading}>
+              {data.name} {data.currentEpName && data.currentEpName}
             </h1>
             <WatchMeta
               areaList={data.areaList}
@@ -41,7 +43,7 @@ const WatchPage = ({ data }: WatchPageProps) => {
             <WatchCategory categories={data.tagList} />
             <WatchSummary introduction={data.introduction} />
           </div>
-          <div className="layout-watch-sub">
+          <div className={classNames(styles.layoutSidebar, "scrollbar")}>
             <WatchAnthology detailMovie={data} />
           </div>
         </div>
@@ -57,12 +59,6 @@ const WatchPage = ({ data }: WatchPageProps) => {
           ))}
         </MovieList>
       </div>
-      <style jsx>{`
-        .heading {
-          margin-top: 14px;
-          font-size: 2.3rem;
-        }
-      `}</style>
     </LayoutPrimary>
   );
 };
@@ -95,4 +91,4 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   }
 };
 
-export default WatchPage;
+export default WatchMoviePage;

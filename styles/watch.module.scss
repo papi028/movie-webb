@@ -1,0 +1,24 @@
+.layout {
+  display: flex;
+  gap: 20px;
+  padding-top: 30px;
+  @media screen and (max-width: 1023.98px) {
+    flex-direction: column;
+  }
+}
+.layoutMain {
+  width: 100%;
+  max-width: 880px;
+}
+.layoutSidebar {
+  flex: 1;
+  max-height: 495px;
+  overflow-y: auto;
+  @media screen and (max-width: 767.98px) {
+    max-height: 280px;
+  }
+}
+.heading {
+  margin-top: 14px;
+  font-size: 2.3rem;
+}

@@ -41,21 +41,6 @@ body {
   color: transparent;
   background-clip: text;
 }
-.layout-watch {
-  display: flex;
-  gap: 20px;
-  padding-top: 30px;
-  @media screen and (max-width: 1023.98px) {
-    flex-direction: column;
-  }
-}
-.layout-watch-main {
-  width: 100%;
-  max-width: 880px;
-}
-.layout-watch-sub {
-  flex: 1;
-}
 .header-category {
   display: flex;
   align-items: center;

@@ -61,7 +61,7 @@ const getEpisodeApi = async (req: NextApiRequest, res: NextApiResponse) => {
     message: `Get info episode ${currentEpisode?.seriesNo} of ${movieDetails.name} successfully!`,
     data: {
       ...movieDetails,
-      currentEpName: movieDetails.episodeVo.length === 1 ? 0 : currentEpisode?.seriesNo,
+      currentEpName: movieDetails.episodeVo.length === 1 ? "" : `Ep ${currentEpisode?.seriesNo}`,
       qualities,
       subtitles,
       episode,

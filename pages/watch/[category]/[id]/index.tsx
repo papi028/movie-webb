@@ -6,31 +6,33 @@ import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MediaPlayer } from "modules/MediaPlayer";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
+import { RelatedSeries } from "modules/RelatedSeries";
 import { WatchAnthology } from "modules/WatchAnthology";
 import { WatchCategory } from "modules/WatchCategory";
 import { WatchMeta } from "modules/WatchMeta";
 import { WatchSummary } from "modules/WatchSummary";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
+import styles from "styles/watch.module.scss";
+import classNames from "utils/classNames";
 
-interface WatchPageProps {
+interface WatchTVPageProps {
   data: IEpisode;
 }
 
-const WatchPage = ({ data }: WatchPageProps) => {
-  console.log("data: ", data);
+const WatchTVPage = ({ data }: WatchTVPageProps) => {
   useSaveHistoryView(data);
   return (
     <LayoutPrimary>
       <div className="container">
-        <div className="layout-watch">
-          <div className="layout-watch-main">
+        <div className={styles.layout}>
+          <div className={styles.layoutMain}>
             <MediaPlayer
               qualities={data.qualities}
               subtitles={data.subtitles}
               poster={data.coverHorizontalUrl}
             />
-            <h1 className="heading">
-              {data.name} {data.currentEpName && `- Ep ${data.currentEpName}`}
+            <h1 className={styles.heading}>
+              {data.name} {data.currentEpName && `- ${data.currentEpName}`}
             </h1>
             <WatchMeta
               areaList={data.areaList}
@@ -42,12 +44,13 @@ const WatchPage = ({ data }: WatchPageProps) => {
             <WatchCategory categories={data.tagList} />
             <WatchSummary introduction={data.introduction} />
           </div>
-          <div className="layout-watch-sub">
+          <div className={classNames(styles.layoutSidebar, "scrollbar")}>
+            <RelatedSeries refList={data.refList} />
             <WatchAnthology detailMovie={data} />
           </div>
         </div>
         <MovieList heading="You may like">
-          {data.likeList.map((movie: any) => (
+          {data.likeList.map((movie) => (
             <MovieCard
               key={movie.id}
               id={movie.id}
@@ -58,12 +61,6 @@ const WatchPage = ({ data }: WatchPageProps) => {
           ))}
         </MovieList>
       </div>
-      <style jsx>{`
-        .heading {
-          margin-top: 14px;
-          font-size: 2.3rem;
-        }
-      `}</style>
     </LayoutPrimary>
   );
 };
@@ -95,4 +92,4 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   }
 };
 
-export default WatchPage;
+export default WatchTVPage;

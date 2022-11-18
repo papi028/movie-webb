@@ -48,7 +48,7 @@ const HistoryPage = () => {
                       </picture>
                     </CustomLink>
                     <MovieTitle href={href} className={styles.movieCardTitle}>
-                      {movie.name} {movie.currentEpName && `- Ep ${movie.currentEpName}`}
+                      {movie.name} {movie.currentEpName && `- ${movie.currentEpName}`}
                     </MovieTitle>
                   </div>
                 );

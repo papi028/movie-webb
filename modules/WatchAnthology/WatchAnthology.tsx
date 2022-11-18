@@ -12,6 +12,7 @@ interface WatchAnthologyProps {
 const WatchAnthology = ({ detailMovie }: WatchAnthologyProps) => {
   const router = useRouter();
   const { episode = detailMovie.episodeVo[0].id } = router.query;
+  if (detailMovie.episodeVo.length <= 1) return null;
   return (
     <div className={styles.anthology}>
       {detailMovie.episodeVo.map(({ seriesNo, id }: any) => {

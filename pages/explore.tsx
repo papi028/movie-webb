@@ -5,7 +5,7 @@ import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { CheckInView } from "modules/CheckInView";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
-import { MovieListSkeleton, MovieSkeleton } from "modules/MovieSkeleton";
+import { MovieListSkeleton } from "modules/MovieSkeleton";
 import { GetServerSidePropsContext } from "next";
 import { useCallback, useState } from "react";
 import useSWRInfinite from "swr/infinite";

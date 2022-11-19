@@ -27,7 +27,7 @@ const HomePage = ({ banners, homeSections }: HomePageProps) => {
   );
   const isReachingEnd = data?.[data.length - 1]?.length === 0;
   const hasNextPage = data && !error && !isReachingEnd;
-  const handleInview = useCallback(() => {
+  const handleLoadMore = useCallback(() => {
     setSize((prev) => prev + 1);
   }, [setSize]);
   return (
@@ -41,7 +41,7 @@ const HomePage = ({ banners, homeSections }: HomePageProps) => {
           <HomeSection key={homeSection.homeSectionId} homeSection={homeSection} />
         ))}
         {hasNextPage && (
-          <CheckLoadMore onLoadMore={handleInview}>
+          <CheckLoadMore onLoadMore={handleLoadMore}>
             <MovieListSkeleton hasHeading />
           </CheckLoadMore>
         )}

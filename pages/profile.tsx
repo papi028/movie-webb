@@ -27,7 +27,7 @@ const ProfilePage = () => {
             <form className={styles.profileForm} onSubmit={handleUpdateProfile}>
               <FormGroup>
                 <Label htmlFor="fullname">Fullname</Label>
-                <Input name="text" type="text" placeholder="fullname" />
+                <Input name="text" type="text" placeholder="Fullname" />
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="password">Password</Label>

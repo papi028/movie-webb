@@ -9,6 +9,7 @@ import { MovieListSkeleton } from "modules/MovieSkeleton";
 import { GetServerSidePropsContext } from "next";
 import { useCallback, useState } from "react";
 import useSWRInfinite from "swr/infinite";
+import queryString from "query-string";
 
 interface CategoryPageProps {
   filters: IFilter[];
@@ -27,24 +28,27 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
     subtitles: "",
     year: "",
   });
-  const getSortKey = (index: number, prevData: ICategoryResult[] | null) => {
+  const getApiUrl = (index: number, prevData: ICategoryResult[] | null) => {
     const isEmptyData = prevData?.length === 0;
     if (isEmptyData) return null;
     const sort = prevData?.[prevData.length - 1]?.sort || "";
-    return `${JSON.stringify(params)}explore-${sort}`;
+    const apiURL = `/api/category?${queryString.stringify({ ...params, sort })}`;
+    return apiURL;
   };
-  const { data, setSize, error } = useSWRInfinite(
-    getSortKey,
-    async (key: string) => {
-      const sort = key.split("explore-")[1];
-      const { data } = await axiosClient.get("/api/category", { params: { ...params, sort } });
+  const {
+    data: movies,
+    setSize,
+    error,
+  } = useSWRInfinite(
+    getApiUrl,
+    async (apiURL: string) => {
+      const { data } = await axiosClient.get(apiURL);
       return data.results;
     },
-    { revalidateFirstPage: false }
+    { revalidateFirstPage: false, fallbackData: [] }
   );
-  const isReachingEnd = data?.[data.length - 1]?.length === 0;
-  const hasNextPage = data && !error && !isReachingEnd;
-  const movies = data?.flat();
+  const isReachingEnd = movies?.[movies.length - 1]?.length === 0;
+  const hasNextPage = movies && !error && !isReachingEnd;
   const handleInview = useCallback(() => {
     setSize((prev) => prev + 1);
   }, [setSize]);
@@ -90,9 +94,9 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
             </Dropdown>
           ))}
         </div>
-        {(movies?.length as number) > 0 ? (
+        {(movies?.flat()?.length as number) > 0 ? (
           <MovieList>
-            {movies?.map((result: ICategoryResult) => (
+            {movies?.flat()?.map((result: ICategoryResult) => (
               <MovieCard
                 key={result.id}
                 id={result.id}

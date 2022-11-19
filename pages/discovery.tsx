@@ -13,18 +13,18 @@ interface DiscoveryPageProps {
 }
 
 const DiscoveryPage = ({ initialVideos }: DiscoveryPageProps) => {
-  const getKey = (index: number) => `/api/discovery?page=${index + 1}`;
+  const getApiUrl = (index: number) => `/api/discovery?page=${index + 1}`;
   const {
     data: videos,
     error,
     setSize,
   } = useSWRInfinite(
-    getKey,
-    async (key: string) => {
-      const { data } = await axiosClient.get(key);
+    getApiUrl,
+    async (apiUrl: string) => {
+      const { data } = await axiosClient.get(apiUrl);
       return data;
     },
-    { revalidateFirstPage: false }
+    { revalidateFirstPage: false, fallbackData: [] }
   );
   const isReachingEnd = videos?.[videos.length - 1]?.length === 0;
   const hasNextPage = videos && !error && !isReachingEnd;

@@ -11,22 +11,25 @@ import useSWRInfinite from "swr/infinite";
 
 interface HomePageProps {
   banners: IBanner[];
-  homeSections: IHomeSection[];
+  initialHomeSections: IHomeSection[];
 }
 
-const HomePage = ({ banners, homeSections }: HomePageProps) => {
-  const getKey = (index: number) => `home-${index || 1}`;
-  const { data, error, setSize } = useSWRInfinite(
-    getKey,
-    async (key: string) => {
-      const page = Number(key.split("-").slice(-1)[0]);
-      const { data } = await axiosClient.get("/api/home", { params: { page } });
+const HomePage = ({ banners, initialHomeSections }: HomePageProps) => {
+  const getApiUrl = (index: number) => `/api/home?page=${index + 1}`;
+  const {
+    data: homeSections,
+    error,
+    setSize,
+  } = useSWRInfinite(
+    getApiUrl,
+    async (apiURL: string) => {
+      const { data } = await axiosClient.get(apiURL);
       return data.homeSections;
     },
-    { revalidateFirstPage: false }
+    { revalidateFirstPage: false, fallbackData: [] }
   );
-  const isReachingEnd = data?.[data.length - 1]?.length === 0;
-  const hasNextPage = data && !error && !isReachingEnd;
+  const isReachingEnd = homeSections?.[homeSections.length - 1]?.length === 0;
+  const hasNextPage = homeSections && !error && !isReachingEnd;
   const handleLoadMore = useCallback(() => {
     setSize((prev) => prev + 1);
   }, [setSize]);
@@ -34,10 +37,10 @@ const HomePage = ({ banners, homeSections }: HomePageProps) => {
     <LayoutPrimary>
       <div className="container">
         <HomeBanner banners={banners} />
-        {homeSections.map((homeSection) => (
+        {initialHomeSections.map((homeSection) => (
           <HomeSection key={homeSection.homeSectionId} homeSection={homeSection} />
         ))}
-        {data?.flat()?.map((homeSection: IHomeSection) => (
+        {homeSections?.flat()?.map((homeSection: IHomeSection) => (
           <HomeSection key={homeSection.homeSectionId} homeSection={homeSection} />
         ))}
         {hasNextPage && (
@@ -55,7 +58,7 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   return {
     props: {
       banners: data.banners,
-      homeSections: data.homeSections,
+      initialHomeSections: data.homeSections,
     },
   };
 };

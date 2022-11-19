@@ -45,8 +45,8 @@ const WatchTVPage = ({ data }: WatchTVPageProps) => {
             <WatchSummary introduction={data.introduction} />
           </div>
           <div className={classNames(styles.layoutSidebar, "scrollbar")}>
-            <RelatedSeries refList={data.refList} />
             <WatchAnthology detailMovie={data} />
+            <RelatedSeries refList={data.refList} />
           </div>
         </div>
         <MovieList heading="You may like">

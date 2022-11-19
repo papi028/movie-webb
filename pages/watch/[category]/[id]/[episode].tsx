@@ -6,6 +6,7 @@ import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MediaPlayer } from "modules/MediaPlayer";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
+import { RelatedSeries } from "modules/RelatedSeries";
 import { WatchAnthology } from "modules/WatchAnthology";
 import { WatchCategory } from "modules/WatchCategory";
 import { WatchMeta } from "modules/WatchMeta";
@@ -31,7 +32,7 @@ const WatchMoviePage = ({ data }: WatchMoviePageProps) => {
               poster={data.coverHorizontalUrl}
             />
             <h1 className={styles.heading}>
-              {data.name} {data.currentEpName && data.currentEpName}
+              {data.name} {data.currentEpName && `- ${data.currentEpName}`}
             </h1>
             <WatchMeta
               areaList={data.areaList}
@@ -45,6 +46,7 @@ const WatchMoviePage = ({ data }: WatchMoviePageProps) => {
           </div>
           <div className={classNames(styles.layoutSidebar, "scrollbar")}>
             <WatchAnthology detailMovie={data} />
+            <RelatedSeries refList={data.refList} />
           </div>
         </div>
         <MovieList heading="You may like">

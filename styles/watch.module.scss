@@ -17,6 +17,9 @@
   flex: 1;
   max-height: 495px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   @media screen and (max-width: 767.98px) {
     max-height: 280px;
   }

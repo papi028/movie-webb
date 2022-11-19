@@ -2,7 +2,7 @@ import useIntersectionObserver from "hooks/useIntersectionObserver";
 import React, { useEffect, useRef } from "react";
 
 interface CheckInViewProps extends React.HTMLProps<HTMLDivElement> {
-  onInView: () => any;
+  onInView: () => void;
 }
 
 const CheckInView = ({ onInView, children, ...props }: CheckInViewProps) => {

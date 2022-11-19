@@ -1,6 +1,7 @@
 import { IDiscovery } from "@types";
 import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
+import { CheckInView } from "modules/CheckInView";
 import { DiscoveryCard } from "modules/DiscoveryCard";
 import { GetServerSidePropsContext } from "next";
 

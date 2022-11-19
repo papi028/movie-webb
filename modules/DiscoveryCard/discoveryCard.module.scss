@@ -1,5 +1,5 @@
 .card {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 .info {
   display: flex;
@@ -17,6 +17,12 @@
   margin: 2px 0;
   color: #ffffffe6;
   font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
 }
 .link {
   color: var(--purple);
@@ -26,9 +32,12 @@
   }
 }
 .playerContent {
-  gap: 0 14px;
+  gap: 14px;
   display: flex;
   margin-top: 14px;
+  @media screen and (max-width: 767.98px) {
+    flex-direction: column;
+  }
 }
 .player {
   width: 100%;
@@ -41,11 +50,19 @@
     object-fit: cover;
   }
 }
+.loading {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+}
 .actions {
   gap: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 767.98px) {
+    flex-direction: row;
+  }
 }
 .action {
   display: flex;

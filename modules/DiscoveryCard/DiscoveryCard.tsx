@@ -3,22 +3,29 @@ import { CustomLink } from "components/CustomLink";
 import { IconHeart, IconShare } from "components/Icons";
 import { LoadingSpinner } from "components/Loading";
 import { PATH } from "constants/path";
+import useElementOnScreen from "hooks/useElementOnScreen";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import styles from "./discoveryCard.module.scss";
 const ReactHlsPlayer = dynamic(() => import("react-hls-player"), {
   ssr: false,
 });
-import styles from "./discoveryCard.module.scss";
 
 interface DiscoveryCardProps {
   discovery: IDiscovery;
 }
 
 const DiscoveryCard = ({ discovery }: DiscoveryCardProps) => {
+  const playerRef = useRef<HTMLVideoElement>(null);
+  const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 1,
+  };
+  const isVisible = useElementOnScreen(options, playerRef);
   const movie = discovery.refList?.[0];
   const [isLove, setIsLove] = useState(false);
-  const playerRef = useRef<HTMLVideoElement>(null);
   const [playerStyles, setPlayerStyles] = useState({
     maxWidth: "0px",
     aspectRatio: 1,
@@ -63,8 +70,12 @@ const DiscoveryCard = ({ discovery }: DiscoveryCardProps) => {
           )}
         </div>
       </div>
+      {isLoading && (
+        <div className={styles.loading}>
+          <LoadingSpinner />
+        </div>
+      )}
       <div className={styles.playerContent}>
-        {isLoading && <LoadingSpinner />}
         <ReactHlsPlayer
           controls
           poster={
@@ -75,12 +86,13 @@ const DiscoveryCard = ({ discovery }: DiscoveryCardProps) => {
               : discovery.coverHorizontalUrl
           }
           src={discovery.mediaInfoUrl.mediaUrl}
-          autoPlay={false}
           style={playerStyles}
           className={styles.player}
-          playsInline
+          playsInline={true}
           playerRef={playerRef}
           onLoadedMetadata={handleLoadedMetadata}
+          autoPlay={isVisible}
+          muted
         />
         {!isLoading && (
           <div className={styles.actions}>

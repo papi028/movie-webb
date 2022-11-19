@@ -6,6 +6,7 @@ export const PATH = {
   profile: "/profile",
   explore: "/explore",
   discovery: "/discovery",
+  category: "/category",
   history: "/history",
   signIn: "/sign-in",
   signUp: "/sign-up",

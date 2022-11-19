@@ -11,12 +11,12 @@ import { useCallback, useState } from "react";
 import useSWRInfinite from "swr/infinite";
 import queryString from "query-string";
 
-interface CategoryPageProps {
+interface ExplorePageProps {
   filters: IFilter[];
   results: ICategoryResult[];
 }
 
-const CategoryPage = ({ filters, results }: CategoryPageProps) => {
+const ExplorePage = ({ filters, results }: ExplorePageProps) => {
   const [options, setOptions] = useState<IFilterOptions[]>(filters[0].screeningItems);
   const [params, setParams] = useState({
     area: "",
@@ -36,7 +36,7 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
     return apiURL;
   };
   const {
-    data: movies,
+    data: movies = [],
     setSize,
     error,
   } = useSWRInfinite(
@@ -49,7 +49,7 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
   );
   const isReachingEnd = movies?.[movies.length - 1]?.length === 0;
   const hasNextPage = movies && !error && !isReachingEnd;
-  const handleInview = useCallback(() => {
+  const handleLoadMore = useCallback(() => {
     setSize((prev) => prev + 1);
   }, [setSize]);
   return (
@@ -94,9 +94,9 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
             </Dropdown>
           ))}
         </div>
-        {(movies?.flat()?.length as number) > 0 ? (
+        {(movies.length as number) > 0 ? (
           <MovieList>
-            {movies?.flat()?.map((result: ICategoryResult) => (
+            {movies.flat().map((result: ICategoryResult) => (
               <MovieCard
                 key={result.id}
                 id={result.id}
@@ -110,7 +110,7 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
           <MovieListSkeleton count={12} />
         )}
         {hasNextPage && (
-          <CheckLoadMore onLoadMore={handleInview}>
+          <CheckLoadMore onLoadMore={handleLoadMore}>
             <MovieListSkeleton />
           </CheckLoadMore>
         )}
@@ -129,4 +129,4 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   };
 };
 
-export default CategoryPage;
+export default ExplorePage;

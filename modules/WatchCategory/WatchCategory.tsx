@@ -1,18 +1,21 @@
+import { IObjIdName } from "@types";
 import { CustomLink } from "components/CustomLink";
+import { PATH } from "constants/path";
 import styles from "./watchCategory.module.scss";
 
 interface WatchCategoryProps {
-  categories: {
-    id: number;
-    name: string;
-  }[];
+  categories: IObjIdName[];
 }
 
 const WatchCategory = ({ categories }: WatchCategoryProps) => {
   return (
     <div className={styles.categories}>
       {categories.map((category) => (
-        <CustomLink href={`/category/${category.id}`} key={category.id} className={styles.category}>
+        <CustomLink
+          key={category.id}
+          href={`${PATH.category}?category=${category.id}`}
+          className={styles.category}
+        >
           {category.name}
         </CustomLink>
       ))}

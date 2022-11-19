@@ -9,21 +9,25 @@ import { useCallback } from "react";
 import useSWRInfinite from "swr/infinite";
 
 interface DiscoveryPageProps {
-  discovery: IDiscovery[];
+  initialVideos: IDiscovery[];
 }
 
-const DiscoveryPage = ({ discovery }: DiscoveryPageProps) => {
-  const getKey = (index: number) => `/api/discovery?page=${index}`;
-  const { data, error, setSize } = useSWRInfinite(
+const DiscoveryPage = ({ initialVideos }: DiscoveryPageProps) => {
+  const getKey = (index: number) => `/api/discovery?page=${index + 1}`;
+  const {
+    data: videos,
+    error,
+    setSize,
+  } = useSWRInfinite(
     getKey,
     async (key: string) => {
-      const response = await axiosClient.get(key);
-      return response.data;
+      const { data } = await axiosClient.get(key);
+      return data;
     },
     { revalidateFirstPage: false }
   );
-  const isReachingEnd = data?.[data.length - 1]?.length === 0;
-  const hasNextPage = data && !error && !isReachingEnd;
+  const isReachingEnd = videos?.[videos.length - 1]?.length === 0;
+  const hasNextPage = videos && !error && !isReachingEnd;
   const handleLoadMore = useCallback(() => {
     setSize((prev) => prev + 1);
   }, [setSize]);
@@ -31,8 +35,11 @@ const DiscoveryPage = ({ discovery }: DiscoveryPageProps) => {
     <LayoutPrimary>
       <div className="container">
         <div className="wrapper">
-          {data?.flat().map((item) => (
-            <DiscoveryCard key={item.id} discovery={item} />
+          {initialVideos.map((video) => (
+            <DiscoveryCard key={video.id} info={video} />
+          ))}
+          {videos?.flat().map((video) => (
+            <DiscoveryCard key={video.id} info={video} />
           ))}
         </div>
         {hasNextPage && (
@@ -49,7 +56,7 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   const { data } = await axiosClient.get(`/api/discovery`, { params: query });
   return {
     props: {
-      discovery: data,
+      initialVideos: data,
     },
   };
 };

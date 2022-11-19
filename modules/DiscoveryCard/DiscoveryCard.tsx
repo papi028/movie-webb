@@ -13,10 +13,10 @@ const ReactHlsPlayer = dynamic(() => import("react-hls-player"), {
 });
 
 interface DiscoveryCardProps {
-  discovery: IDiscovery;
+  info: IDiscovery;
 }
 
-const DiscoveryCard = ({ discovery }: DiscoveryCardProps) => {
+const DiscoveryCard = ({ info }: DiscoveryCardProps) => {
   const playerRef = useRef<HTMLVideoElement>(null);
   const options = {
     root: null,
@@ -24,7 +24,7 @@ const DiscoveryCard = ({ discovery }: DiscoveryCardProps) => {
     threshold: 1,
   };
   const isVisible = useElementOnScreen(options, playerRef);
-  const movie = discovery.refList?.[0];
+  const movie = info.refList?.[0];
   const [isLove, setIsLove] = useState(false);
   const [playerStyles, setPlayerStyles] = useState({
     maxWidth: "0px",
@@ -50,16 +50,11 @@ const DiscoveryCard = ({ discovery }: DiscoveryCardProps) => {
     <div className={styles.card}>
       <div className={styles.info}>
         <div className={styles.avatar}>
-          <Image
-            width={56}
-            height={56}
-            alt={discovery.upInfo.upName}
-            src={discovery.upInfo.upImgUrl}
-          />
+          <Image width={56} height={56} alt={info.upInfo.upName} src={info.upInfo.upImgUrl} />
         </div>
         <div>
-          <h4>{discovery.upInfo.upName}</h4>
-          <p className={styles.introduction}>{discovery.introduction}</p>
+          <h4>{info.upInfo.upName}</h4>
+          <p className={styles.introduction}>{info.introduction}</p>
           {movie && (
             <CustomLink
               className={styles.link}
@@ -83,9 +78,9 @@ const DiscoveryCard = ({ discovery }: DiscoveryCardProps) => {
               ? playerStyles.aspectRatio < 1
                 ? movie.coverVerticalUrl
                 : movie.coverHorizontalUrl
-              : discovery.coverHorizontalUrl
+              : info.coverHorizontalUrl
           }
-          src={discovery.mediaInfoUrl.mediaUrl}
+          src={info.mediaInfoUrl.mediaUrl}
           style={playerStyles}
           className={styles.player}
           playsInline={true}
@@ -99,7 +94,7 @@ const DiscoveryCard = ({ discovery }: DiscoveryCardProps) => {
             <button className={styles.action} onClick={() => setIsLove(!isLove)}>
               <IconHeart fill={isLove ? "#ff0000" : "#fff"} />
             </button>
-            <span className={styles.number}>{discovery.likeCount}</span>
+            <span className={styles.number}>{info.likeCount}</span>
             <button className={styles.action}>
               <IconShare fill="#fff" />
             </button>

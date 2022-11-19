@@ -19,7 +19,7 @@ const SignInPage = () => {
           "Null"
         ) : (
           <form onSubmit={handleSignIn}>
-            <h1 className={styles.heading}>Welcome to Filmlok</h1>
+            <h1 className={styles.heading}>Welcome to Netfilm</h1>
             <span className={styles.label}>SignIn to continue</span>
             <div className={styles.main}>
               <FormGroup>

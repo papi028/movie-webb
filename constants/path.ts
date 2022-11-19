@@ -9,5 +9,5 @@ export const PATH = {
   history: "/history",
   signIn: "/sign-in",
   signUp: "/sign-up",
-  projectGithub: "https://github.com/lamhoang1256/filmlok",
+  projectGithub: "https://github.com/lamhoang1256/netfilm",
 };

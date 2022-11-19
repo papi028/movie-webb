@@ -1,7 +1,7 @@
 import { IBanner, IHomeSection } from "@types";
 import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
-import { CheckInView } from "modules/CheckInView";
+import { CheckLoadMore } from "modules/CheckLoadMore";
 import { HomeBanner } from "modules/HomeBanner";
 import { HomeSection } from "modules/HomeSection";
 import { MovieListSkeleton } from "modules/MovieSkeleton";
@@ -41,9 +41,9 @@ const HomePage = ({ banners, homeSections }: HomePageProps) => {
           <HomeSection key={homeSection.homeSectionId} homeSection={homeSection} />
         ))}
         {hasNextPage && (
-          <CheckInView onInView={handleInview}>
+          <CheckLoadMore onLoadMore={handleInview}>
             <MovieListSkeleton hasHeading />
-          </CheckInView>
+          </CheckLoadMore>
         )}
       </div>
     </LayoutPrimary>

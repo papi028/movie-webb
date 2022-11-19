@@ -1,7 +1,7 @@
 import { IDiscovery } from "@types";
 import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
-import { CheckInView } from "modules/CheckInView";
+import { CheckLoadMore } from "modules/CheckLoadMore";
 import { DiscoveryCard } from "modules/DiscoveryCard";
 import { GetServerSidePropsContext } from "next";
 
@@ -10,7 +10,9 @@ interface DiscoveryPageProps {
 }
 
 const DiscoveryPage = ({ discovery }: DiscoveryPageProps) => {
-  console.log("discovery: ", discovery);
+  const handleInview = () => {
+    console.log("In view");
+  };
   return (
     <LayoutPrimary>
       <div className="container">
@@ -19,6 +21,7 @@ const DiscoveryPage = ({ discovery }: DiscoveryPageProps) => {
             <DiscoveryCard key={item.id} discovery={item} />
           ))}
         </div>
+        <CheckLoadMore onLoadMore={handleInview}>Load more</CheckLoadMore>
       </div>
     </LayoutPrimary>
   );

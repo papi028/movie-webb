@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "nprogress/nprogress.css";
 import { useEffect, useState } from "react";
+import { ErrorBoundary } from "components/ErrorBoundary";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [showChild, setShowChild] = useState(false);
@@ -27,5 +28,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, []);
   if (!showChild) return null;
   if (typeof window === "undefined") return <></>;
-  return <Component {...pageProps} />;
+  return (
+    <ErrorBoundary>
+      <Component {...pageProps} />
+    </ErrorBoundary>
+  );
 }

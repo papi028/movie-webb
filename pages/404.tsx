@@ -12,7 +12,7 @@ const PageNotFound = () => {
       </Link>
       <style jsx>{`
         .page {
-          gap: 12px;
+          gap: 14px;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -28,17 +28,18 @@ const PageNotFound = () => {
         }
         .title {
           color: #f6eafb;
-          font-size: 2.8rem;
-          font-weight: 500;
+          font-size: 2.2rem;
+          font-weight: 700;
         }
         .description {
           color: #b48eca;
-          font-weight: 500;
-          font-size: 2.2rem;
+          font-weight: 600;
+          font-size: 1.9rem;
         }
         .goback {
           color: white;
           padding: 10px 24px;
+          font-weight: 600;
           border-radius: 8px;
           background-image: var(--gradient-purple);
         }

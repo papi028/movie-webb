@@ -16,8 +16,8 @@ const links = [
     display: "Profile",
   },
   {
-    path: PATH.search,
-    display: "Search",
+    path: PATH.discovery,
+    display: "Discovery",
   },
   {
     path: PATH.history,

@@ -30,7 +30,10 @@ const HomePageApi = async (req: NextApiRequest, res: NextApiResponse) => {
       page: currentPage,
       banners,
       searchKeyWord,
-      homeSections,
+      homeSections: homeSections.map((section) => ({
+        ...section,
+        homeSectionName: section.homeSectionName.replace("Loklok", "Netfilm"),
+      })),
     },
   };
   responseSuccess(res, response);

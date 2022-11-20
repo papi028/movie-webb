@@ -1,9 +1,5 @@
+import { IObjIdName } from "./common.type";
 import { IEpisodeRoom, IEpisodeVo, IQuality, ISubtitle } from "./episode.type";
-
-export interface IObjIdName {
-  id: number;
-  name: string;
-}
 
 export interface IStar {
   image: string;

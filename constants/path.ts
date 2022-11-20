@@ -5,6 +5,7 @@ export const PATH = {
   detail: "/detail",
   profile: "/profile",
   explore: "/explore",
+  news: "/news",
   discovery: "/discovery",
   category: "/category",
   history: "/history",

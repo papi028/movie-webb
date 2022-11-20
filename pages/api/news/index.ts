@@ -7,7 +7,7 @@ import { ApiError, responseError, responseSuccess } from "utils/response";
 
 const NewsApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, query } = req;
-  const { page = 0, size = 10 } = query;
+  const { page = 0, size = 12 } = query;
   if (method !== "GET") {
     const error = new ApiError(STATUS.METHOD_NOT_ALLOWED, "Method not allowed");
     return responseError(error, res);

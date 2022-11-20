@@ -13,9 +13,11 @@ const NewsDetailsApi = async (req: NextApiRequest, res: NextApiResponse) => {
     return responseError(error, res);
   }
   const { data } = await axiosLoklokSub(PATH_API.newsDetail, { params: { id } });
+  // https://ga-mobile-api.loklok.tv/cms/web/share/detail?id=24168&category=1
+  const content = data.content.replace(/LOKLOK/g, "Netfilm");
   const response = {
     message: "Get news details successfully!",
-    data: data,
+    data: { ...data, content },
   };
   responseSuccess(res, response);
 };

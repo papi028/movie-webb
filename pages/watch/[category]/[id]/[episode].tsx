@@ -10,6 +10,7 @@ import { RelatedSeries } from "modules/RelatedSeries";
 import { WatchAnthology } from "modules/WatchAnthology";
 import { WatchCategory } from "modules/WatchCategory";
 import { WatchMeta } from "modules/WatchMeta";
+import { WatchStar } from "modules/WatchStar";
 import { WatchSummary } from "modules/WatchSummary";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
 import styles from "styles/watch.module.scss";
@@ -43,6 +44,7 @@ const WatchMoviePage = ({ data }: WatchMoviePageProps) => {
             />
             <WatchCategory categories={data.tagList} />
             <WatchSummary introduction={data.introduction} />
+            <WatchStar starList={data.starList} />
           </div>
           <div className={classNames(styles.layoutSidebar, "scrollbar")}>
             <WatchAnthology detailMovie={data} />

@@ -5,7 +5,7 @@ export interface IObjIdName {
   name: string;
 }
 
-export interface ICast {
+export interface IStar {
   image: string;
   localName: string;
   role: string;
@@ -63,7 +63,7 @@ export interface IMovieDetailsLoklok {
   reserved: boolean;
   score: number;
   showSetName: boolean;
-  starList: ICast[];
+  starList: IStar[];
   tagList: IObjIdName[];
   length: number;
   tagNameList: string[];

@@ -17,7 +17,7 @@ const StarInfoPage = ({ data }: StarInfoPageProps) => {
       <div className="container">
         <div className={styles.header}>
           <div className={styles.avatar}>
-            <Image src={data.bgPhotos} width={120} height={120} alt={data.localName} />
+            <Image src={data.bgPhotos} width={150} height={150} alt={data.localName} />
           </div>
           <div className={styles.info}>
             <h1>{data.localName}</h1>

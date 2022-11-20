@@ -4,6 +4,7 @@ export const PATH = {
   search: "/search",
   detail: "/detail",
   profile: "/profile",
+  star: "/star",
   explore: "/explore",
   news: "/news",
   discovery: "/discovery",

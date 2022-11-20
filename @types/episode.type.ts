@@ -1,4 +1,4 @@
-import { ICast, ILikeMovie, IObjIdName, IRefItem } from "./movie.type";
+import { IStar, ILikeMovie, IObjIdName, IRefItem } from "./movie.type";
 
 export interface IDefinitionLoklok {
   code: string;
@@ -72,7 +72,7 @@ export interface IEpisode {
   score: number;
   seriesNo: number | any;
   showSetName: boolean;
-  starList: ICast[];
+  starList: IStar[];
   tagList: IObjIdName[];
   tagNameList: string[];
   translateType: number;

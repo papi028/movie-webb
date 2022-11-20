@@ -1,5 +1,5 @@
+import { IObjIdName } from "./common.type";
 import { IDefinitionLoklok, ISubtitlingLoklok } from "./episode.type";
-import { IObjIdName } from "./movie.type";
 
 export interface IDiscoveryRef {
   category: number;

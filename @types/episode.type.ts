@@ -1,4 +1,5 @@
-import { IStar, ILikeMovie, IObjIdName, IRefItem } from "./movie.type";
+import { IObjIdName } from "./common.type";
+import { IStar, ILikeMovie, IRefItem } from "./movie.type";
 
 export interface IDefinitionLoklok {
   code: string;

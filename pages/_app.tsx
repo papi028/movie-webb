@@ -9,6 +9,9 @@ import "nprogress/nprogress.css";
 import { useEffect, useState } from "react";
 import { ErrorBoundary } from "components/ErrorBoundary";
 import { Toaster } from "react-hot-toast";
+import { Provider } from "react-redux";
+import { store } from "store/global-store";
+import { Authentication } from "components/Authentication";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [showChild, setShowChild] = useState(false);
@@ -31,8 +34,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   if (typeof window === "undefined") return <></>;
   return (
     <ErrorBoundary>
-      <Component {...pageProps} />
-      <Toaster position="top-right" />
+      <Provider store={store}>
+        <Authentication>
+          <Component {...pageProps} />
+          <Toaster position="top-right" />
+        </Authentication>
+      </Provider>
     </ErrorBoundary>
   );
 }

@@ -7,6 +7,7 @@ import { HomeSection } from "modules/HomeSection";
 import { MovieListSkeleton } from "modules/MovieSkeleton";
 import { GetServerSidePropsContext } from "next";
 import { useCallback } from "react";
+import { useAppSelector } from "store/global-store";
 import useSWRInfinite from "swr/infinite";
 
 interface HomePageProps {
@@ -15,6 +16,8 @@ interface HomePageProps {
 }
 
 const HomePage = ({ banners, initialHomeSections }: HomePageProps) => {
+  const { currentUser } = useAppSelector((state) => state.auth);
+  console.log("currentUser: ", currentUser);
   const getApiUrl = (index: number) => `/api/home?page=${index + 1}`;
   const {
     data: homeSections,

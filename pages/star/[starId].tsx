@@ -1,4 +1,5 @@
 import { IStarInfo } from "@types";
+import { TextToggleMore } from "components/Text";
 import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MovieCard } from "modules/MovieCard";
@@ -21,7 +22,7 @@ const StarInfoPage = ({ data }: StarInfoPageProps) => {
           </div>
           <div className={styles.info}>
             <h1>{data.localName}</h1>
-            <p>{data.introduction}</p>
+            <TextToggleMore countLetter={500}>{data.introduction}</TextToggleMore>
           </div>
         </div>
         <MovieList>

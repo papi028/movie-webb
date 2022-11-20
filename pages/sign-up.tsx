@@ -2,6 +2,7 @@ import { CustomLink } from "components/CustomLink";
 import { FormGroup } from "components/FormGroup";
 import { Input } from "components/Input";
 import { Label } from "components/Label";
+import { userRole, userStatus } from "constants/global";
 import { PATH } from "constants/path";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
@@ -34,15 +35,15 @@ const SignUpPage = () => {
       await createUserWithEmailAndPassword(auth, values.email, values.password);
       if (!auth.currentUser) return;
       await updateProfile(auth.currentUser, {
-        photoURL: "",
+        photoURL: "https://avatars.githubusercontent.com/u/61537853?v=4",
       });
       await setDoc(doc(db, "users", auth.currentUser.uid as string), {
-        avatar: "",
+        avatar: "https://avatars.githubusercontent.com/u/61537853?v=4",
         uid: auth.currentUser.uid,
         email: values.email,
         password: values.password,
-        status: "ACTIVE",
-        role: "USER",
+        status: userStatus.ACTIVE,
+        role: userRole.USER,
         createdAt: serverTimestamp(),
         follows: [],
       });

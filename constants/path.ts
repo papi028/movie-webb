@@ -7,6 +7,7 @@ export const PATH = {
   star: "/star",
   explore: "/explore",
   news: "/news",
+  pageNotFound: "/404",
   discovery: "/discovery",
   category: "/category",
   history: "/history",

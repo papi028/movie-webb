@@ -55,7 +55,7 @@ const ExplorePage = ({ filters, results }: ExplorePageProps) => {
   return (
     <LayoutPrimary>
       <div className="container">
-        <div className="movie-list">
+        <MovieList>
           <Dropdown placeholder="All type">
             <Dropdown.Select />
             <Dropdown.List>
@@ -93,7 +93,7 @@ const ExplorePage = ({ filters, results }: ExplorePageProps) => {
               </Dropdown.List>
             </Dropdown>
           ))}
-        </div>
+        </MovieList>
         {(movies.length as number) > 0 ? (
           <MovieList>
             {movies.flat().map((result: ICategoryResult) => (

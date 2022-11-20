@@ -1,3 +1,4 @@
+import { MovieList } from "modules/MovieList";
 import MovieSkeleton from "./MovieSkeleton";
 import styles from "./movieSkeleton.module.scss";
 
@@ -10,13 +11,13 @@ const MovieListSkeleton = ({ hasHeading = false, count = 6 }: MovieListSkeletonP
   return (
     <div className={styles.section}>
       {hasHeading && <div className={styles.heading}></div>}
-      <div className="movie-list">
+      <MovieList>
         {Array(count)
           .fill(0)
           .map((item, index) => (
             <MovieSkeleton key={index} />
           ))}
-      </div>
+      </MovieList>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import { IEpisode } from "@types";
 import axiosClient from "configs/axiosClient";
-import { server } from "configs/server";
 import useSaveHistoryView from "hooks/useSaveHistoryView";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MediaPlayer } from "modules/MediaPlayer";
@@ -79,7 +78,7 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   const episode = params?.episode as string;
   const id = params?.id as string;
   try {
-    const { data } = await axiosClient.get(`${server}/api/episode/`, {
+    const { data } = await axiosClient.get(`/api/episode/`, {
       params: { category, id, episode },
     });
     return {

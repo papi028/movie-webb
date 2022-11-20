@@ -18,7 +18,7 @@ export const responseSuccess = (res: NextApiResponse, data: any) => {
 
 export const responseError = (err: ApiError, res: NextApiResponse) => {
   const status = err.status || STATUS.INTERNAL_SERVER_ERROR;
-  const message = err.message || "Lỗi server!";
+  const message = err.message || "Error!";
   const error = err.error;
   return res.status(status).json({
     status,

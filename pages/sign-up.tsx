@@ -3,14 +3,53 @@ import { FormGroup } from "components/FormGroup";
 import { Input } from "components/Input";
 import { Label } from "components/Label";
 import { PATH } from "constants/path";
-import { FormEvent } from "react";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import useInputChange from "hooks/useInputChange";
+import { auth, db } from "libs/firebase-app";
+import { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 import styles from "styles/auth.module.scss";
 import classNames from "utils/classNames";
 
 const SignUpPage = () => {
-  const handleSignUp = (e: FormEvent<HTMLFormElement>) => {
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const { onChange } = useInputChange(values, setValues);
+  const handleSignUp = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("handleSignUp");
+    const isAllInputFilled = Object.values(values).every((value) => value !== "");
+    if (!isAllInputFilled) {
+      toast.error("Please fill all inputs!");
+      return;
+    }
+    if (values.password !== values.confirmPassword) {
+      toast.error("Confirmation password do not match!");
+      return;
+    }
+    try {
+      await createUserWithEmailAndPassword(auth, values.email, values.password);
+      if (!auth.currentUser) return;
+      await updateProfile(auth.currentUser, {
+        photoURL: "",
+      });
+      await setDoc(doc(db, "users", auth.currentUser.uid as string), {
+        avatar: "",
+        uid: auth.currentUser.uid,
+        email: values.email,
+        password: values.password,
+        status: "ACTIVE",
+        role: "USER",
+        createdAt: serverTimestamp(),
+        follows: [],
+      });
+      toast.success("Sign up successfully!");
+    } catch (error: any) {
+      toast.error(error?.message);
+    }
   };
   return (
     <div className={styles.section}>
@@ -24,17 +63,27 @@ const SignUpPage = () => {
             <div className={styles.main}>
               <FormGroup>
                 <Label htmlFor="email">Email</Label>
-                <Input name="email" type="text" placeholder="Email" />
+                <Input name="email" type="email" placeholder="Email" onChange={onChange} />
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="password">Password</Label>
-                <Input name="password" type="password" placeholder="Min 8 characters" />
+                <Input
+                  name="password"
+                  type="password"
+                  placeholder="Min 8 characters"
+                  onChange={onChange}
+                />
               </FormGroup>
               <FormGroup>
-                <Label htmlFor="repeat-password">Re-password</Label>
-                <Input name="repeat-password" type="password" placeholder="Min 8 characters" />
+                <Label htmlFor="confirmPassword">Re-password</Label>
+                <Input
+                  name="confirmPassword"
+                  type="password"
+                  placeholder="Min 8 characters"
+                  onChange={onChange}
+                />
               </FormGroup>
-              <button type="button" className={classNames(styles.button, styles.buttonLarge)}>
+              <button type="submit" className={classNames(styles.button, styles.buttonLarge)}>
                 Sign Up
               </button>
             </div>

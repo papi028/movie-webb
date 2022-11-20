@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import "nprogress/nprogress.css";
 import { useEffect, useState } from "react";
 import { ErrorBoundary } from "components/ErrorBoundary";
+import { Toaster } from "react-hot-toast";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [showChild, setShowChild] = useState(false);
@@ -31,6 +32,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ErrorBoundary>
       <Component {...pageProps} />
+      <Toaster position="top-right" />
     </ErrorBoundary>
   );
 }

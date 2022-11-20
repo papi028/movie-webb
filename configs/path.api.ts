@@ -1,5 +1,8 @@
 export const PATH_API = {
   home: "/homePage/getHome",
+  star: "/star/homePage",
+  news: "/news/list",
+  newsDetail: "news/detail",
   detail: "/movieDrama/get",
   trending: "/search/v1/searchLeaderboard",
   searchWithKeyword: "/search/v1/searchWithKeyWord",

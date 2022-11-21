@@ -57,19 +57,25 @@ const Header = () => {
           </div>
           <div className={styles.right}>
             <SearchBox className={styles.searchBox} />
-            <CustomLink href={PATH.profile} className={styles.avatar}>
-              <picture>
-                <img src={currentUser?.avatar} alt={currentUser?.fullname} />
-              </picture>
-            </CustomLink>
-          </div>
-          <div className={styles.mobileAction}>
-            <CustomLink href={PATH.search}>
-              <IconSearch fill="#fff" />
-            </CustomLink>
-            <button className={styles.buttonOpenMenu} onClick={toggleMenu}>
-              <IconMenu fill="#fff" />
-            </button>
+            <div className={styles.mobileAction}>
+              <CustomLink href={PATH.search}>
+                <IconSearch fill="#fff" />
+              </CustomLink>
+              <button className={styles.buttonOpenMenu} onClick={toggleMenu}>
+                <IconMenu fill="#fff" />
+              </button>
+            </div>
+            {currentUser ? (
+              <CustomLink href={PATH.profile} className={styles.avatar}>
+                <picture>
+                  <img src={currentUser?.avatar} alt={currentUser?.fullname} />
+                </picture>
+              </CustomLink>
+            ) : (
+              <CustomLink href={PATH.signIn} className={styles.signIn}>
+                Sign In
+              </CustomLink>
+            )}
           </div>
         </nav>
       </div>

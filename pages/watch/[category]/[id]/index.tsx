@@ -20,7 +20,6 @@ interface WatchTVPageProps {
 }
 
 const WatchTVPage = ({ data }: WatchTVPageProps) => {
-  console.log("data: ", data);
   useSaveHistoryView(data);
   return (
     <LayoutPrimary>

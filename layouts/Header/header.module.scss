@@ -55,6 +55,20 @@
   align-items: center;
   gap: 10px 14px;
 }
+.signIn {
+  color: white;
+  flex-shrink: 0;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: var(--purple);
+  @media screen and (max-width: 767.98px) {
+    padding: 6px 14px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    border-radius: 5px;
+  }
+}
 .avatar {
   flex-shrink: 0;
   border-radius: 50%;

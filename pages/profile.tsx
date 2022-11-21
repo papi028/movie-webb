@@ -1,5 +1,6 @@
 import { ProtectedRoute } from "components/Authentication";
 import { FormGroup } from "components/FormGroup";
+import { IconLogout } from "components/Icons";
 import { ImageUpload } from "components/ImageUpload";
 import { Input } from "components/Input";
 import { Label } from "components/Label";
@@ -11,11 +12,13 @@ import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { db } from "libs/firebase-app";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useAppSelector } from "store/global-store";
+import { logout } from "store/auth.slice";
+import { useAppDispatch, useAppSelector } from "store/global-store";
 import styles from "styles/profile.module.scss";
 
 const ProfilePage = () => {
   const { currentUser } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
   const [values, setValues] = useState({
     fullname: "",
     avatar: "",
@@ -55,6 +58,9 @@ const ProfilePage = () => {
       toast.error(error?.message);
     }
   };
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   useEffect(() => {
     async function fetchData() {
       if (!currentUser || !currentUser.uid) return;
@@ -78,10 +84,14 @@ const ProfilePage = () => {
               ></ImageUpload>
               <h3 className={styles.username}>{currentUser?.fullname}</h3>
               <span className={styles.email}>{currentUser?.email}</span>
+              <button onClick={handleLogout} className={styles.logout}>
+                <IconLogout />
+                Logout
+              </button>
             </div>
             <div>
               <h1>Account information</h1>
-              <span>Update your account information</span>
+              <span className={styles.desc}>Update your account information</span>
               <form className={styles.profileForm} onSubmit={handleUpdateProfile}>
                 <FormGroup>
                   <Label htmlFor="fullname">Fullname</Label>

@@ -6,6 +6,9 @@
     flex-direction: column;
   }
 }
+.desc {
+  color: #c4c1ea;
+}
 .avatarBox {
   display: flex;
   flex-direction: column;
@@ -22,6 +25,18 @@
 }
 .email {
   font-size: 1.4rem;
+}
+.logout {
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  background-color: #39354d;
 }
 .profileForm {
   margin-top: 25px;

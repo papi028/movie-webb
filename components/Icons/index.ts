@@ -9,11 +9,13 @@ import IconShare from "./IconShare";
 import Icon404 from "./Icon404";
 import IconTrash from "./IconTrash";
 import IconUploadImage from "./IconUploadImage";
+import IconLogout from "./IconLogout";
 
 export {
   IconStar,
   IconPlay,
   IconUploadImage,
+  IconLogout,
   IconTrash,
   IconSearch,
   IconGithub,

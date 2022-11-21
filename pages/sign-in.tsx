@@ -36,35 +36,26 @@ const SignInPage = () => {
     <CheckLoggedIn>
       <div className={styles.section}>
         <div className={styles.container}>
-          {null ? (
-            "Null"
-          ) : (
-            <form onSubmit={handleSignIn}>
-              <h1 className={styles.heading}>Welcome to Netfilm</h1>
-              <span className={styles.label}>SignIn to continue</span>
-              <div className={styles.main}>
-                <FormGroup>
-                  <Label htmlFor="email">Email</Label>
-                  <Input name="email" type="email" placeholder="Email" onChange={onChange} />
-                </FormGroup>
-                <FormGroup>
-                  <Label htmlFor="password">Password</Label>
-                  <Input
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    onChange={onChange}
-                  />
-                </FormGroup>
-                <button type="submit" className={classNames(styles.button, styles.buttonLarge)}>
-                  Sign In
-                </button>
-              </div>
-              <div className={styles.alreadyAccount}>
-                Do not have an account? <CustomLink href={PATH.signUp}>Sign Up Here</CustomLink>
-              </div>
-            </form>
-          )}
+          <form onSubmit={handleSignIn}>
+            <h1 className={styles.heading}>Welcome to Netfilm</h1>
+            <span className={styles.label}>SignIn to continue</span>
+            <div className={styles.main}>
+              <FormGroup>
+                <Label htmlFor="email">Email</Label>
+                <Input name="email" type="email" placeholder="Email" onChange={onChange} />
+              </FormGroup>
+              <FormGroup>
+                <Label htmlFor="password">Password</Label>
+                <Input name="password" type="password" placeholder="Password" onChange={onChange} />
+              </FormGroup>
+              <button type="submit" className={classNames(styles.button, styles.buttonLarge)}>
+                Sign In
+              </button>
+            </div>
+            <div className={styles.alreadyAccount}>
+              Do not have an account? <CustomLink href={PATH.signUp}>Sign Up Here</CustomLink>
+            </div>
+          </form>
         </div>
       </div>
     </CheckLoggedIn>

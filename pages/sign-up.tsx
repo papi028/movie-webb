@@ -57,44 +57,40 @@ const SignUpPage = () => {
     <CheckLoggedIn>
       <div className={styles.section}>
         <div className={styles.container}>
-          {null ? (
-            "Null"
-          ) : (
-            <form onSubmit={handleSignUp}>
-              <h1 className={styles.heading}>Welcome to Netfilm</h1>
-              <span className={styles.label}>SignUp to continue</span>
-              <div className={styles.main}>
-                <FormGroup>
-                  <Label htmlFor="email">Email</Label>
-                  <Input name="email" type="email" placeholder="Email" onChange={onChange} />
-                </FormGroup>
-                <FormGroup>
-                  <Label htmlFor="password">Password</Label>
-                  <Input
-                    name="password"
-                    type="password"
-                    placeholder="Min 8 characters"
-                    onChange={onChange}
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <Label htmlFor="confirmPassword">Re-password</Label>
-                  <Input
-                    name="confirmPassword"
-                    type="password"
-                    placeholder="Min 8 characters"
-                    onChange={onChange}
-                  />
-                </FormGroup>
-                <button type="submit" className={classNames(styles.button, styles.buttonLarge)}>
-                  Sign Up
-                </button>
-              </div>
-              <div className={styles.alreadyAccount}>
-                Have an account? <CustomLink href={PATH.signIn}>Sign In Here</CustomLink>
-              </div>
-            </form>
-          )}
+          <form onSubmit={handleSignUp}>
+            <h1 className={styles.heading}>Welcome to Netfilm</h1>
+            <span className={styles.label}>SignUp to continue</span>
+            <div className={styles.main}>
+              <FormGroup>
+                <Label htmlFor="email">Email</Label>
+                <Input name="email" type="email" placeholder="Email" onChange={onChange} />
+              </FormGroup>
+              <FormGroup>
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  name="password"
+                  type="password"
+                  placeholder="Min 8 characters"
+                  onChange={onChange}
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label htmlFor="confirmPassword">Re-password</Label>
+                <Input
+                  name="confirmPassword"
+                  type="password"
+                  placeholder="Min 8 characters"
+                  onChange={onChange}
+                />
+              </FormGroup>
+              <button type="submit" className={classNames(styles.button, styles.buttonLarge)}>
+                Sign Up
+              </button>
+            </div>
+            <div className={styles.alreadyAccount}>
+              Have an account? <CustomLink href={PATH.signIn}>Sign In Here</CustomLink>
+            </div>
+          </form>
         </div>
       </div>
     </CheckLoggedIn>

@@ -1,0 +1,97 @@
+.imageUpload {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #333;
+}
+.inputFileHidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+.upload {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  span {
+    font-weight: 600;
+    margin-top: 20px;
+  }
+}
+.preview {
+  overflow: hidden;
+  border-radius: 50%;
+  &:hover .buttonDelete {
+    opacity: 1;
+    visibility: visible;
+  }
+  img {
+    height: 200px;
+    object-fit: cover;
+  }
+}
+.buttonDelete {
+  display: flex;
+  position: absolute;
+  z-index: 10;
+  background-color: #ffffff;
+  transition-property: all;
+  color: #ef4444;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s linear;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.loading {
+  margin: 40px auto;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  border: 4px solid transparent;
+  border-color: #fff;
+  border-top-color: var(--purple);
+  border-radius: 50%;
+  animation: loadingspin 1.2s linear infinite;
+  @keyframes loadingspin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--purple);
+  transition-property: all;
+  width: 2.5rem;
+  height: 0.25rem;
+}

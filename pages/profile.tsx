@@ -1,7 +1,9 @@
+import { ProtectedRoute } from "components/Authentication";
 import { FormGroup } from "components/FormGroup";
 import { ImageUpload } from "components/ImageUpload";
 import { Input } from "components/Input";
 import { Label } from "components/Label";
+import { defaultAvatar } from "constants/global";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import useInputChange from "hooks/useInputChange";
@@ -23,9 +25,9 @@ const ProfilePage = () => {
     e.preventDefault();
     try {
       if (!currentUser || !currentUser.uid) return;
-      const colRef = doc(db, "users", currentUser?.uid);
+      const colRef = doc(db, "users", currentUser.uid);
       await updateDoc(colRef, values);
-      toast.success("Cập nhật thông tin thành công!");
+      toast.success("Update profile successfully!");
     } catch (error: any) {
       toast.error(error?.message);
     }
@@ -34,7 +36,7 @@ const ProfilePage = () => {
     if (!currentUser) return;
     const colRef = doc(db, "users", currentUser.uid);
     await updateDoc(colRef, {
-      avatar: "",
+      avatar: defaultAvatar,
     });
   };
   const handleUploadAvatar = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -63,45 +65,52 @@ const ProfilePage = () => {
     fetchData();
   }, [currentUser]);
   return (
-    <LayoutPrimary>
-      <div className="container">
-        <section className={styles.section}>
-          <div className={styles.avatarBox}>
-            <ImageUpload
-              name="avatar"
-              handleDeleteImage={deleteAvatar}
-              handleUploadImage={handleUploadAvatar}
-              image={values.avatar}
-            ></ImageUpload>
-            <h3 className={styles.username}>{currentUser?.fullname}</h3>
-            <span className={styles.email}>{currentUser?.email}</span>
-          </div>
-          <div>
-            <h1>Account information</h1>
-            <span>Update your account information</span>
-            <form className={styles.profileForm} onSubmit={handleUpdateProfile}>
-              <FormGroup>
-                <Label htmlFor="fullname">Fullname</Label>
-                <Input
-                  name="fullname"
-                  type="text"
-                  value={values.fullname}
-                  placeholder="Fullname"
-                  onChange={onChange}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlFor="password">Password</Label>
-                <Input name="password" type="password" placeholder="Password" onChange={onChange} />
-              </FormGroup>
-              <button type="submit" className={styles.buttonSubmit}>
-                Update
-              </button>
-            </form>
-          </div>
-        </section>
-      </div>
-    </LayoutPrimary>
+    <ProtectedRoute>
+      <LayoutPrimary>
+        <div className="container">
+          <section className={styles.section}>
+            <div className={styles.avatarBox}>
+              <ImageUpload
+                name="avatar"
+                handleDeleteImage={deleteAvatar}
+                handleUploadImage={handleUploadAvatar}
+                image={values.avatar}
+              ></ImageUpload>
+              <h3 className={styles.username}>{currentUser?.fullname}</h3>
+              <span className={styles.email}>{currentUser?.email}</span>
+            </div>
+            <div>
+              <h1>Account information</h1>
+              <span>Update your account information</span>
+              <form className={styles.profileForm} onSubmit={handleUpdateProfile}>
+                <FormGroup>
+                  <Label htmlFor="fullname">Fullname</Label>
+                  <Input
+                    name="fullname"
+                    type="text"
+                    value={values.fullname}
+                    placeholder="Fullname"
+                    onChange={onChange}
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <Label htmlFor="password">Password</Label>
+                  <Input
+                    name="password"
+                    type="password"
+                    placeholder="Password"
+                    onChange={onChange}
+                  />
+                </FormGroup>
+                <button type="submit" className={styles.buttonSubmit}>
+                  Update
+                </button>
+              </form>
+            </div>
+          </section>
+        </div>
+      </LayoutPrimary>
+    </ProtectedRoute>
   );
 };
 

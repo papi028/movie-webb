@@ -3,6 +3,7 @@ import { IconClose, IconMenu, IconSearch } from "components/Icons";
 import { PATH } from "constants/path";
 import { SearchBox } from "modules/SearchBox";
 import { useRef } from "react";
+import { useAppSelector } from "store/global-store";
 import classNames from "utils/classNames";
 import styles from "./header.module.scss";
 
@@ -30,6 +31,7 @@ const links = [
 ];
 
 const Header = () => {
+  const { currentUser } = useAppSelector((state) => state.auth);
   const menuRef = useRef<HTMLUListElement>(null);
   const toggleMenu = () => {
     if (menuRef.current) menuRef.current.classList.toggle("menu-hidden");
@@ -53,8 +55,13 @@ const Header = () => {
               </button>
             </ul>
           </div>
-          <div className={styles.searchBox}>
-            <SearchBox />
+          <div className={styles.right}>
+            <SearchBox className={styles.searchBox} />
+            <CustomLink href={PATH.profile} className={styles.avatar}>
+              <picture>
+                <img src={currentUser?.avatar} alt={currentUser?.fullname} />
+              </picture>
+            </CustomLink>
           </div>
           <div className={styles.mobileAction}>
             <CustomLink href={PATH.search}>

@@ -50,6 +50,23 @@
     display: none;
   }
 }
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px 14px;
+}
+.avatar {
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #333;
+  border: 2px solid hsla(0, 0%, 100%, 0.12);
+  img {
+    width: 37px;
+    height: 37px;
+    object-fit: cover;
+  }
+}
 .mobileAction {
   display: flex;
   gap: 0 14px;

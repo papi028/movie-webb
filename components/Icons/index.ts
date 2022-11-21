@@ -8,10 +8,12 @@ import IconHeart from "./IconHeart";
 import IconShare from "./IconShare";
 import Icon404 from "./Icon404";
 import IconTrash from "./IconTrash";
+import IconUploadImage from "./IconUploadImage";
 
 export {
   IconStar,
   IconPlay,
+  IconUploadImage,
   IconTrash,
   IconSearch,
   IconGithub,

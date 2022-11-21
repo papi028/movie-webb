@@ -1,5 +1,4 @@
-import { IconTrash } from "components/Icons";
-import Image from "next/image";
+import { IconTrash, IconUploadImage } from "components/Icons";
 import { ChangeEvent } from "react";
 import styles from "./imageUpload.module.scss";
 
@@ -30,7 +29,7 @@ const ImageUpload = ({
       />
       {!image && (
         <div className={styles.upload}>
-          <Image src="/img-upload.png" alt="upload-image" width={140} height={140} />
+          <IconUploadImage />
           <span>Choose photo</span>
         </div>
       )}

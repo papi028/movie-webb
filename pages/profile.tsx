@@ -3,10 +3,11 @@ import { ImageUpload } from "components/ImageUpload";
 import { Input } from "components/Input";
 import { Label } from "components/Label";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import useInputChange from "hooks/useInputChange";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
-import { db, handleUpdateUser } from "libs/firebase-app";
-import { FormEvent, useEffect, useState } from "react";
+import { db } from "libs/firebase-app";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useAppSelector } from "store/global-store";
 import styles from "styles/profile.module.scss";
@@ -29,6 +30,29 @@ const ProfilePage = () => {
       toast.error(error?.message);
     }
   };
+  const deleteAvatar = async () => {
+    if (!currentUser) return;
+    const colRef = doc(db, "users", currentUser.uid);
+    await updateDoc(colRef, {
+      avatar: "",
+    });
+  };
+  const handleUploadAvatar = async (e: ChangeEvent<HTMLInputElement>) => {
+    try {
+      const files = e.target.files;
+      if (!files || !currentUser?.uid) return;
+      const storage = getStorage();
+      const storageRef = ref(storage, "images/" + files[0].name);
+      await uploadBytesResumable(storageRef, files[0]);
+      const newAvatar = await getDownloadURL(storageRef);
+      const colRef = doc(db, "users", currentUser?.uid);
+      await updateDoc(colRef, { avatar: newAvatar });
+      toast.success("Update avatar successfully!");
+      setValues({ ...values, avatar: newAvatar });
+    } catch (error: any) {
+      toast.error(error?.message);
+    }
+  };
   useEffect(() => {
     async function fetchData() {
       if (!currentUser || !currentUser.uid) return;
@@ -45,10 +69,9 @@ const ProfilePage = () => {
           <div className={styles.avatarBox}>
             <ImageUpload
               name="avatar"
-              className="!rounded-full h-full"
-              handleDeleteImage={() => console.log("delete")}
-              progress={0}
-              image="https://source.unsplash.com/random"
+              handleDeleteImage={deleteAvatar}
+              handleUploadImage={handleUploadAvatar}
+              image={values.avatar}
             ></ImageUpload>
             <h3 className={styles.username}>{currentUser?.fullname}</h3>
             <span className={styles.email}>{currentUser?.email}</span>

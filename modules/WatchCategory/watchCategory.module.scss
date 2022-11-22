@@ -1,8 +1,8 @@
 .categories {
   display: flex;
-  flex-wrap: wrap;
   gap: 14px 20px;
-  margin: 14px 0;
+  margin: 10px 0;
+  overflow-x: auto;
 }
 .category {
   height: 31px;

@@ -10,12 +10,14 @@ import Icon404 from "./Icon404";
 import IconTrash from "./IconTrash";
 import IconUploadImage from "./IconUploadImage";
 import IconLogout from "./IconLogout";
+import IconBell from "./IconBell";
 
 export {
   IconStar,
   IconPlay,
   IconUploadImage,
   IconLogout,
+  IconBell,
   IconTrash,
   IconSearch,
   IconGithub,

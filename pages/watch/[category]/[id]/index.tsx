@@ -1,4 +1,5 @@
 import { IEpisode } from "@types";
+import { IconBell, IconShare } from "components/Icons";
 import axiosClient from "configs/axiosClient";
 import useSaveHistoryView from "hooks/useSaveHistoryView";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
@@ -6,6 +7,7 @@ import { MediaPlayer } from "modules/MediaPlayer";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
 import { RelatedSeries } from "modules/RelatedSeries";
+import { WatchActions } from "modules/WatchActions";
 import { WatchAnthology } from "modules/WatchAnthology";
 import { WatchCategory } from "modules/WatchCategory";
 import { WatchMeta } from "modules/WatchMeta";
@@ -34,13 +36,16 @@ const WatchTVPage = ({ data }: WatchTVPageProps) => {
             <h1 className={styles.heading}>
               {data.name} {data.currentEpName && `- ${data.currentEpName}`}
             </h1>
-            <WatchMeta
-              areaList={data.areaList}
-              currentEpisode={data.currentEpisode}
-              episodeCount={data.episodeCount}
-              year={data.year}
-              score={data.score}
-            />
+            <div className={styles.meta}>
+              <WatchMeta
+                areaList={data.areaList}
+                currentEpisode={data.currentEpisode}
+                episodeCount={data.episodeCount}
+                year={data.year}
+                score={data.score}
+              />
+              <WatchActions />
+            </div>
             <WatchCategory categories={data.tagList} />
             <WatchSummary introduction={data.introduction} />
             <WatchStar starList={data.starList} />

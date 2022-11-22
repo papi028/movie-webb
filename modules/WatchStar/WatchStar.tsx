@@ -7,6 +7,7 @@ interface WatchStarProps {
 }
 
 const WatchStar = ({ starList }: WatchStarProps) => {
+  if (starList.length === 0) return null;
   return (
     <div className={styles.list}>
       {starList.map((star) => (

@@ -39,8 +39,9 @@ const SignUpPage = () => {
         photoURL: "https://avatars.githubusercontent.com/u/61537853?v=4",
       });
       await setDoc(doc(db, "users", auth.currentUser.uid as string), {
-        avatar: "https://avatars.githubusercontent.com/u/61537853?v=4",
         uid: auth.currentUser.uid,
+        photoURL: "https://avatars.githubusercontent.com/u/61537853?v=4",
+        displayName: "",
         email: values.email,
         password: values.password,
         status: userStatus.ACTIVE,

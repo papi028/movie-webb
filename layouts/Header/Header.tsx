@@ -68,7 +68,7 @@ const Header = () => {
             {currentUser ? (
               <CustomLink href={PATH.profile} className={styles.avatar}>
                 <picture>
-                  <img src={currentUser?.avatar} alt={currentUser?.fullname} />
+                  <img src={currentUser?.photoURL} alt={currentUser?.displayName} />
                 </picture>
               </CustomLink>
             ) : (

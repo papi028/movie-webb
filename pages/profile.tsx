@@ -20,9 +20,10 @@ const ProfilePage = () => {
   const { currentUser } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const [values, setValues] = useState({
-    fullname: "",
-    avatar: "",
+    displayName: currentUser?.displayName || "",
+    photoURL: currentUser?.photoURL || "",
   });
+  console.log("values: ", values);
   const { onChange } = useInputChange(values, setValues);
   const handleUpdateProfile = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,7 +40,7 @@ const ProfilePage = () => {
     if (!currentUser) return;
     const colRef = doc(db, "users", currentUser.uid);
     await updateDoc(colRef, {
-      avatar: defaultAvatar,
+      photoURL: defaultAvatar,
     });
   };
   const handleUploadAvatar = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -51,9 +52,9 @@ const ProfilePage = () => {
       await uploadBytesResumable(storageRef, files[0]);
       const newAvatar = await getDownloadURL(storageRef);
       const colRef = doc(db, "users", currentUser?.uid);
-      await updateDoc(colRef, { avatar: newAvatar });
+      await updateDoc(colRef, { photoURL: newAvatar });
       toast.success("Update avatar successfully!");
-      setValues({ ...values, avatar: newAvatar });
+      setValues({ ...values, photoURL: newAvatar });
     } catch (error: any) {
       toast.error(error?.message);
     }
@@ -61,15 +62,15 @@ const ProfilePage = () => {
   const handleLogout = () => {
     dispatch(logout());
   };
-  useEffect(() => {
-    async function fetchData() {
-      if (!currentUser || !currentUser.uid) return;
-      const colRef = doc(db, "users", currentUser.uid);
-      const docData = await getDoc(colRef);
-      setValues({ ...values, ...docData.data() });
-    }
-    fetchData();
-  }, [currentUser]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     if (!currentUser || !currentUser.uid) return;
+  //     const colRef = doc(db, "users", currentUser.uid);
+  //     const docData = await getDoc(colRef);
+  //     setValues({ ...values, ...docData.data() });
+  //   }
+  //   fetchData();
+  // }, [currentUser]);
   return (
     <ProtectedRoute>
       <LayoutPrimary>
@@ -77,12 +78,12 @@ const ProfilePage = () => {
           <section className={styles.section}>
             <div className={styles.avatarBox}>
               <ImageUpload
-                name="avatar"
+                name="photoURL"
                 handleDeleteImage={deleteAvatar}
                 handleUploadImage={handleUploadAvatar}
-                image={values.avatar}
+                image={values.photoURL || ""}
               ></ImageUpload>
-              <h3 className={styles.username}>{currentUser?.fullname}</h3>
+              <h3 className={styles.username}>{currentUser?.displayName}</h3>
               <span className={styles.email}>{currentUser?.email}</span>
               <button onClick={handleLogout} className={styles.logout}>
                 <IconLogout />
@@ -94,11 +95,11 @@ const ProfilePage = () => {
               <span className={styles.desc}>Update your account information</span>
               <form className={styles.profileForm} onSubmit={handleUpdateProfile}>
                 <FormGroup>
-                  <Label htmlFor="fullname">Fullname</Label>
+                  <Label htmlFor="displayName">Fullname</Label>
                   <Input
-                    name="fullname"
+                    name="displayName"
                     type="text"
-                    value={values.fullname}
+                    value={values.displayName}
                     placeholder="Fullname"
                     onChange={onChange}
                   />

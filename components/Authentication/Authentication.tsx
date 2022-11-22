@@ -6,7 +6,11 @@ import { setCurrentUser } from "store/auth.slice";
 import { setFollows } from "store/follow.slice";
 import { useAppDispatch } from "store/global-store";
 
-function Authentication({ children }: { children: React.ReactNode }) {
+interface AuthenticationProps {
+  children: React.ReactNode;
+}
+
+const Authentication = ({ children }: AuthenticationProps) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -17,14 +21,25 @@ function Authentication({ children }: { children: React.ReactNode }) {
       const docRef = query(collection(db, "users"), where("email", "==", user.email));
       onSnapshot(docRef, (snapshot) => {
         snapshot.forEach(async (document) => {
-          dispatch(setCurrentUser({ ...user, ...document.data() }));
-          dispatch(setFollows(document.data().follows));
+          const userData = document.data();
+          dispatch(
+            setCurrentUser({
+              uid: userData.uid,
+              email: userData.email,
+              photoURL: userData.photoURL,
+              displayName: userData.displayName,
+              role: userData.role,
+              status: userData.status,
+              emailVerified: user.emailVerified,
+            })
+          );
+          dispatch(setFollows(userData.follows));
         });
       });
     });
     return () => unsubscribe();
-  }, []);
+  }, [dispatch]);
   return <>{children}</>;
-}
+};
 
 export default Authentication;

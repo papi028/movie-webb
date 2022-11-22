@@ -1,27 +1,9 @@
-import { User } from "firebase/auth";
-
-export interface IUser {
-  id: string;
-  avatar: string;
+export interface ICurrentUser {
+  uid: string;
   email: string;
+  photoURL: string;
+  displayName: string;
   role: string;
-  follows: string[];
   status: string;
-  createdAt: {
-    nanoseconds: number;
-    seconds: number;
-  };
-  fullname: string;
-}
-
-export interface ICurrentUser extends User {
-  avatar?: string;
-  password?: string;
-  role?: string;
-  status?: string;
-  createdAt?: {
-    nanoseconds: number;
-    seconds: number;
-  };
-  fullname?: string;
+  emailVerified: boolean;
 }

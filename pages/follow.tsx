@@ -1,5 +1,6 @@
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MovieCard } from "modules/MovieCard";
+import { MovieList } from "modules/MovieList";
 import { useAppSelector } from "store/global-store";
 
 const FollowPage = () => {
@@ -7,7 +8,7 @@ const FollowPage = () => {
   return (
     <LayoutPrimary>
       <div className="container">
-        <div className="wrapper">
+        <MovieList>
           {follows.map((movie) => (
             <MovieCard
               key={movie.id}
@@ -17,7 +18,7 @@ const FollowPage = () => {
               poster={movie.poster}
             />
           ))}
-        </div>
+        </MovieList>
       </div>
     </LayoutPrimary>
   );

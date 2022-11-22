@@ -110,3 +110,10 @@ export interface IHistoryView {
   episodeName: number;
   currentEpName: string;
 }
+
+export interface IMovieCard {
+  id: string;
+  title: string;
+  domainType: number;
+  poster: string;
+}

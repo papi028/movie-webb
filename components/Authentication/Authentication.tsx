@@ -3,6 +3,7 @@ import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { auth, db } from "libs/firebase-app";
 import React, { useEffect } from "react";
 import { setCurrentUser } from "store/auth.slice";
+import { setFollows } from "store/follow.slice";
 import { useAppDispatch } from "store/global-store";
 
 function Authentication({ children }: { children: React.ReactNode }) {
@@ -17,6 +18,7 @@ function Authentication({ children }: { children: React.ReactNode }) {
       onSnapshot(docRef, (snapshot) => {
         snapshot.forEach(async (document) => {
           dispatch(setCurrentUser({ ...user, ...document.data() }));
+          dispatch(setFollows(document.data().follows));
         });
       });
     });

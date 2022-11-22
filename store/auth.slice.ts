@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ICurrentUser } from "@types";
 import { signOut } from "firebase/auth";
 import { auth } from "libs/firebase-app";
+import { setFollows } from "./follow.slice";
 
 export interface AuthState {
   currentUser: ICurrentUser | null;
@@ -19,8 +20,8 @@ const authSlice = createSlice({
       state.currentUser = action.payload;
     },
     logout: (state) => {
-      state.currentUser = null;
       signOut(auth);
+      state.currentUser = null;
     },
   },
 });

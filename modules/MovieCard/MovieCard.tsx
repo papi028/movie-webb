@@ -1,20 +1,11 @@
+import { IMovieCard } from "@types";
 import { CustomLink } from "components/CustomLink";
 import { PATH } from "constants/path";
 import { MovieTitle } from "modules/MovieTitle";
 import Image from "next/image";
 import styles from "./movieCard.module.scss";
 
-const MovieCard = ({
-  id,
-  domainType,
-  title,
-  poster,
-}: {
-  id: string;
-  title: string;
-  domainType: number;
-  poster: string;
-}) => {
+const MovieCard = ({ id, domainType, title, poster }: IMovieCard) => {
   const href = `${PATH.watch}/${domainType}/${id}`;
   return (
     <div className={styles.movieCard}>

@@ -14,6 +14,7 @@ import { WatchMeta } from "modules/WatchMeta";
 import { WatchStar } from "modules/WatchStar";
 import { WatchSummary } from "modules/WatchSummary";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
+import { useAppSelector } from "store/global-store";
 import styles from "styles/watch.module.scss";
 import classNames from "utils/classNames";
 
@@ -22,6 +23,8 @@ interface WatchTVPageProps {
 }
 
 const WatchTVPage = ({ data }: WatchTVPageProps) => {
+  const { follows } = useAppSelector((state) => state.follow);
+  console.log("follows: ", follows);
   useSaveHistoryView(data);
   return (
     <LayoutPrimary>
@@ -44,7 +47,12 @@ const WatchTVPage = ({ data }: WatchTVPageProps) => {
                 year={data.year}
                 score={data.score}
               />
-              <WatchActions />
+              <WatchActions
+                id={data.id}
+                title={data.name}
+                domainType={data.category}
+                poster={data.coverVerticalUrl}
+              />
             </div>
             <WatchCategory categories={data.tagList} />
             <WatchSummary introduction={data.introduction} />

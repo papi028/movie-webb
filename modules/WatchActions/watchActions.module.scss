@@ -5,7 +5,7 @@
 }
 .action {
   gap: 6px;
-  padding: 7px 16px;
+  padding: 7px 14px;
   border: none;
   border-radius: 4px;
   color: white;
@@ -16,9 +16,6 @@
   @media screen and (max-width: 767.98px) {
     padding: 6px 12px;
   }
-}
-.follow {
-  background-color: #0e6f6a;
 }
 .share {
   background-color: #4267b2;

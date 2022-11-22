@@ -6,6 +6,7 @@ import { MediaPlayer } from "modules/MediaPlayer";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
 import { RelatedSeries } from "modules/RelatedSeries";
+import { WatchActions } from "modules/WatchActions";
 import { WatchAnthology } from "modules/WatchAnthology";
 import { WatchCategory } from "modules/WatchCategory";
 import { WatchMeta } from "modules/WatchMeta";
@@ -34,13 +35,21 @@ const WatchMoviePage = ({ data }: WatchMoviePageProps) => {
             <h1 className={styles.heading}>
               {data.name} {data.currentEpName && `- ${data.currentEpName}`}
             </h1>
-            <WatchMeta
-              areaList={data.areaList}
-              currentEpisode={data.currentEpisode}
-              episodeCount={data.episodeCount}
-              year={data.year}
-              score={data.score}
-            />
+            <div className={styles.meta}>
+              <WatchMeta
+                areaList={data.areaList}
+                currentEpisode={data.currentEpisode}
+                episodeCount={data.episodeCount}
+                year={data.year}
+                score={data.score}
+              />
+              <WatchActions
+                id={data.id}
+                title={data.name}
+                domainType={data.category}
+                poster={data.coverVerticalUrl}
+              />
+            </div>
             <WatchCategory categories={data.tagList} />
             <WatchSummary introduction={data.introduction} />
             <WatchStar starList={data.starList} />

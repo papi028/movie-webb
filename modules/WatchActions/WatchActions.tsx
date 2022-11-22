@@ -34,9 +34,13 @@ const WatchActions = ({ id, domainType, title, poster }: IMovieCard) => {
   };
   return (
     <div className={styles.actions}>
-      <button className={classNames(styles.follow, styles.action)} onClick={handleFollowMovie}>
+      <button
+        onClick={handleFollowMovie}
+        className={classNames(styles.action)}
+        style={{ backgroundColor: foundMovieIndex === -1 ? "#0e6f6a" : "#e5525e" }}
+      >
         <IconBell />
-        <span>Follow</span>
+        <span>{foundMovieIndex === -1 ? "Follow" : "Unfollow"}</span>
       </button>
       <button className={classNames(styles.share, styles.action)} onClick={handleShare}>
         <IconShare fill="#fff" height={20} width={20} />

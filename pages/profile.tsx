@@ -23,7 +23,6 @@ const ProfilePage = () => {
     displayName: currentUser?.displayName || "",
     photoURL: currentUser?.photoURL || "",
   });
-  console.log("values: ", values);
   const { onChange } = useInputChange(values, setValues);
   const handleUpdateProfile = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,16 +41,17 @@ const ProfilePage = () => {
     await updateDoc(colRef, {
       photoURL: defaultAvatar,
     });
+    setValues({ ...values, photoURL: defaultAvatar });
   };
   const handleUploadAvatar = async (e: ChangeEvent<HTMLInputElement>) => {
     try {
       const files = e.target.files;
-      if (!files || !currentUser?.uid) return;
+      if (!files || !files[0].name || !currentUser) return;
       const storage = getStorage();
       const storageRef = ref(storage, "images/" + files[0].name);
       await uploadBytesResumable(storageRef, files[0]);
       const newAvatar = await getDownloadURL(storageRef);
-      const colRef = doc(db, "users", currentUser?.uid);
+      const colRef = doc(db, "users", currentUser.uid);
       await updateDoc(colRef, { photoURL: newAvatar });
       toast.success("Update avatar successfully!");
       setValues({ ...values, photoURL: newAvatar });
@@ -62,15 +62,6 @@ const ProfilePage = () => {
   const handleLogout = () => {
     dispatch(logout());
   };
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     if (!currentUser || !currentUser.uid) return;
-  //     const colRef = doc(db, "users", currentUser.uid);
-  //     const docData = await getDoc(colRef);
-  //     setValues({ ...values, ...docData.data() });
-  //   }
-  //   fetchData();
-  // }, [currentUser]);
   return (
     <ProtectedRoute>
       <LayoutPrimary>
@@ -97,19 +88,19 @@ const ProfilePage = () => {
                 <FormGroup>
                   <Label htmlFor="displayName">Fullname</Label>
                   <Input
-                    name="displayName"
                     type="text"
+                    name="displayName"
                     value={values.displayName}
                     placeholder="Fullname"
                     onChange={onChange}
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">Change Password</Label>
                   <Input
                     name="password"
                     type="password"
-                    placeholder="Password"
+                    placeholder="New password"
                     onChange={onChange}
                   />
                 </FormGroup>

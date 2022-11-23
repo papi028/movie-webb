@@ -5,7 +5,7 @@ import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
 import { GetServerSidePropsContext } from "next";
-import Image from "next/image";
+import { Image } from "components/Image";
 import styles from "styles/star.module.scss";
 
 interface StarInfoPageProps {

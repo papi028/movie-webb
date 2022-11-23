@@ -5,7 +5,7 @@ import { LoadingSpinner } from "components/Loading";
 import { PATH } from "constants/path";
 import useElementOnScreen from "hooks/useElementOnScreen";
 import dynamic from "next/dynamic";
-import Image from "next/image";
+import { Image } from "components/Image";
 import { useRef, useState } from "react";
 import styles from "./discoveryCard.module.scss";
 const ReactHlsPlayer = dynamic(() => import("react-hls-player"), {

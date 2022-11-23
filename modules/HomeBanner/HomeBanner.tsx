@@ -4,6 +4,7 @@ import { IBanner } from "@types";
 import styles from "./homeBanner.module.scss";
 import { CustomLink } from "components/CustomLink";
 import { PATH } from "constants/path";
+import { Image } from "components/Image";
 
 interface HomeBannerProps {
   banners: IBanner[];
@@ -21,9 +22,7 @@ const HomeBanner = ({ banners }: HomeBannerProps) => {
         {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
             <CustomLink href={`${PATH.watch}/${banner.jumpType}/${banner.id}`}>
-              <picture>
-                <img alt={banner.title} src={banner.imageUrl} className={styles.thumbnail} />
-              </picture>
+              <Image src={banner.imageUrl} alt={banner.title} className={styles.banner} />
             </CustomLink>
           </SwiperSlide>
         ))}

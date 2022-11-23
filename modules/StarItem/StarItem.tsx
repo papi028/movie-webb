@@ -1,6 +1,6 @@
 import { CustomLink } from "components/CustomLink";
 import { PATH } from "constants/path";
-import Image from "next/image";
+import { Image } from "components/Image";
 import styles from "./starItem.module.scss";
 
 interface CastProps {

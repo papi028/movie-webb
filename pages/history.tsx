@@ -4,7 +4,7 @@ import { PATH } from "constants/path";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MovieListSkeleton } from "modules/MovieSkeleton";
 import { MovieTitle } from "modules/MovieTitle";
-import Image from "next/image";
+import { Image } from "components/Image";
 import { useEffect, useState } from "react";
 import styles from "styles/history.module.scss";
 

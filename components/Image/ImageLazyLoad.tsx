@@ -1,4 +1,4 @@
-import { CheckLoadMore } from "modules/CheckLoadMore";
+import { CheckInView } from "modules/CheckInView";
 import { FC, HTMLProps, useEffect, useRef, useState } from "react";
 
 interface ImageLazyLoadProps {
@@ -25,11 +25,11 @@ const ImageLazyLoad: FC<HTMLProps<HTMLImageElement> & ImageLazyLoadProps> = ({
   }, [src]);
 
   return (
-    <CheckLoadMore onLoadMore={() => setRealSrc(src)}>
+    <CheckInView onInView={() => setRealSrc(src)}>
       <picture>
         <img ref={imageRef} style={{ opacity: loaded ? 1 : 0 }} src={realSrc} alt="" {...props} />
       </picture>
-    </CheckLoadMore>
+    </CheckInView>
   );
 };
 

@@ -2,18 +2,18 @@ import useIntersectionObserver from "hooks/useIntersectionObserver";
 import React, { useEffect, useRef } from "react";
 
 interface CheckLoadMoreProps extends React.HTMLProps<HTMLDivElement> {
-  onLoadMore: () => void;
+  onInView: () => void;
 }
 
-const CheckLoadMore = ({ onLoadMore, children, ...props }: CheckLoadMoreProps) => {
+const CheckInView = ({ onInView, children, ...props }: CheckLoadMoreProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const entry = useIntersectionObserver(ref, {
     rootMargin: "0px 0px 100px 0px",
   });
   const isVisible = !!entry?.isIntersecting;
   useEffect(() => {
-    if (isVisible) onLoadMore();
-  }, [isVisible, onLoadMore]);
+    if (isVisible) onInView();
+  }, [isVisible, onInView]);
   return (
     <div ref={ref} {...props}>
       {children}
@@ -21,4 +21,4 @@ const CheckLoadMore = ({ onLoadMore, children, ...props }: CheckLoadMoreProps) =
   );
 };
 
-export default CheckLoadMore;
+export default CheckInView;

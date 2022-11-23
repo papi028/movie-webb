@@ -2,7 +2,7 @@ import { IDiscovery } from "@types";
 import { LoadingSpinner } from "components/Loading";
 import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
-import { CheckLoadMore } from "modules/CheckLoadMore";
+import { CheckInView } from "modules/CheckInView";
 import { DiscoveryCard } from "modules/DiscoveryCard";
 import { GetServerSidePropsContext } from "next";
 import { useCallback } from "react";
@@ -43,9 +43,9 @@ const DiscoveryPage = ({ initialVideos }: DiscoveryPageProps) => {
           ))}
         </div>
         {hasNextPage && (
-          <CheckLoadMore onLoadMore={handleLoadMore}>
+          <CheckInView onInView={handleLoadMore}>
             <LoadingSpinner />
-          </CheckLoadMore>
+          </CheckInView>
         )}
       </div>
     </LayoutPrimary>

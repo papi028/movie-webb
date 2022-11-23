@@ -1,9 +1,8 @@
 import { INewsCard } from "@types";
 import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
-import { CheckLoadMore } from "modules/CheckLoadMore";
-import { MovieListSkeleton } from "modules/MovieSkeleton";
-import { NewsCard, NewsCardSkeleton } from "modules/NewsCard";
+import { CheckInView } from "modules/CheckInView";
+import { NewsCard } from "modules/NewsCard";
 import { NewsList, NewsListSkeleton } from "modules/NewsList";
 import { GetServerSidePropsContext } from "next";
 import { useCallback } from "react";
@@ -56,9 +55,9 @@ const NewsPage = ({ initialNews }: NewsPageProps) => {
           ))}
         </NewsList>
         {hasNextPage && (
-          <CheckLoadMore onLoadMore={handleLoadMore}>
+          <CheckInView onInView={handleLoadMore}>
             <NewsListSkeleton />
-          </CheckLoadMore>
+          </CheckInView>
         )}
       </div>
     </LayoutPrimary>

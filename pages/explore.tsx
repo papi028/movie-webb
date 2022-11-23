@@ -2,7 +2,7 @@ import { ICategoryResult, IFilter, IFilterOptions } from "@types";
 import { Dropdown } from "components/Dropdown";
 import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
-import { CheckLoadMore } from "modules/CheckLoadMore";
+import { CheckInView } from "modules/CheckInView";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
 import { MovieListSkeleton } from "modules/MovieSkeleton";
@@ -110,9 +110,9 @@ const ExplorePage = ({ filters, results }: ExplorePageProps) => {
           <MovieListSkeleton count={12} />
         )}
         {hasNextPage && (
-          <CheckLoadMore onLoadMore={handleLoadMore}>
+          <CheckInView onInView={handleLoadMore}>
             <MovieListSkeleton />
-          </CheckLoadMore>
+          </CheckInView>
         )}
       </div>
     </LayoutPrimary>

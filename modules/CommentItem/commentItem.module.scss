@@ -1,0 +1,48 @@
+.comment {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+.avatar {
+  flex-shrink: 0;
+  img {
+    object-fit: cover;
+    background-color: #333;
+    border-radius: 50%;
+  }
+}
+.content {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 10px 16px;
+  border-radius: 10px;
+}
+.username {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.description {
+  margin-top: 8px;
+}
+.actions {
+  margin-top: 4px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hide {
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: all 0.2s linear;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+}

@@ -1,4 +1,4 @@
-.thumbnail img {
+.thumbnail {
   border-radius: 10px;
   overflow: hidden;
   aspect-ratio: 16/9;
@@ -9,7 +9,7 @@
 }
 .title {
   color: white;
-  margin: 2px 0 4px;
+  margin: 4px 0;
   line-height: 1.4;
   font-weight: 600;
   font-size: 1.7rem;

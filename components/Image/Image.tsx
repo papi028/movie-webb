@@ -1,44 +1,42 @@
-import { resizeImage } from "constants/global";
-import { LazyLoadImage, LazyLoadImageProps } from "react-lazy-load-image-component";
+import { CheckInView } from "modules/CheckInView";
+import { FC, HTMLProps, useEffect, useRef, useState } from "react";
 
-interface ImageProps extends LazyLoadImageProps {
+interface ImageLazyLoadProps {
   src: string;
-  width?: number;
-  height?: number;
-  srcImageError?: string;
+  opacity?: number;
 }
 
-const Image = ({
+const ImageLazyLoad: FC<HTMLProps<HTMLImageElement> & ImageLazyLoadProps> = ({
   src,
-  width = 0,
-  height = 0,
-  srcImageError = "/no-image-available.png",
+  alt = "",
+  crossOrigin: _,
+  opacity = 1,
   ...props
-}: ImageProps) => {
-  if (width && height) {
-    return (
-      <LazyLoadImage
-        src={resizeImage(src, width, height)}
-        effect="opacity"
-        onError={({ currentTarget }) => {
-          currentTarget.onerror = null;
-          currentTarget.src = srcImageError;
-        }}
-        {...props}
-      />
-    );
-  }
+}) => {
+  const [loaded, setLoaded] = useState(false);
+  const [realSrc, setRealSrc] = useState("");
+  const imageRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const handler = () => {
+      setLoaded(true);
+    };
+    const current = imageRef.current;
+    current?.addEventListener("load", handler);
+    return () => current?.removeEventListener("load", handler);
+  }, [src]);
   return (
-    <LazyLoadImage
-      src={src}
-      effect="opacity"
-      onError={({ currentTarget }) => {
-        currentTarget.onerror = null;
-        currentTarget.src = srcImageError;
-      }}
-      {...props}
-    />
+    <CheckInView onInView={() => setRealSrc(src)}>
+      <picture>
+        <img
+          ref={imageRef}
+          style={{ opacity: loaded ? 1 : 0 }}
+          src={realSrc}
+          alt={alt}
+          {...props}
+        />
+      </picture>
+    </CheckInView>
   );
 };
 
-export default Image;
+export default ImageLazyLoad;

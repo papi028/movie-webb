@@ -5,6 +5,7 @@ import styles from "./homeBanner.module.scss";
 import { CustomLink } from "components/CustomLink";
 import { PATH } from "constants/path";
 import { Image } from "components/Image";
+import { IMAGE_SIZE, resizeImageLoklok } from "constants/global";
 
 interface HomeBannerProps {
   banners: IBanner[];
@@ -22,7 +23,15 @@ const HomeBanner = ({ banners }: HomeBannerProps) => {
         {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
             <CustomLink href={`${PATH.watch}/${banner.jumpType}/${banner.id}`}>
-              <Image src={banner.imageUrl} alt={banner.title} className={styles.banner} />
+              <Image
+                alt={banner.title}
+                className={styles.banner}
+                src={resizeImageLoklok(
+                  banner.imageUrl,
+                  IMAGE_SIZE.banner.width,
+                  IMAGE_SIZE.banner.height
+                )}
+              />
             </CustomLink>
           </SwiperSlide>
         ))}

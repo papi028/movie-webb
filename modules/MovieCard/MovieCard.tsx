@@ -1,7 +1,7 @@
 import { IMovieCard } from "@types";
 import { CustomLink } from "components/CustomLink";
-import { ImageLazyLoad } from "components/Image";
-import { IMAGE_CARD_SIZE, resizeImageLoklok } from "constants/global";
+import { Image } from "components/Image";
+import { IMAGE_SIZE, resizeImageLoklok } from "constants/global";
 import { PATH } from "constants/path";
 import { MovieTitle } from "modules/MovieTitle";
 import styles from "./movieCard.module.scss";
@@ -11,12 +11,10 @@ const MovieCard = ({ id, domainType, title, poster }: IMovieCard) => {
   return (
     <div className={styles.movieCard}>
       <CustomLink href={href} className={styles.movieCardMedia}>
-        <ImageLazyLoad
-          width={IMAGE_CARD_SIZE[0].width}
-          height={IMAGE_CARD_SIZE[0].height}
-          src={resizeImageLoklok(poster, IMAGE_CARD_SIZE[0].width, IMAGE_CARD_SIZE[0].height)}
+        <Image
           alt={title}
           className={styles.movieCardPoster}
+          src={resizeImageLoklok(poster, IMAGE_SIZE.movieCard.width, IMAGE_SIZE.movieCard.height)}
         />
         <picture>
           <img src="/icon-play.png" alt="play" className={styles.movieCardPlay} />

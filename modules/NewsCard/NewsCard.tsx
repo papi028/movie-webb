@@ -2,6 +2,7 @@ import { CustomLink } from "components/CustomLink";
 import { PATH } from "constants/path";
 import { Image } from "components/Image";
 import styles from "./newsCard.module.scss";
+import { IMAGE_SIZE, resizeImageLoklok } from "constants/global";
 
 interface NewsCardProps {
   image: string;
@@ -15,7 +16,10 @@ const NewsCard = ({ image, title, introduction, id }: NewsCardProps) => {
     <div>
       <div className={styles.thumbnail}>
         <CustomLink href={`${PATH.news}/${id}`}>
-          <Image src={image} width={500} height={282} alt={title} />
+          <Image
+            src={resizeImageLoklok(image, IMAGE_SIZE.newCard.width, IMAGE_SIZE.newCard.height)}
+            alt={title}
+          />
         </CustomLink>
       </div>
       <div>

@@ -7,10 +7,18 @@ export const resizeImageLoklok = (url: string, width: number = 0, height: number
   return `${url}?imageView2/1/w/${width}/h/${height}/format/webp/interlace/1/ignore-error/1/q/90!/format/webp`;
 };
 
-export const IMAGE_CARD_SIZE = {
-  0: {
+export const IMAGE_SIZE = {
+  banner: {
+    width: 1240,
+    height: 450,
+  },
+  movieCard: {
     width: 190,
     height: 266,
+  },
+  newCard: {
+    width: 500,
+    height: 282,
   },
 };
 

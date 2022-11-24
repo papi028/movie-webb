@@ -48,10 +48,10 @@ const CommentItem = ({ comment }: CommentItemProps) => {
       </div>
       <div>
         <div className={styles.content}>
-          <span className={styles.username}>{comment.fullname}</span>
+          <span className={styles.username}>{comment.fullname || "Unknown"}</span>
           <p className={styles.description}>{comment.content}</p>
           <div className={styles.reactions}>
-            {comment.reactions.map((item) => {
+            {comment.reactions.slice(0, 3).map((item) => {
               const foundTypeIndex = reactionTypes.findIndex((type) => type === item.reaction);
               if (foundTypeIndex !== -1) return null;
               reactionTypes.push(item.reaction);
@@ -71,7 +71,7 @@ const CommentItem = ({ comment }: CommentItemProps) => {
           <EmojiReactions emoji={emoji} handleChangeEmoji={handleChangeEmoji} />
           <span>Reply</span>
           <span> {checkTimeAgo((comment?.createdAt?.seconds as number) * 1000)}</span>
-          <span>Edited</span>
+          {/* <span>Edited</span> */}
         </div>
       </div>
     </div>

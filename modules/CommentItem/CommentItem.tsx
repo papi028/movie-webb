@@ -8,6 +8,7 @@ import { EmojiReactions } from "modules/EmojiReactions";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAppSelector } from "store/global-store";
+import Swal from "sweetalert2";
 import { checkTimeAgo } from "utils/helper";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./commentItem.module.scss";
@@ -48,14 +49,26 @@ const CommentItem = ({ comment }: CommentItemProps) => {
     if (!currentUser || currentUser.uid !== comment.userId) return;
     setIsEditing(!isEditing);
   };
-  const handleDeleteComment = async () => {
-    try {
-      const colRef = doc(db, "comments", comment.id);
-      await deleteDoc(colRef);
-      toast.success("Delete comment successfully!");
-    } catch (error: any) {
-      toast.error(error?.message);
-    }
+  const handleDeleteComment = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const colRef = doc(db, "comments", comment.id);
+          await deleteDoc(colRef);
+          toast.success("Delete comment successfully!");
+        } catch (error: any) {
+          toast.error(error?.message);
+        }
+      }
+    });
   };
   return (
     <div className={styles.comment}>

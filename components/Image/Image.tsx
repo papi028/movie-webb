@@ -1,13 +1,14 @@
 import { CheckInView } from "modules/CheckInView";
 import { FC, HTMLProps, useEffect, useRef, useState } from "react";
 
-interface ImageLazyLoadProps {
+interface ImageProps {
   src: string;
   opacity?: number;
 }
 
-const ImageLazyLoad: FC<HTMLProps<HTMLImageElement> & ImageLazyLoadProps> = ({
+const Image: FC<HTMLProps<HTMLImageElement> & ImageProps> = ({
   src,
+  key,
   alt = "",
   crossOrigin: _,
   opacity = 1,
@@ -39,4 +40,4 @@ const ImageLazyLoad: FC<HTMLProps<HTMLImageElement> & ImageLazyLoadProps> = ({
   );
 };
 
-export default ImageLazyLoad;
+export default Image;

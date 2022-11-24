@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 import { useAppSelector } from "store/global-store";
 import styles from "./commentAddNew.module.scss";
+import { TextArea } from "components/Textarea";
 
 const CommentAddNew = () => {
   const router = useRouter();
@@ -35,7 +36,7 @@ const CommentAddNew = () => {
         userId: currentUser.uid,
         avatar: currentUser.photoURL || defaultAvatar,
         fullname: currentUser.displayName,
-        content: commentValue,
+        content: commentValue.trim(),
         createdAt: serverTimestamp(),
         categoryId: router.query.category,
         movieId: router.query.id,
@@ -67,16 +68,14 @@ const CommentAddNew = () => {
           src={currentUser?.photoURL as string}
           alt={currentUser?.displayName}
         />
-        <textarea
-          className={styles.textarea}
+        <TextArea
+          rows={1}
+          value={commentValue}
           placeholder="Write comment..."
           onKeyDown={(e) => e.stopPropagation()}
           onKeyUp={(e) => e.stopPropagation()}
           onKeyPress={(e) => e.stopPropagation()}
-          ref={textAreaRef}
-          value={commentValue}
           onChange={(e) => setCommentValue(e.target.value)}
-          rows={1}
         />
       </div>
       <button type="submit" className={styles.submit}>

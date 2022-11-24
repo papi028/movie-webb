@@ -3,11 +3,12 @@ import { Image } from "components/Image";
 import { defaultAvatar } from "constants/global";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "libs/firebase-app";
+import { CommentEdit } from "modules/CommentEdit";
 import { EmojiReactions } from "modules/EmojiReactions";
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { useAppSelector } from "store/global-store";
 import { checkTimeAgo } from "utils/helper";
+import { v4 as uuidv4 } from "uuid";
 import styles from "./commentItem.module.scss";
 
 interface CommentItemProps {
@@ -15,6 +16,7 @@ interface CommentItemProps {
 }
 
 const CommentItem = ({ comment }: CommentItemProps) => {
+  const [isEditing, setIsEditing] = useState(false);
   const { currentUser } = useAppSelector((state) => state.auth);
   const foundMyReactionIndex = comment.reactions.findIndex(
     (item) => item.userId === currentUser?.uid
@@ -41,6 +43,10 @@ const CommentItem = ({ comment }: CommentItemProps) => {
     await updateDoc(colRef, { reactions: comment.reactions });
     setEmoji(value);
   };
+  const toggleOpenEdit = () => {
+    if (!currentUser || currentUser.uid !== comment.userId) return;
+    setIsEditing(!isEditing);
+  };
   return (
     <div className={styles.comment}>
       <div className={styles.avatar}>
@@ -48,16 +54,22 @@ const CommentItem = ({ comment }: CommentItemProps) => {
       </div>
       <div>
         <div className={styles.content}>
-          <span className={styles.username}>{comment.fullname || "Unknown"}</span>
-          <p className={styles.description}>{comment.content}</p>
+          {isEditing ? (
+            <CommentEdit comment={comment} toggleOpenEdit={toggleOpenEdit} />
+          ) : (
+            <>
+              <span className={styles.username}>{comment.fullname || "Unknown"}</span>
+              <p className={styles.description}>{comment.content}</p>
+            </>
+          )}
           <div className={styles.reactions}>
-            {comment.reactions.slice(0, 3).map((item) => {
+            {comment.reactions.slice(0, 3).map((item, index) => {
               const foundTypeIndex = reactionTypes.findIndex((type) => type === item.reaction);
               if (foundTypeIndex !== -1) return null;
               reactionTypes.push(item.reaction);
               return (
                 <Image
-                  key={item.id}
+                  key={index}
                   alt={item.reaction}
                   className={styles.reaction}
                   src={`/icon-${item.reaction}.png`}
@@ -69,9 +81,8 @@ const CommentItem = ({ comment }: CommentItemProps) => {
         </div>
         <div className={styles.actions}>
           <EmojiReactions emoji={emoji} handleChangeEmoji={handleChangeEmoji} />
-          <span>Reply</span>
-          <span> {checkTimeAgo((comment?.createdAt?.seconds as number) * 1000)}</span>
-          {/* <span>Edited</span> */}
+          {currentUser?.uid === comment.userId && <span onClick={toggleOpenEdit}>Edit</span>}
+          <span>{checkTimeAgo((comment?.createdAt?.seconds as number) * 1000)}</span>
         </div>
       </div>
     </div>

@@ -1,16 +1,15 @@
-import { IconLike } from "components/Icons";
 import { useState } from "react";
 import classNames from "utils/classNames";
 import styles from "./emojiReactions.module.scss";
 
 const EmojiReactions = () => {
-  const [emoji, setEmoji] = useState("");
+  const [emoji, setEmoji] = useState("Like");
   const handleReactEmoji = (value: string) => {
     setEmoji(value);
   };
   return (
     <div className={styles.reaction}>
-      <span>Like</span>
+      <span className={styles[`text${emoji}`]}>{emoji}</span>
       <div className={styles.emojiContainer}>
         <div
           onClick={() => handleReactEmoji("Like")}

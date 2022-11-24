@@ -34,7 +34,6 @@
     margin-left: -50px;
   }
 }
-
 .emoji {
   width: 44px;
   height: 44px;
@@ -71,23 +70,18 @@
 .like .icon {
   background-position: 0 -144px;
 }
-
 .love .icon {
   background-position: 0 -192px;
 }
-
 .haha .icon {
   background-position: 0 -96px;
 }
-
 .wow .icon {
   background-position: 0 -288px;
 }
-
 .sad .icon {
   background-position: 0 -240px;
 }
-
 .reaction:hover {
   .emojiContainer {
     opacity: 1;
@@ -132,6 +126,24 @@
     animation-duration: 1.2833s;
     animation-name: head-6-anim;
   }
+}
+.textLike {
+  color: #5179ff;
+}
+.textLove {
+  color: #ef4444;
+}
+.textHaha {
+  color: #eab308;
+}
+.textWow {
+  color: #22c55e;
+}
+.textSad {
+  color: #a855f7;
+}
+.textAngry {
+  color: #f97316;
 }
 
 @keyframes head-1-anim {

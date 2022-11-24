@@ -57,13 +57,13 @@ const WatchTVPage = ({ data }: WatchTVPageProps) => {
             <WatchCategory categories={data.tagList} />
             <WatchSummary introduction={data.introduction} />
             <WatchStar starList={data.starList} />
+            <CommentList />
           </div>
           <div className={classNames(styles.layoutSidebar, "scrollbar")}>
             <WatchAnthology detailMovie={data} />
             <RelatedSeries refList={data.refList} />
           </div>
         </div>
-        <CommentList />
         <MovieList heading="You may like">
           {data.likeList.map((movie) => (
             <MovieCard

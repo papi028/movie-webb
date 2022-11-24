@@ -10,10 +10,7 @@ const EmojiReactions = () => {
   };
   return (
     <div className={styles.reaction}>
-      <div className={styles.button}>
-        <IconLike />
-        <span>Like</span>
-      </div>
+      <span>Like</span>
       <div className={styles.emojiContainer}>
         <div
           onClick={() => handleReactEmoji("Like")}

@@ -1,9 +1,8 @@
 import { IEpisode } from "@types";
-import { IconBell, IconShare } from "components/Icons";
 import axiosClient from "configs/axiosClient";
 import useSaveHistoryView from "hooks/useSaveHistoryView";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
-import { CommentItem } from "modules/CommentItem";
+import { CommentList } from "modules/CommentList";
 import { MediaPlayer } from "modules/MediaPlayer";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
@@ -64,11 +63,7 @@ const WatchTVPage = ({ data }: WatchTVPageProps) => {
             <RelatedSeries refList={data.refList} />
           </div>
         </div>
-        <div>
-          <h4>Comments</h4>
-          <CommentItem />
-          <CommentItem />
-        </div>
+        <CommentList />
         <MovieList heading="You may like">
           {data.likeList.map((movie) => (
             <MovieCard

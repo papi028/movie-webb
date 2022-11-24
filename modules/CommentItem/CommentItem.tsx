@@ -1,4 +1,3 @@
-import { Icon3Dot } from "components/Icons";
 import { Image } from "components/Image";
 import { EmojiReactions } from "modules/EmojiReactions";
 import styles from "./commentItem.module.scss";

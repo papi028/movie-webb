@@ -1,11 +1,12 @@
 import { IComment } from "@types";
 import { Image } from "components/Image";
 import { defaultAvatar } from "constants/global";
-import { doc, updateDoc } from "firebase/firestore";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "libs/firebase-app";
 import { CommentEdit } from "modules/CommentEdit";
 import { EmojiReactions } from "modules/EmojiReactions";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useAppSelector } from "store/global-store";
 import { checkTimeAgo } from "utils/helper";
 import { v4 as uuidv4 } from "uuid";
@@ -25,8 +26,8 @@ const CommentItem = ({ comment }: CommentItemProps) => {
   const myReaction = comment.reactions[foundMyReactionIndex];
   const [emoji, setEmoji] = useState(myReaction?.reaction || "Like");
   const handleChangeEmoji = async (value: string) => {
-    if (!currentUser) return;
     const colRef = doc(db, "comments", comment.id);
+    if (!currentUser) return;
     if (!myReaction) {
       comment.reactions.push({
         id: uuidv4(),
@@ -46,6 +47,15 @@ const CommentItem = ({ comment }: CommentItemProps) => {
   const toggleOpenEdit = () => {
     if (!currentUser || currentUser.uid !== comment.userId) return;
     setIsEditing(!isEditing);
+  };
+  const handleDeleteComment = async () => {
+    try {
+      const colRef = doc(db, "comments", comment.id);
+      await deleteDoc(colRef);
+      toast.success("Delete comment successfully!");
+    } catch (error: any) {
+      toast.error(error?.message);
+    }
   };
   return (
     <div className={styles.comment}>
@@ -81,7 +91,16 @@ const CommentItem = ({ comment }: CommentItemProps) => {
         </div>
         <div className={styles.actions}>
           <EmojiReactions emoji={emoji} handleChangeEmoji={handleChangeEmoji} />
-          {currentUser?.uid === comment.userId && <span onClick={toggleOpenEdit}>Edit</span>}
+          {currentUser?.uid === comment.userId && (
+            <>
+              <button className={styles.edit} onClick={toggleOpenEdit}>
+                Edit
+              </button>
+              <button className={styles.delete} onClick={handleDeleteComment}>
+                Delete
+              </button>
+            </>
+          )}
           <span>{checkTimeAgo((comment?.createdAt?.seconds as number) * 1000)}</span>
         </div>
       </div>

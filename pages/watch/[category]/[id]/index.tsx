@@ -24,7 +24,6 @@ interface WatchTVPageProps {
 
 const WatchTVPage = ({ data }: WatchTVPageProps) => {
   const { follows } = useAppSelector((state) => state.follow);
-  console.log("follows: ", follows);
   useSaveHistoryView(data);
   return (
     <LayoutPrimary>

@@ -1,9 +1,15 @@
 import { Image } from "components/Image";
+import { defaultAvatar } from "constants/global";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "libs/firebase-app";
+import { useRouter } from "next/router";
 import { FormEvent, useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 import { useAppSelector } from "store/global-store";
 import styles from "./commentAddNew.module.scss";
 
 const CommentAddNew = () => {
+  const router = useRouter();
   const { currentUser } = useAppSelector((state) => state.auth);
   const [commentValue, setCommentValue] = useState("");
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -12,9 +18,43 @@ const CommentAddNew = () => {
     textAreaRef.current.style.height = "auto";
     textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
   };
-  const handleAddNewComment = (e: FormEvent<HTMLFormElement>) => {
+  const handleAddNewComment = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("handleAddNewComment");
+    if (!currentUser) {
+      toast.error("Please sign in!");
+      return;
+    }
+    if (!commentValue) {
+      toast.error("Please input comment!");
+      return;
+    }
+    try {
+      const colRef = collection(db, "comments");
+      await addDoc(colRef, {
+        userId: currentUser.uid,
+        avatar: currentUser.photoURL || defaultAvatar,
+        fullname: currentUser.displayName,
+        content: commentValue,
+        createdAt: serverTimestamp(),
+        categoryId: router.query.category,
+        movieId: router.query.id,
+        episodeId: router.query.episode || 0,
+        reactions: [
+          {
+            userId: currentUser.uid,
+            avatar: currentUser.photoURL || defaultAvatar,
+            fullname: currentUser.displayName,
+            reaction: "Like",
+          },
+        ],
+      });
+      toast.success("Add new comment successfully!");
+    } catch (error: any) {
+      console.log("error: ", error);
+      toast.error(error?.message);
+    } finally {
+      setCommentValue("");
+    }
   };
   useEffect(resizeTextArea, [commentValue]);
   return (

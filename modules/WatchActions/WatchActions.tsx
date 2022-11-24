@@ -19,7 +19,7 @@ const WatchActions = ({ id, domainType, title, poster }: IMovieCard) => {
   const handleShare = () => {
     copyToClipBoard(`${server}${router.asPath}`);
   };
-  const handleFollowMovie = async () => {
+  const handleClickFollowMovie = async () => {
     if (!currentUser) return;
     const colRef = doc(db, "users", currentUser.uid);
     if (foundMovieIndex !== -1) {
@@ -35,7 +35,7 @@ const WatchActions = ({ id, domainType, title, poster }: IMovieCard) => {
   return (
     <div className={styles.actions}>
       <button
-        onClick={handleFollowMovie}
+        onClick={handleClickFollowMovie}
         className={classNames(styles.action)}
         style={{ backgroundColor: foundMovieIndex === -1 ? "#0e6f6a" : "#e5525e" }}
       >

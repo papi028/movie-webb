@@ -20,8 +20,6 @@ export const handleUpdateUser = async (
   userId: string,
   values: any
 ) => {
-  console.log("values: ", values);
-  console.log("userId: ", userId);
   try {
     e.preventDefault();
     if (!userId) return;

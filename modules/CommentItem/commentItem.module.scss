@@ -15,6 +15,7 @@
   background-color: rgba(255, 255, 255, 0.15);
   padding: 8px 14px;
   border-radius: 10px;
+  position: relative;
 }
 .username {
   display: block;
@@ -32,18 +33,24 @@
   gap: 14px;
   font-weight: 500;
 }
-.hide {
-  color: white;
-  border: none;
-  width: 30px;
-  height: 30px;
+.reactions {
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+  transform: translateX(100%);
   display: flex;
-  justify-content: center;
   align-items: center;
-  border-radius: 50%;
-  background-color: transparent;
-  transition: all 0.2s linear;
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+  background-color: #ffffff26;
+  padding: 4px 6px;
+  border-radius: 20px;
+  gap: 1px;
+  span {
+    font-size: 1.4rem;
+    display: inline-block;
+    margin-left: 4px;
   }
+}
+.reaction {
+  width: 16px;
+  height: 16px;
 }

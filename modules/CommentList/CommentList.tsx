@@ -13,7 +13,6 @@ const CommentList = () => {
   const router = useRouter();
   const { id, category, episode } = router.query;
   const [comments, setComments] = useState<IComment[]>([]);
-  console.log("comments: ", comments);
   useEffect(() => {
     let unSubscribe: Unsubscribe;
     async function getComments() {

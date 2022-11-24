@@ -9,7 +9,7 @@ const WatchSummary = ({ introduction }: WatchSummaryProps) => {
   return (
     <div className={styles.summary}>
       <h4 className={styles.label}>Summary :</h4>
-      <TextToggleMore>{introduction}</TextToggleMore>
+      <TextToggleMore countLetter={180}>{introduction}</TextToggleMore>
     </div>
   );
 };

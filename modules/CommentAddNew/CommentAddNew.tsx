@@ -5,6 +5,7 @@ import { db } from "libs/firebase-app";
 import { useRouter } from "next/router";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { v4 as uuidv4 } from "uuid";
 import { useAppSelector } from "store/global-store";
 import styles from "./commentAddNew.module.scss";
 
@@ -41,6 +42,7 @@ const CommentAddNew = () => {
         episodeId: router.query.episode || 0,
         reactions: [
           {
+            id: uuidv4(),
             userId: currentUser.uid,
             avatar: currentUser.photoURL || defaultAvatar,
             fullname: currentUser.displayName,

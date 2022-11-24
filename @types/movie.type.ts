@@ -132,6 +132,7 @@ export interface IComment {
   movieId: string;
   episodeId: string | number;
   reactions: {
+    id: string;
     userId: string;
     avatar: string;
     fullname: string;

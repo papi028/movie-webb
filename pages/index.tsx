@@ -35,23 +35,25 @@ const HomePage = ({ banners, initialHomeSections }: HomePageProps) => {
     setSize((prev) => prev + 1);
   }, [setSize]);
   return (
-    <LayoutPrimary>
+    <>
       <Meta />
-      <div className="container">
-        <HomeBanner banners={banners} />
-        {initialHomeSections.map((homeSection) => (
-          <HomeSection key={homeSection.homeSectionId} homeSection={homeSection} />
-        ))}
-        {homeSections?.flat()?.map((homeSection: IHomeSection) => (
-          <HomeSection key={homeSection.homeSectionId} homeSection={homeSection} />
-        ))}
-        {hasNextPage && (
-          <CheckInView onInView={handleLoadMore}>
-            <MovieListSkeleton hasHeading />
-          </CheckInView>
-        )}
-      </div>
-    </LayoutPrimary>
+      <LayoutPrimary>
+        <div className="container">
+          <HomeBanner banners={banners} />
+          {initialHomeSections.map((homeSection) => (
+            <HomeSection key={homeSection.homeSectionId} homeSection={homeSection} />
+          ))}
+          {homeSections?.flat()?.map((homeSection: IHomeSection) => (
+            <HomeSection key={homeSection.homeSectionId} homeSection={homeSection} />
+          ))}
+          {hasNextPage && (
+            <CheckInView onInView={handleLoadMore}>
+              <MovieListSkeleton hasHeading />
+            </CheckInView>
+          )}
+        </div>
+      </LayoutPrimary>
+    </>
   );
 };
 

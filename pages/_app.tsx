@@ -40,14 +40,16 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   if (!showChild) return null;
   if (typeof window === "undefined") return <></>;
   return (
-    <ErrorBoundary>
-      <Provider store={store}>
-        <Meta />
-        <Authentication>
-          <Component {...pageProps} />
-          <Toaster position="top-right" />
-        </Authentication>
-      </Provider>
-    </ErrorBoundary>
+    <>
+      <Meta />
+      <ErrorBoundary>
+        <Provider store={store}>
+          <Authentication>
+            <Component {...pageProps} />
+            <Toaster position="top-right" />
+          </Authentication>
+        </Provider>
+      </ErrorBoundary>
+    </>
   );
 }

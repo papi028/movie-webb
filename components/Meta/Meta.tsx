@@ -1,5 +1,4 @@
 import { server } from "configs/server";
-import { memo } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 

@@ -1,4 +1,5 @@
 import { IEpisode } from "@types";
+import { Meta } from "components/Meta";
 import axiosClient from "configs/axiosClient";
 import useSaveHistoryView from "hooks/useSaveHistoryView";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
@@ -25,6 +26,11 @@ const WatchTVPage = ({ data }: WatchTVPageProps) => {
   useSaveHistoryView(data);
   return (
     <LayoutPrimary>
+      <Meta
+        title={`${data.name} - NetFilm Watch HD movies online for free`}
+        description={data.introduction}
+        image={data.coverHorizontalUrl}
+      />
       <div className="container">
         <div className={styles.layout}>
           <div className={styles.layoutMain}>

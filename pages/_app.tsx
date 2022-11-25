@@ -21,10 +21,6 @@ Modal.defaultStyles = {
 };
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const [showChild, setShowChild] = useState(false);
-  useEffect(() => {
-    setShowChild(true);
-  }, []);
   useEffect(() => {
     const handleRouteStart = () => NProgress.start();
     const handleRouteDone = () => NProgress.done();
@@ -37,8 +33,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       Router.events.off("routeChangeError", handleRouteDone);
     };
   }, []);
-  if (!showChild) return <Meta></Meta>;
-  if (typeof window === "undefined") return <Meta></Meta>;
   return (
     <>
       <Meta />

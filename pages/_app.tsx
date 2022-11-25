@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import "nprogress/nprogress.css";
 import { useEffect, useState } from "react";
 import { ErrorBoundary } from "components/ErrorBoundary";
+import { Meta } from "components/Meta";
 import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
 import { store } from "store/global-store";
@@ -41,6 +42,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ErrorBoundary>
       <Provider store={store}>
+        <Meta />
         <Authentication>
           <Component {...pageProps} />
           <Toaster position="top-right" />

@@ -37,8 +37,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       Router.events.off("routeChangeError", handleRouteDone);
     };
   }, []);
-  if (!showChild) return null;
-  if (typeof window === "undefined") return <></>;
+  if (!showChild) return <Meta />;
+  if (typeof window === "undefined") return <Meta />;
   return (
     <>
       <Meta />

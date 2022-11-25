@@ -16,8 +16,8 @@ import { WatchMeta } from "modules/WatchMeta";
 import { WatchStar } from "modules/WatchStar";
 import { WatchSummary } from "modules/WatchSummary";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
-import styles from "styles/watch.module.scss";
 import classNames from "utils/classNames";
+import styles from "styles/watch.module.scss";
 
 interface WatchTVPageProps {
   data: IEpisode;

@@ -9,39 +9,11 @@
 .desc {
   color: #c4c1ea;
 }
-.avatarBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  max-width: 300px;
-  @media screen and (max-width: 767.98px) {
-    max-width: 100%;
-  }
-}
-.username {
-  margin-top: 6px;
-  font-size: 1.6rem;
-}
-.email {
-  font-size: 1.4rem;
-}
-.logout {
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 10px;
-  font-weight: 600;
-  border-radius: 10px;
-  border: none;
-  background-color: #39354d;
-}
-.profileForm {
+.form {
   margin-top: 25px;
+  max-width: 500px;
 }
-.buttonSubmit {
+.submit {
   width: 100%;
   padding: 10px;
   color: white;

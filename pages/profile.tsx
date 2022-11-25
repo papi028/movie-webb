@@ -1,24 +1,19 @@
 import { ProtectedRoute } from "components/Authentication";
 import { FormGroup } from "components/FormGroup";
-import { IconLogout } from "components/Icons";
-import { ImageUpload } from "components/ImageUpload";
 import { Input } from "components/Input";
 import { Label } from "components/Label";
-import { defaultAvatar } from "constants/global";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
+import { doc, updateDoc } from "firebase/firestore";
 import useInputChange from "hooks/useInputChange";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { db } from "libs/firebase-app";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { AsideUser } from "modules/AsideUser";
+import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
-import { logout } from "store/auth.slice";
-import { useAppDispatch, useAppSelector } from "store/global-store";
+import { useAppSelector } from "store/global-store";
 import styles from "styles/profile.module.scss";
 
 const ProfilePage = () => {
   const { currentUser } = useAppSelector((state) => state.auth);
-  const dispatch = useAppDispatch();
   const [values, setValues] = useState({
     displayName: currentUser?.displayName || "",
     photoURL: currentUser?.photoURL || "",
@@ -35,56 +30,16 @@ const ProfilePage = () => {
       toast.error(error?.message);
     }
   };
-  const deleteAvatar = async () => {
-    if (!currentUser) return;
-    const colRef = doc(db, "users", currentUser.uid);
-    await updateDoc(colRef, {
-      photoURL: defaultAvatar,
-    });
-    setValues({ ...values, photoURL: defaultAvatar });
-  };
-  const handleUploadAvatar = async (e: ChangeEvent<HTMLInputElement>) => {
-    try {
-      const files = e.target.files;
-      if (!files || !files[0].name || !currentUser) return;
-      const storage = getStorage();
-      const storageRef = ref(storage, "images/" + files[0].name);
-      await uploadBytesResumable(storageRef, files[0]);
-      const newAvatar = await getDownloadURL(storageRef);
-      const colRef = doc(db, "users", currentUser.uid);
-      await updateDoc(colRef, { photoURL: newAvatar });
-      toast.success("Update avatar successfully!");
-      setValues({ ...values, photoURL: newAvatar });
-    } catch (error: any) {
-      toast.error(error?.message);
-    }
-  };
-  const handleLogout = () => {
-    dispatch(logout());
-  };
   return (
     <ProtectedRoute>
       <LayoutPrimary>
         <div className="container">
           <section className={styles.section}>
-            <div className={styles.avatarBox}>
-              <ImageUpload
-                name="photoURL"
-                handleDeleteImage={deleteAvatar}
-                handleUploadImage={handleUploadAvatar}
-                image={values.photoURL || ""}
-              ></ImageUpload>
-              <h3 className={styles.username}>{currentUser?.displayName}</h3>
-              <span className={styles.email}>{currentUser?.email}</span>
-              <button onClick={handleLogout} className={styles.logout}>
-                <IconLogout />
-                Logout
-              </button>
-            </div>
+            <AsideUser />
             <div>
               <h1>Account information</h1>
               <span className={styles.desc}>Update your account information</span>
-              <form className={styles.profileForm} onSubmit={handleUpdateProfile}>
+              <form className={styles.form} onSubmit={handleUpdateProfile}>
                 <FormGroup>
                   <Label htmlFor="displayName">Fullname</Label>
                   <Input
@@ -104,7 +59,7 @@ const ProfilePage = () => {
                     onChange={onChange}
                   />
                 </FormGroup>
-                <button type="submit" className={styles.buttonSubmit}>
+                <button type="submit" className={styles.submit}>
                   Update
                 </button>
               </form>

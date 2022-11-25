@@ -1,4 +1,5 @@
 import { IBanner, IHomeSection } from "@types";
+import { Meta } from "components/Meta";
 import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { CheckInView } from "modules/CheckInView";
@@ -35,6 +36,7 @@ const HomePage = ({ banners, initialHomeSections }: HomePageProps) => {
   }, [setSize]);
   return (
     <LayoutPrimary>
+      <Meta />
       <div className="container">
         <HomeBanner banners={banners} />
         {initialHomeSections.map((homeSection) => (

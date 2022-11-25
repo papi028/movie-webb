@@ -78,3 +78,29 @@ body {
 .swal2-popup {
   font-size: 1.6rem !important;
 }
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  outline: 0;
+  width: 94%;
+  background: var(--dark);
+  max-width: 620px;
+  padding: 20px;
+  z-index: 200;
+}
+.modal-overlay {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 100;
+}

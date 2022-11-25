@@ -11,7 +11,13 @@ import { ErrorBoundary } from "components/ErrorBoundary";
 import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
 import { store } from "store/global-store";
+import Modal from "react-modal";
 import { Authentication } from "components/Authentication";
+
+Modal.setAppElement("#__next");
+Modal.defaultStyles = {
+  content: {},
+};
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [showChild, setShowChild] = useState(false);

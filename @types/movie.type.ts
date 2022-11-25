@@ -118,6 +118,14 @@ export interface IMovieCard {
   poster: string;
 }
 
+export interface ICommentReaction {
+  id: string;
+  userId: string;
+  avatar: string;
+  fullname: string;
+  reaction: string;
+}
+
 export interface IComment {
   id: string;
   userId: string;
@@ -131,11 +139,5 @@ export interface IComment {
   categoryId: string;
   movieId: string;
   episodeId: string | number;
-  reactions: {
-    id: string;
-    userId: string;
-    avatar: string;
-    fullname: string;
-    reaction: string;
-  }[];
+  reactions: ICommentReaction[];
 }

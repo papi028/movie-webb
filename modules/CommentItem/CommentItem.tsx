@@ -1,7 +1,9 @@
 import { IComment } from "@types";
 import { Image } from "components/Image";
+import { ModalUserReactions } from "components/Modal";
 import { defaultAvatar } from "constants/global";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import useModal from "hooks/useModal";
 import { db } from "libs/firebase-app";
 import { CommentEdit } from "modules/CommentEdit";
 import { EmojiReactions } from "modules/EmojiReactions";
@@ -19,6 +21,7 @@ interface CommentItemProps {
 
 const CommentItem = ({ comment }: CommentItemProps) => {
   const [isEditing, setIsEditing] = useState(false);
+  const { isShow, toggleModal } = useModal();
   const { currentUser } = useAppSelector((state) => state.auth);
   const foundMyReactionIndex = comment.reactions.findIndex(
     (item) => item.userId === currentUser?.uid
@@ -85,7 +88,7 @@ const CommentItem = ({ comment }: CommentItemProps) => {
             </>
           )}
           {comment.reactions.length > 0 && (
-            <div className={styles.reactions}>
+            <div className={styles.reactions} onClick={toggleModal}>
               {comment.reactions.slice(0, 3).map((item, index) => {
                 const foundTypeIndex = reactionTypes.findIndex((type) => type === item.reaction);
                 if (foundTypeIndex !== -1) return null;
@@ -118,6 +121,7 @@ const CommentItem = ({ comment }: CommentItemProps) => {
           <span>{checkTimeAgo((comment?.createdAt?.seconds as number) * 1000)}</span>
         </div>
       </div>
+      <ModalUserReactions isShow={isShow} toggleModal={toggleModal} reactions={comment.reactions} />
     </div>
   );
 };

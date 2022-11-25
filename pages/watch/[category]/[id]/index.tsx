@@ -1,6 +1,7 @@
 import { IEpisode } from "@types";
 import { Meta } from "components/Meta";
 import axiosClient from "configs/axiosClient";
+import { resizeImageLoklok } from "constants/global";
 import useSaveHistoryView from "hooks/useSaveHistoryView";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { CommentList } from "modules/CommentList";
@@ -29,7 +30,7 @@ const WatchTVPage = ({ data }: WatchTVPageProps) => {
       <Meta
         title={`${data.name} - NetFilm Watch HD movies online for free`}
         description={data.introduction}
-        image={data.coverHorizontalUrl}
+        image={resizeImageLoklok(data.coverHorizontalUrl, 800, 418)}
       />
       <div className="container">
         <div className={styles.layout}>

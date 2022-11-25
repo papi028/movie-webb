@@ -41,15 +41,7 @@ const CommentAddNew = () => {
         categoryId: router.query.category,
         movieId: router.query.id,
         episodeId: router.query.episode || 0,
-        reactions: [
-          {
-            id: uuidv4(),
-            userId: currentUser.uid,
-            avatar: currentUser.photoURL || defaultAvatar,
-            fullname: currentUser.displayName,
-            reaction: "Like",
-          },
-        ],
+        reactions: [],
       });
       toast.success("Add new comment successfully!");
     } catch (error: any) {

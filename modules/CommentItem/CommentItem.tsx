@@ -77,30 +77,31 @@ const CommentItem = ({ comment }: CommentItemProps) => {
       </div>
       <div>
         <div className={styles.content}>
-          {isEditing ? (
-            <CommentEdit comment={comment} toggleOpenEdit={toggleOpenEdit} />
-          ) : (
+          {isEditing && <CommentEdit comment={comment} toggleOpenEdit={toggleOpenEdit} />}
+          {!isEditing && (
             <>
               <span className={styles.username}>{comment.fullname || "Unknown"}</span>
               <p className={styles.description}>{comment.content}</p>
             </>
           )}
-          <div className={styles.reactions}>
-            {comment.reactions.slice(0, 3).map((item, index) => {
-              const foundTypeIndex = reactionTypes.findIndex((type) => type === item.reaction);
-              if (foundTypeIndex !== -1) return null;
-              reactionTypes.push(item.reaction);
-              return (
-                <Image
-                  key={index}
-                  alt={item.reaction}
-                  className={styles.reaction}
-                  src={`/icon-${item.reaction}.png`}
-                />
-              );
-            })}
-            <span>{comment.reactions.length}</span>
-          </div>
+          {comment.reactions.length > 0 && (
+            <div className={styles.reactions}>
+              {comment.reactions.slice(0, 3).map((item, index) => {
+                const foundTypeIndex = reactionTypes.findIndex((type) => type === item.reaction);
+                if (foundTypeIndex !== -1) return null;
+                reactionTypes.push(item.reaction);
+                return (
+                  <Image
+                    key={index}
+                    alt={item.reaction}
+                    className={styles.reaction}
+                    src={`/icon-${item.reaction}.png`}
+                  />
+                );
+              })}
+              <span>{comment.reactions.length}</span>
+            </div>
+          )}
         </div>
         <div className={styles.actions}>
           <EmojiReactions emoji={emoji} handleChangeEmoji={handleChangeEmoji} />

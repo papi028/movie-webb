@@ -1,11 +1,29 @@
 import { CustomLink } from "components/CustomLink";
-import { IconKeyPassword, IconLogout, IconUser } from "components/Icons";
+import { IconFollow, IconKeyPassword, IconLogout, IconUser } from "components/Icons";
 import { Image } from "components/Image";
 import { defaultAvatar } from "constants/global";
 import { PATH } from "constants/path";
 import { logout } from "store/auth.slice";
 import { useAppDispatch, useAppSelector } from "store/global-store";
 import styles from "./asideUser.module.scss";
+
+const links = [
+  {
+    path: PATH.profile,
+    icon: <IconUser />,
+    display: "Profile",
+  },
+  {
+    path: PATH.changePassword,
+    icon: <IconKeyPassword />,
+    display: "Password",
+  },
+  {
+    path: PATH.follow,
+    icon: <IconFollow />,
+    display: "Follow",
+  },
+];
 
 const AsideUser = () => {
   const { currentUser } = useAppSelector((state) => state.auth);
@@ -25,14 +43,12 @@ const AsideUser = () => {
         </div>
       </div>
       <div className={styles.links}>
-        <CustomLink href={PATH.profile} className={styles.link}>
-          <IconUser />
-          <span>Profile</span>
-        </CustomLink>
-        <CustomLink href={PATH.changePassword} className={styles.link}>
-          <IconKeyPassword />
-          <span>Password</span>
-        </CustomLink>
+        {links.map((link, index) => (
+          <CustomLink href={link.path} className={styles.link} key={index}>
+            {link.icon}
+            <span>{link.display}</span>
+          </CustomLink>
+        ))}
         <button onClick={handleLogout} className={styles.logout}>
           <IconLogout />
           <span>Logout</span>

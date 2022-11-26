@@ -17,11 +17,13 @@ import IconUser from "./IconUser";
 import IconKeyPassword from "./IconKeyPassword";
 import IconHiddenPassword from "./IconHiddenPassword";
 import IconShowPassword from "./IconShowPassword";
+import IconFollow from "./IconFollow";
 
 export {
   IconStar,
   IconPlay,
   IconUploadImage,
+  IconFollow,
   IconHiddenPassword,
   IconShowPassword,
   IconKeyPassword,

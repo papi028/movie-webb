@@ -5,6 +5,7 @@ export const PATH = {
   detail: "/detail",
   profile: "/profile",
   star: "/star",
+  follow: "/follow",
   explore: "/explore",
   news: "/news",
   pageNotFound: "/404",

@@ -44,15 +44,15 @@ export default catchAsync(discoveryApi);
  * @swagger
  * /discovery:
  *  get:
- *      summary: Get videos discovery
- *      tags: [Discovery]
- *      parameters:
- *        - in: query
- *          name: page
- *          example: 0
- *          schema:
- *            type: number
- *      responses:
- *          200:
- *            description: Success
+ *    summary: Get videos discovery
+ *    tags: [Discovery]
+ *    parameters:
+ *      - in: query
+ *        name: page
+ *        example: 0
+ *        schema:
+ *          type: number
+ *    responses:
+ *        200:
+ *          description: Success
  */

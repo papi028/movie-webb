@@ -45,45 +45,45 @@ export default catchAsync(searchWithCategoryApi);
  * @swagger
  * /category:
  *  get:
- *      summary: Search movie by category
- *      tags: [Search]
- *      parameters:
- *        - in: query
- *          name: area
- *          example: 44
- *          schema:
- *            type: number
- *        - in: query
- *          name: category
- *          example: 1
- *          schema:
- *            type: number
- *        - in: query
- *          name: order
- *          example: "up"
- *          schema:
- *            type: string
- *        - in: query
- *          name: params
- *          example: "TV,SETI,MINISERIES,VARIETY,TALK,COMIC,DOCUMENTARY"
- *          schema:
- *            type: string
- *        - in: query
- *          name: sort
- *          example: "1668495183036,27805"
- *          schema:
- *            type: string
- *        - in: query
- *          name: subtitles
- *          example: ""
- *          schema:
- *            type: string
- *        - in: query
- *          name: year
- *          example: "2019,2019"
- *          schema:
- *            type: string
- *      responses:
- *          200:
- *              description: Success
+ *    summary: Search movie by category
+ *    tags: [Search]
+ *    parameters:
+ *      - in: query
+ *        name: area
+ *        example: 44
+ *        schema:
+ *          type: number
+ *      - in: query
+ *        name: category
+ *        example: 1
+ *        schema:
+ *          type: number
+ *      - in: query
+ *        name: order
+ *        example: "up"
+ *        schema:
+ *          type: string
+ *      - in: query
+ *        name: params
+ *        example: "TV,SETI,MINISERIES,VARIETY,TALK,COMIC,DOCUMENTARY"
+ *        schema:
+ *          type: string
+ *      - in: query
+ *        name: sort
+ *        example: "1668495183036,27805"
+ *        schema:
+ *          type: string
+ *      - in: query
+ *        name: subtitles
+ *        example: ""
+ *        schema:
+ *          type: string
+ *      - in: query
+ *        name: year
+ *        example: "2019,2019"
+ *        schema:
+ *          type: string
+ *    responses:
+ *        200:
+ *            description: Success
  */

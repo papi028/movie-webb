@@ -25,9 +25,9 @@ export default catchAsync(getTopSearchesApi);
  * @swagger
  * /trending:
  *  get:
- *      summary: Get trending movie
- *      tags: [Movie]
- *      responses:
- *          200:
- *            description: Success
+ *    summary: Get trending movie
+ *    tags: [Movie]
+ *    responses:
+ *      200:
+ *        description: Success
  */

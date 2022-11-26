@@ -26,16 +26,16 @@ export default catchAsync(StarInfoApi);
  * @swagger
  * /star:
  *  get:
- *      summary: Get info star
- *      tags: [Star]
- *      parameters:
- *        - in: query
- *          name: starId
- *          required: true
- *          example: 18
- *          schema:
- *            type: number
- *      responses:
- *          200:
- *            description: Success
+ *    summary: Get info star
+ *    tags: [Star]
+ *    parameters:
+ *      - in: query
+ *        name: starId
+ *        required: true
+ *        example: 18
+ *        schema:
+ *          type: number
+ *    responses:
+ *      200:
+ *        description: Success
  */

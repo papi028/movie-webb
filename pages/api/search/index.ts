@@ -43,7 +43,6 @@ export default catchAsync(searchWithKeywordApi);
  *            type: string
  *        - in: query
  *          name: size
- *          required: true
  *          example: 10
  *          schema:
  *            type: number
@@ -58,6 +57,6 @@ export default catchAsync(searchWithKeywordApi);
  *          schema:
  *            type: string
  *      responses:
- *          200:
- *              description: Success
+ *        200:
+ *          description: Success
  */

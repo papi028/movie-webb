@@ -27,16 +27,16 @@ export default catchAsync(NewsDetailsApi);
  * @swagger
  * /news/{id}:
  *  get:
- *      summary: Get details news
- *      tags: [News]
- *      parameters:
- *        - in: path
- *          name: id
- *          required: true
- *          example: 648
- *          schema:
- *            type: number
- *      responses:
- *          200:
- *              description: Success
+ *    summary: Get details news
+ *    tags: [News]
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        example: 648
+ *        schema:
+ *          type: number
+ *    responses:
+ *      200:
+ *        description: Success
  */

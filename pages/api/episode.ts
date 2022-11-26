@@ -76,28 +76,28 @@ export default catchAsync(getEpisodeApi);
  * @swagger
  * /episode:
  *  get:
- *      summary: Get data episode movie
- *      tags: [Movie]
- *      parameters:
- *        - in: query
- *          name: category
- *          required: true
- *          example: 1
- *          schema:
- *            type: number
- *        - in: query
- *          name: id
- *          required: true
- *          example: 23149
- *          schema:
- *            type: number
- *        - in: query
- *          name: episode
- *          required: true
- *          example: 130680
- *          schema:
- *            type: number
- *      responses:
- *          200:
- *              description: Success
+ *    summary: Get data episode movie
+ *    tags: [Movie]
+ *    parameters:
+ *      - in: query
+ *        name: category
+ *        required: true
+ *        example: 1
+ *        schema:
+ *          type: number
+ *      - in: query
+ *        name: id
+ *        required: true
+ *        example: 23149
+ *        schema:
+ *          type: number
+ *      - in: query
+ *        name: episode
+ *        required: true
+ *        example: 130680
+ *        schema:
+ *          type: number
+ *    responses:
+ *      200:
+ *        description: Success
  */

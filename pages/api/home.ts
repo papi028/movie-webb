@@ -70,15 +70,15 @@ export default catchAsync(HomePageApi);
  * @swagger
  * /home:
  *  get:
- *      summary: Get data homepage
- *      tags: [Home]
- *      parameters:
- *        - in: query
- *          name: page
- *          example: 0
- *          schema:
- *            type: number
- *      responses:
- *          200:
- *            description: Success
+ *    summary: Get data homepage
+ *    tags: [Home]
+ *    parameters:
+ *      - in: query
+ *        name: page
+ *        example: 0
+ *        schema:
+ *          type: number
+ *    responses:
+ *      200:
+ *        description: Success
  */

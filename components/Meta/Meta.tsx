@@ -9,8 +9,8 @@ interface MetaProps {
 }
 
 const Meta = ({
-  title = "FilmNet - Watch HD movies online for free - Highest Rated Movies Recommendation",
-  description = "Popular episodes updated quickly,American hot seriesTension, comedy, thriller,Newest hottest dramasall in FilmNet",
+  title = "NetFilm - Watch HD movies online for free - Highest Rated Movies Recommendation",
+  description = "Popular episodes updated quickly,American hot seriesTension, comedy, thriller,Newest hottest dramasall in NetFilm",
   image = `${server}/preview-home.png`,
 }: MetaProps) => {
   console.log("meta render");

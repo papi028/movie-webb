@@ -30,22 +30,21 @@ export default catchAsync(getSuggestApi);
  * @swagger
  * /search/suggest:
  *  get:
- *      summary: Get search suggests by keyword
- *      tags: [Search]
- *      parameters:
- *        - in: query
- *          name: keyword
- *          required: true
- *          example: batman
- *          schema:
- *            type: string
- *        - in: query
- *          name: size
- *          required: true
- *          example: 10
- *          schema:
- *            type: number
- *      responses:
- *          200:
- *              description: Success
+ *    summary: Get search suggests by keyword
+ *    tags: [Search]
+ *    parameters:
+ *      - in: query
+ *        name: keyword
+ *        required: true
+ *        example: batman
+ *        schema:
+ *          type: string
+ *      - in: query
+ *        name: size
+ *        example: 10
+ *        schema:
+ *          type: number
+ *    responses:
+ *      200:
+ *        description: Success
  */

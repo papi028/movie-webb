@@ -13,13 +13,17 @@ import IconLogout from "./IconLogout";
 import IconBell from "./IconBell";
 import Icon3Dot from "./Icon3Dot";
 import IconLike from "./IconLike";
+import IconUser from "./IconUser";
+import IconKeyPassword from "./IconKeyPassword";
 
 export {
   IconStar,
   IconPlay,
   IconUploadImage,
+  IconKeyPassword,
   IconLogout,
   IconBell,
+  IconUser,
   IconTrash,
   IconSearch,
   IconGithub,

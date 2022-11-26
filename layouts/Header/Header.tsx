@@ -1,5 +1,6 @@
 import { CustomLink } from "components/CustomLink";
 import { IconClose, IconMenu, IconSearch } from "components/Icons";
+import { defaultAvatar } from "constants/global";
 import { PATH } from "constants/path";
 import { SearchBox } from "modules/SearchBox";
 import { useRef } from "react";
@@ -68,7 +69,10 @@ const Header = () => {
             {currentUser ? (
               <CustomLink href={PATH.profile} className={styles.avatar}>
                 <picture>
-                  <img src={currentUser?.photoURL} alt={currentUser?.displayName} />
+                  <img
+                    src={currentUser?.photoURL || defaultAvatar}
+                    alt={currentUser?.displayName}
+                  />
                 </picture>
               </CustomLink>
             ) : (

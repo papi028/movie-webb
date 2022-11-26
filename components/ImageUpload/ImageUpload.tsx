@@ -1,5 +1,6 @@
 import { IconTrash, IconUploadImage } from "components/Icons";
 import { ChangeEvent } from "react";
+import classNames from "utils/classNames";
 import styles from "./imageUpload.module.scss";
 
 interface ImageUploadProps {
@@ -18,8 +19,9 @@ const ImageUpload = ({
   handleUploadImage = () => {},
   ...props
 }: ImageUploadProps) => {
+  console.log("image: ", image);
   return (
-    <label className={styles.imageUpload}>
+    <label className={classNames(styles.imageUpload, className)}>
       <input
         type="file"
         name={name}
@@ -46,9 +48,11 @@ const ImageUpload = ({
               }}
             />
           </picture>
-          <button className={styles.buttonDelete} onClick={handleDeleteImage}>
-            <IconTrash />
-          </button>
+          {image && (
+            <button className={styles.buttonDelete} onClick={handleDeleteImage}>
+              <IconTrash />
+            </button>
+          )}
         </div>
       )}
     </label>

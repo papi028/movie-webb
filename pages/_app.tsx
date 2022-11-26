@@ -34,16 +34,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     };
   }, []);
   return (
-    <>
-      <Meta />
-      <ErrorBoundary>
-        <Provider store={store}>
-          <Authentication>
-            <Component {...pageProps} />
-            <Toaster position="top-right" />
-          </Authentication>
-        </Provider>
-      </ErrorBoundary>
-    </>
+    <ErrorBoundary>
+      <Provider store={store}>
+        <Meta />
+        <Authentication>
+          <Component {...pageProps} />
+          <Toaster position="top-right" />
+        </Authentication>
+      </Provider>
+    </ErrorBoundary>
   );
 }

@@ -46,14 +46,14 @@ const ChangePasswordPage = () => {
 
   return (
     <ProtectedRoute>
-      <Meta title="Change password - NetFilm" description="Change password of me" />
+      <Meta title="Password - NetFilm" description="Change password of me" />
       <LayoutPrimary>
         <div className="container">
           <section className={styles.section}>
             <AsideUser />
             <div>
               <h1>Change password</h1>
-              <span className={styles.desc}>Update your account information</span>
+              <span className={styles.desc}>Update your password</span>
               <form autoComplete="off" className={styles.form} onSubmit={handleChangePassword}>
                 <FormGroup>
                   <Label htmlFor="password">Password</Label>

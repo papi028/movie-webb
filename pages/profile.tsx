@@ -7,6 +7,7 @@ import useInputChange from "hooks/useInputChange";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { db } from "libs/firebase-app";
 import { AsideUser } from "modules/AsideUser";
+import { UploadAvatar } from "modules/UploadAvatar";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 import { useAppSelector } from "store/global-store";
@@ -16,7 +17,6 @@ const ProfilePage = () => {
   const { currentUser } = useAppSelector((state) => state.auth);
   const [values, setValues] = useState({
     displayName: currentUser?.displayName || "",
-    photoURL: currentUser?.photoURL || "",
   });
   const { onChange } = useInputChange(values, setValues);
   const handleUpdateProfile = async (e: FormEvent<HTMLFormElement>) => {
@@ -39,30 +39,37 @@ const ProfilePage = () => {
             <div>
               <h1>Account information</h1>
               <span className={styles.desc}>Update your account information</span>
-              <form className={styles.form} onSubmit={handleUpdateProfile}>
-                <FormGroup>
-                  <Label htmlFor="displayName">Fullname</Label>
-                  <Input
-                    type="text"
-                    name="displayName"
-                    value={values.displayName}
-                    placeholder="Fullname"
-                    onChange={onChange}
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <Label htmlFor="password">Change Password</Label>
-                  <Input
-                    name="password"
-                    type="password"
-                    placeholder="New password"
-                    onChange={onChange}
-                  />
-                </FormGroup>
-                <button type="submit" className={styles.submit}>
-                  Update
-                </button>
-              </form>
+              <div className={styles.layout}>
+                <form className={styles.form} onSubmit={handleUpdateProfile}>
+                  <FormGroup>
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      name="email"
+                      type="email"
+                      disabled
+                      placeholder="Input email"
+                      defaultValue={currentUser?.email}
+                      onChange={onChange}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label htmlFor="displayName">Fullname</Label>
+                    <Input
+                      type="text"
+                      name="displayName"
+                      value={values.displayName}
+                      placeholder="Fullname"
+                      onChange={onChange}
+                    />
+                  </FormGroup>
+                  <button type="submit" className={styles.submit}>
+                    Update
+                  </button>
+                </form>
+                <div className={styles.uploadAvatar}>
+                  <UploadAvatar />
+                </div>
+              </div>
             </div>
           </section>
         </div>

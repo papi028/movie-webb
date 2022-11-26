@@ -66,11 +66,11 @@ async function getBanners() {
 
 export default catchAsync(HomePageApi);
 
-/** Lấy dữ liệu trang home
+/** Get data homepage
  * @swagger
  * /home:
  *  get:
- *      summary: Lấy dữ liệu trang home
+ *      summary: Get data homepage
  *      tags: [Home]
  *      parameters:
  *        - in: query

@@ -2,6 +2,7 @@ import { CheckLoggedIn } from "components/Authentication";
 import { CustomLink } from "components/CustomLink";
 import { FormGroup } from "components/FormGroup";
 import { Input } from "components/Input";
+import { InputPassword } from "components/InputPassword";
 import { Label } from "components/Label";
 import { PATH } from "constants/path";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -46,7 +47,12 @@ const SignInPage = () => {
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="password">Password</Label>
-                <Input name="password" type="password" placeholder="Password" onChange={onChange} />
+                <InputPassword
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  onChange={onChange}
+                />
               </FormGroup>
               <button type="submit" className={classNames(styles.button, styles.buttonLarge)}>
                 Sign In

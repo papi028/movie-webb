@@ -1,6 +1,6 @@
 import { ProtectedRoute } from "components/Authentication";
 import { FormGroup } from "components/FormGroup";
-import { Input } from "components/Input";
+import { InputPassword } from "components/InputPassword";
 import { Label } from "components/Label";
 import { Meta } from "components/Meta";
 import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "firebase/auth";
@@ -57,7 +57,7 @@ const ChangePasswordPage = () => {
               <form autoComplete="off" className={styles.form} onSubmit={handleChangePassword}>
                 <FormGroup>
                   <Label htmlFor="password">Password</Label>
-                  <Input
+                  <InputPassword
                     name="password"
                     placeholder="Input password"
                     onChange={onChange}
@@ -66,7 +66,7 @@ const ChangePasswordPage = () => {
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="newPassword">New password</Label>
-                  <Input
+                  <InputPassword
                     name="newPassword"
                     placeholder="Input new password"
                     onChange={onChange}
@@ -75,7 +75,7 @@ const ChangePasswordPage = () => {
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="confirmPassword">Confirm new password</Label>
-                  <Input
+                  <InputPassword
                     name="confirmPassword"
                     placeholder="Input confirm new password"
                     onChange={onChange}

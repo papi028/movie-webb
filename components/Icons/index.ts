@@ -15,11 +15,15 @@ import Icon3Dot from "./Icon3Dot";
 import IconLike from "./IconLike";
 import IconUser from "./IconUser";
 import IconKeyPassword from "./IconKeyPassword";
+import IconHiddenPassword from "./IconHiddenPassword";
+import IconShowPassword from "./IconShowPassword";
 
 export {
   IconStar,
   IconPlay,
   IconUploadImage,
+  IconHiddenPassword,
+  IconShowPassword,
   IconKeyPassword,
   IconLogout,
   IconBell,

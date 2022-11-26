@@ -1,14 +1,13 @@
 import { Image } from "components/Image";
+import { TextArea } from "components/Textarea";
 import { defaultAvatar } from "constants/global";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "libs/firebase-app";
 import { useRouter } from "next/router";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { v4 as uuidv4 } from "uuid";
 import { useAppSelector } from "store/global-store";
 import styles from "./commentAddNew.module.scss";
-import { TextArea } from "components/Textarea";
 
 const CommentAddNew = () => {
   const router = useRouter();
@@ -57,7 +56,7 @@ const CommentAddNew = () => {
       <div className={styles.addNew}>
         <Image
           className={styles.avatar}
-          src={currentUser?.photoURL as string}
+          src={currentUser?.photoURL || defaultAvatar}
           alt={currentUser?.displayName}
         />
         <TextArea

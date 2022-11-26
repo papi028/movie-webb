@@ -14,6 +14,7 @@ import { Provider } from "react-redux";
 import { store } from "store/global-store";
 import Modal from "react-modal";
 import { Authentication } from "components/Authentication";
+import { ButtonScrollToTop } from "components/ButtonScrollToTop";
 
 Modal.setAppElement("#__next");
 Modal.defaultStyles = {
@@ -40,6 +41,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Authentication>
           <Component {...pageProps} />
           <Toaster position="top-right" />
+          <ButtonScrollToTop />
         </Authentication>
       </Provider>
     </ErrorBoundary>

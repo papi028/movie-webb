@@ -75,6 +75,7 @@ export default catchAsync(HomePageApi);
  *      parameters:
  *        - in: query
  *          name: page
+ *          example: 0
  *          schema:
  *            type: number
  *      responses:

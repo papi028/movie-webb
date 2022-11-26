@@ -39,3 +39,20 @@ const discoveryApi = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 export default catchAsync(discoveryApi);
+
+/** Get videos discovery
+ * @swagger
+ * /discovery:
+ *  get:
+ *      summary: Get videos discovery
+ *      tags: [Discovery]
+ *      parameters:
+ *        - in: query
+ *          name: page
+ *          example: 0
+ *          schema:
+ *            type: number
+ *      responses:
+ *          200:
+ *            description: Success
+ */

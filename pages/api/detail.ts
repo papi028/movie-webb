@@ -24,3 +24,27 @@ const getMovieDetailsPageApi = async (req: NextApiRequest, res: NextApiResponse)
 };
 
 export default catchAsync(getMovieDetailsPageApi);
+
+/** Get data detail movie
+ * @swagger
+ * /detail:
+ *  get:
+ *      summary: Get data detail movie
+ *      tags: [Movie]
+ *      parameters:
+ *        - in: query
+ *          name: category
+ *          required: true
+ *          example: 1
+ *          schema:
+ *            type: number
+ *        - in: query
+ *          name: id
+ *          required: true
+ *          example: 23149
+ *          schema:
+ *            type: number
+ *      responses:
+ *          200:
+ *              description: Success
+ */

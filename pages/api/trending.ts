@@ -20,3 +20,14 @@ const getTopSearchesApi = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 export default catchAsync(getTopSearchesApi);
+
+/** Get trending movie
+ * @swagger
+ * /trending:
+ *  get:
+ *      summary: Get trending movie
+ *      tags: [Movie]
+ *      responses:
+ *          200:
+ *            description: Success
+ */

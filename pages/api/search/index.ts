@@ -27,3 +27,37 @@ const searchWithKeywordApi = async (req: NextApiRequest, res: NextApiResponse) =
 };
 
 export default catchAsync(searchWithKeywordApi);
+
+/** Search movie by keyword
+ * @swagger
+ * /search:
+ *  get:
+ *      summary: Search movie by keyword
+ *      tags: [Search]
+ *      parameters:
+ *        - in: query
+ *          name: keyword
+ *          required: true
+ *          example: batman
+ *          schema:
+ *            type: string
+ *        - in: query
+ *          name: size
+ *          required: true
+ *          example: 10
+ *          schema:
+ *            type: number
+ *        - in: query
+ *          name: sort
+ *          example: ""
+ *          schema:
+ *            type: string
+ *        - in: query
+ *          name: searchType
+ *          example: ""
+ *          schema:
+ *            type: string
+ *      responses:
+ *          200:
+ *              description: Success
+ */

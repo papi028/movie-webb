@@ -21,3 +21,21 @@ const StarInfoApi = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 export default catchAsync(StarInfoApi);
+
+/** Get info star
+ * @swagger
+ * /star:
+ *  get:
+ *      summary: Get info star
+ *      tags: [Star]
+ *      parameters:
+ *        - in: query
+ *          name: starId
+ *          required: true
+ *          example: 18
+ *          schema:
+ *            type: number
+ *      responses:
+ *          200:
+ *            description: Success
+ */

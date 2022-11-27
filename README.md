@@ -3,7 +3,7 @@ A Website To Watch HD Movies, Anime And TV Online For Free Using NextJS
 
 ## Overview
 
- - Official website: https://netcomic.vercel.app
+ - Official website: https://net-film.vercel.app
 -  Author: Nguyễn Hoàng Lâm ( [@lamhoang1256](https://github.com/lamhoang1256) )
 
 ## Preview
@@ -27,11 +27,21 @@ A Website To Watch HD Movies, Anime And TV Online For Free Using NextJS
 - Next-swagger-doc, swagger-ui-react (Document API)
 - Cheerio (Crawl data from website Loklok)
 - react-hls-player (Media player video m3u8)
-- Other: react-modal, query-string, uuidv4, ...
+- Other: query-string, uuidv4, ...
 
 ## Features
 
-- Updating
+- Full HD movies with subtitles in many languages
+- Suggested movies you may like
+- Skeleton loading, infinite scrolling movie at Home page and Explore page
+- Search movie by name, with suggestion keywords, filter movie by type (category, area, year,...)
+- Profile page: allowing to change profile photo avatar, fullname, password.
+- Comment: allowing to give reactions, see who reacts to a comment, edit and delete comment.
+- Discovery movie trailer (Short videos like TikTok)
+- Save history you watch, follow movie you like
+- View information of the actors in the movie
+- Read latest breaking movie news
+- Optimize SEO and Responsive on many devices
 
 ## Environment Variables
 

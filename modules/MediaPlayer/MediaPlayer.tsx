@@ -3,22 +3,19 @@ const ReactHlsPlayer = dynamic(() => import("react-hls-player"), {
 });
 import { IQuality, ISubtitle } from "@types";
 import dynamic from "next/dynamic";
-import { HlsPlayerProps } from "react-hls-player";
 import { Player } from "react-tuby";
 import "react-tuby/css/main.css";
 
-interface MediaPlayerProps extends Partial<HlsPlayerProps> {
+interface MediaPlayerProps {
   subtitles: ISubtitle[];
   qualities: IQuality[];
   poster: string;
 }
 
-const MediaPlayer = ({ subtitles, qualities, poster, ...HlsProps }: MediaPlayerProps) => {
+const MediaPlayer = ({ subtitles, qualities, poster }: MediaPlayerProps) => {
   return (
     <Player src={qualities} subtitles={subtitles}>
-      {(ref, props) => (
-        <ReactHlsPlayer {...props} {...HlsProps} playerRef={ref} autoPlay={false} poster={poster} />
-      )}
+      {(ref, props) => <ReactHlsPlayer playerRef={ref} {...props} autoPlay poster={poster} />}
     </Player>
   );
 };

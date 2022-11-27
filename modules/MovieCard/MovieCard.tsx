@@ -6,13 +6,8 @@ import { PATH } from "constants/path";
 import { MovieTitle } from "modules/MovieTitle";
 import styles from "./movieCard.module.scss";
 
-const MovieCard = ({
-  id,
-  domainType,
-  title,
-  poster,
-  href = `${PATH.watch}/${domainType}/${id}`,
-}: IMovieCard) => {
+const MovieCard = ({ id, domainType, title, poster }: IMovieCard) => {
+  const href = `${PATH.watch}/${domainType}/${id}`;
   return (
     <div className={styles.movieCard}>
       <CustomLink href={href} className={styles.movieCardMedia}>

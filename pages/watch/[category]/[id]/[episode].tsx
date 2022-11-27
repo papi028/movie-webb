@@ -4,7 +4,6 @@ import axiosClient from "configs/axiosClient";
 import { resizeImageLoklok } from "constants/global";
 import useSaveHistoryView from "hooks/useSaveHistoryView";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
-import { CommentList } from "modules/CommentList";
 import { MediaPlayer } from "modules/MediaPlayer";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
@@ -66,9 +65,6 @@ const WatchMoviePage = ({ data }: WatchMoviePageProps) => {
             <WatchAnthology detailMovie={data} />
             <RelatedSeries refList={data.refList} />
           </div>
-        </div>
-        <div className={styles.layoutMain}>
-          <CommentList />
         </div>
         <MovieList heading="You may like">
           {data.likeList.map((movie: any) => (

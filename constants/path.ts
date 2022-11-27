@@ -15,7 +15,6 @@ export const PATH = {
   signIn: "/sign-in",
   signUp: "/sign-up",
   changePassword: "/change-password",
-  togetherCreate: "/together/create",
   userManage: "/manage/user",
   projectGithub: "https://github.com/lamhoang1256/netfilm",
 };

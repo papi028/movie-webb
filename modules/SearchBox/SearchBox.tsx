@@ -23,6 +23,7 @@ const SearchBox = ({ className = "" }: SearchBoxProps) => {
     setSuggests(data);
   };
   const handleChangeKeyword = async (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.value) return;
     setKeyword(e.target.value);
   };
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

@@ -4,6 +4,7 @@ import { server } from "configs/server";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "libs/firebase-app";
 import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 import { setFollows } from "store/follow.slice";
 import { useAppDispatch, useAppSelector } from "store/global-store";
 import classNames from "utils/classNames";
@@ -26,11 +27,13 @@ const WatchActions = ({ id, domainType, title, poster }: IMovieCard) => {
       const newFollows = follows.filter((movie) => movie.id !== id);
       await updateDoc(colRef, { follows: newFollows });
       dispatch(setFollows(newFollows));
+      toast.success("This film is removed from your follows");
       return;
     }
     const newFollows = [{ id, domainType, title, poster }, ...follows];
     await updateDoc(colRef, { follows: newFollows });
     dispatch(setFollows(newFollows));
+    toast.success("This movie is now followed");
   };
   return (
     <div className={styles.actions}>

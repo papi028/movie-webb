@@ -51,4 +51,10 @@ NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
 NEXT_PUBLIC_FIREBASE_APP_ID= 
 ```
 
+## Deployment
+
+- Create a new project on the vercel dashboard -> Add Environment Variables from .env.example
+- Go to Settings -> Functions  -> Function Region -> Change the region to "Sydney, Australia"
+- Redeploy the project
+
 ### 👉 If you like this project, give it a star ✨ and share 👨🏻‍💻 it to your friends 👈

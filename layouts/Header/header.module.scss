@@ -73,7 +73,7 @@
   flex-shrink: 0;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #333;
+  background-color: var(--gray33);
   border: 2px solid hsla(0, 0%, 100%, 0.12);
   img {
     width: 37px;

@@ -6,7 +6,7 @@
   object-position: center;
   height: 450px;
   min-height: 200px;
-  background-color: #333;
+  background-color: var(--gray33);
   @media screen and (max-width: 1023.98px) {
     height: 40vw;
   }

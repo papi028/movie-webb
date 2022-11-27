@@ -8,7 +8,7 @@ A Website To Watch HD Movies, Anime And TV Online For Free Using NextJS
 
 ## Preview
 
-![preview-home](https://user-images.githubusercontent.com/61537853/204072011-651a0c31-77d8-4315-ba98-4aeaba86c405.png)
+![preview-home](https://user-images.githubusercontent.com/61537853/204119646-1b445457-ed6f-4f25-b373-e4e8d9b49d9a.png)
 
 ## Resources
 

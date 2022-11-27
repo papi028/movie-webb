@@ -47,12 +47,7 @@ const SignInPage = () => {
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="password">Password</Label>
-                <InputPassword
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  onChange={onChange}
-                />
+                <InputPassword name="password" placeholder="Password" onChange={onChange} />
               </FormGroup>
               <button type="submit" className={classNames(styles.button, styles.buttonLarge)}>
                 Sign In

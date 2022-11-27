@@ -44,7 +44,7 @@ export default catchAsync(discoveryApi);
  * @swagger
  * /discovery:
  *  get:
- *    summary: Get videos discovery
+ *    summary: Get videos discovery same tiktok video
  *    tags: [Discovery]
  *    parameters:
  *      - in: query

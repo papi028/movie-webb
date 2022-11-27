@@ -18,7 +18,7 @@ const ApiDoc = ({ spec }: InferGetStaticPropsType<typeof getStaticProps>) => {
   }, []);
   return (
     <>
-      <Meta title="NetFilm Api" description="A api comic crawled from website LokLok" />
+      <Meta title="NetFilm Api" description="A api NetFilm from LokLok app" />
       <SwaggerUI spec={spec} />
     </>
   );
@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async () => {
       info: {
         title: "NetFilm Api",
         version: "1.0.0",
-        description: "A api comic crawled from website LokLok",
+        description: "A api NetFilm from LokLok app",
       },
     },
   });

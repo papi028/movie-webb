@@ -69,18 +69,12 @@ const SignUpPage = () => {
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="password">Password</Label>
-                <InputPassword
-                  name="password"
-                  type="password"
-                  placeholder="Min 8 characters"
-                  onChange={onChange}
-                />
+                <InputPassword name="password" placeholder="Min 8 characters" onChange={onChange} />
               </FormGroup>
               <FormGroup>
                 <Label htmlFor="confirmPassword">Re-password</Label>
                 <InputPassword
                   name="confirmPassword"
-                  type="password"
                   placeholder="Min 8 characters"
                   onChange={onChange}
                 />

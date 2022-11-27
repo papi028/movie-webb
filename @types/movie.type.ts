@@ -116,6 +116,7 @@ export interface IMovieCard {
   title: string;
   domainType: number;
   poster: string;
+  href?: string;
 }
 
 export interface ICommentReaction {

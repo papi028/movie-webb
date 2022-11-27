@@ -7,3 +7,4 @@ export * from "./news.type";
 export * from "./video.type";
 export * from "./star.type";
 export * from "./user.type";
+export * from "./room.type";

@@ -10,7 +10,7 @@ interface MetaProps {
 
 const Meta = ({
   title = "NetFilm - Watch HD movies online for free - Highest Rated Movies Recommendation",
-  description = "Popular episodes updated quickly,American hot seriesTension, comedy, thriller,Newest hottest dramasall in NetFilm",
+  description = "Popular episodes updated quickly, American hot series Tension, comedy, thriller,Newest hottest dramasall in NetFilm",
   image = `${server}/preview-home.png`,
 }: MetaProps) => {
   const router = useRouter();

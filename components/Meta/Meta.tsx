@@ -13,7 +13,6 @@ const Meta = ({
   description = "Popular episodes updated quickly,American hot seriesTension, comedy, thriller,Newest hottest dramasall in NetFilm",
   image = `${server}/preview-home.png`,
 }: MetaProps) => {
-  console.log("meta render");
   const router = useRouter();
   return (
     <Head>

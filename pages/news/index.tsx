@@ -1,4 +1,5 @@
 import { INewsCard } from "@types";
+import { Meta } from "components/Meta";
 import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { CheckInView } from "modules/CheckInView";
@@ -33,6 +34,7 @@ const NewsPage = ({ initialNews }: NewsPageProps) => {
   }, [setSize]);
   return (
     <LayoutPrimary>
+      <Meta title="News - NetFilm" />
       <div className="container">
         <NewsList>
           {initialNews.map((item) => (

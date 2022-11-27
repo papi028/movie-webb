@@ -4,6 +4,7 @@ import { FormGroup } from "components/FormGroup";
 import { Input } from "components/Input";
 import { InputPassword } from "components/InputPassword";
 import { Label } from "components/Label";
+import { Meta } from "components/Meta";
 import { PATH } from "constants/path";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import useInputChange from "hooks/useInputChange";
@@ -35,6 +36,7 @@ const SignInPage = () => {
   };
   return (
     <CheckLoggedIn>
+      <Meta title="Sign In - NetFilm" />
       <div className={styles.section}>
         <div className={styles.container}>
           <form onSubmit={handleSignIn}>

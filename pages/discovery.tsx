@@ -1,5 +1,6 @@
 import { IDiscovery } from "@types";
 import { LoadingSpinner } from "components/Loading";
+import { Meta } from "components/Meta";
 import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { CheckInView } from "modules/CheckInView";
@@ -33,6 +34,7 @@ const DiscoveryPage = ({ initialVideos }: DiscoveryPageProps) => {
   }, [setSize]);
   return (
     <LayoutPrimary>
+      <Meta title="Discovery - NetFilm" />
       <div className="container">
         <div className="wrapper">
           {initialVideos.map((video) => (

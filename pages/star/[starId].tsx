@@ -7,6 +7,7 @@ import { MovieList } from "modules/MovieList";
 import { GetServerSidePropsContext } from "next";
 import { Image } from "components/Image";
 import styles from "styles/star.module.scss";
+import { Meta } from "components/Meta";
 
 interface StarInfoPageProps {
   data: IStarInfo;
@@ -14,39 +15,42 @@ interface StarInfoPageProps {
 
 const StarInfoPage = ({ data }: StarInfoPageProps) => {
   return (
-    <LayoutPrimary>
-      <div className="container">
-        <div className={styles.header}>
-          <div className={styles.avatar}>
-            <Image src={data.bgPhotos} width={150} height={150} alt={data.localName} />
+    <>
+      <Meta title={`${data.localName} - NetFilm`} />
+      <LayoutPrimary>
+        <div className="container">
+          <div className={styles.header}>
+            <div className={styles.avatar}>
+              <Image src={data.bgPhotos} width={150} height={150} alt={data.localName} />
+            </div>
+            <div className={styles.info}>
+              <h1>{data.localName}</h1>
+              <TextToggleMore countLetter={500}>{data.introduction}</TextToggleMore>
+            </div>
           </div>
-          <div className={styles.info}>
-            <h1>{data.localName}</h1>
-            <TextToggleMore countLetter={500}>{data.introduction}</TextToggleMore>
-          </div>
+          <MovieList>
+            {data.dramaList.map((movie) => (
+              <MovieCard
+                key={movie.contentId}
+                id={movie.contentId}
+                domainType={movie.category}
+                poster={movie.coverVerticalUrl}
+                title={movie.name}
+              />
+            ))}
+            {data.movieList.map((movie) => (
+              <MovieCard
+                key={movie.contentId}
+                id={movie.contentId}
+                domainType={movie.category}
+                poster={movie.coverVerticalUrl}
+                title={movie.name}
+              />
+            ))}
+          </MovieList>
         </div>
-        <MovieList>
-          {data.dramaList.map((movie) => (
-            <MovieCard
-              key={movie.contentId}
-              id={movie.contentId}
-              domainType={movie.category}
-              poster={movie.coverVerticalUrl}
-              title={movie.name}
-            />
-          ))}
-          {data.movieList.map((movie) => (
-            <MovieCard
-              key={movie.contentId}
-              id={movie.contentId}
-              domainType={movie.category}
-              poster={movie.coverVerticalUrl}
-              title={movie.name}
-            />
-          ))}
-        </MovieList>
-      </div>
-    </LayoutPrimary>
+      </LayoutPrimary>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import { INewsDetails } from "@types";
+import { Meta } from "components/Meta";
 import axiosClient from "configs/axiosClient";
 import { PATH } from "constants/path";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
@@ -23,6 +24,7 @@ const NewsDetailsPage = ({ news }: NewsDetailsPageProps) => {
   }, []);
   return (
     <LayoutPrimary>
+      <Meta title={`${news.title} - NetFilm`} />
       <div className="container">
         <article className={styles.article}>
           <h1 dangerouslySetInnerHTML={{ __html: news.title }} />

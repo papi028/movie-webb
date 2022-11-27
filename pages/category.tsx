@@ -1,4 +1,5 @@
 import { ICategoryResult, IFilter } from "@types";
+import { Meta } from "components/Meta";
 import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { CheckInView } from "modules/CheckInView";
@@ -48,6 +49,7 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
   }, [setSize]);
   return (
     <LayoutPrimary>
+      <Meta title="Category - NetFilm" />
       <div className="container">
         <h3>{nameCategory}</h3>
         {(movies?.flat()?.length as number) > 0 ? (

@@ -1,4 +1,5 @@
 import { IMovieSearch } from "@types";
+import { Meta } from "components/Meta";
 import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MovieCard } from "modules/MovieCard";
@@ -14,6 +15,7 @@ interface SearchPageProps {
 const SearchPage = ({ results, keyword }: SearchPageProps) => {
   return (
     <LayoutPrimary>
+      <Meta title={`${keyword || "Search"} - NetFilm`} />
       <div className="container">
         <SearchBox className="searchBox-large" />
         <MovieList heading={keyword && `Keyword: ${keyword}`}>

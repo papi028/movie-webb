@@ -7,6 +7,7 @@ import { MovieTitle } from "modules/MovieTitle";
 import { Image } from "components/Image";
 import { useEffect, useState } from "react";
 import styles from "styles/history.module.scss";
+import { Meta } from "components/Meta";
 
 const HistoryPage = () => {
   const [loading, setLoading] = useState(true);
@@ -22,6 +23,7 @@ const HistoryPage = () => {
   }, []);
   return (
     <LayoutPrimary>
+      <Meta title="History - NetFilm" />
       <div className="container">
         {loading ? (
           <MovieListSkeleton count={6} />

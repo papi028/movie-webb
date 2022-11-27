@@ -2,6 +2,7 @@ import { ProtectedRoute } from "components/Authentication";
 import { FormGroup } from "components/FormGroup";
 import { Input } from "components/Input";
 import { Label } from "components/Label";
+import { Meta } from "components/Meta";
 import { doc, updateDoc } from "firebase/firestore";
 import useInputChange from "hooks/useInputChange";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
@@ -32,6 +33,7 @@ const ProfilePage = () => {
   };
   return (
     <ProtectedRoute>
+      <Meta title="Profile - NetFilm" />
       <LayoutPrimary>
         <div className="container">
           <section className={styles.section}>

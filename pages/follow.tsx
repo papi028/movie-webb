@@ -1,3 +1,4 @@
+import { Meta } from "components/Meta";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
@@ -7,6 +8,7 @@ const FollowPage = () => {
   const { follows } = useAppSelector((state) => state.follow);
   return (
     <LayoutPrimary>
+      <Meta title="Follow - NetFilm" />
       <div className="container">
         <MovieList>
           {follows.map((movie) => (

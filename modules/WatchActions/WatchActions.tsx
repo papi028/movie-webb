@@ -27,7 +27,7 @@ const WatchActions = ({ id, domainType, title, poster }: IMovieCard) => {
       const newFollows = follows.filter((movie) => movie.id !== id);
       await updateDoc(colRef, { follows: newFollows });
       dispatch(setFollows(newFollows));
-      toast.success("This film is removed from your follows");
+      toast.success("This movie is removed from your follows");
       return;
     }
     const newFollows = [{ id, domainType, title, poster }, ...follows];

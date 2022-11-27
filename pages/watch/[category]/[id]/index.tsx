@@ -28,7 +28,7 @@ const WatchTVPage = ({ data }: WatchTVPageProps) => {
   return (
     <LayoutPrimary>
       <Meta
-        title={`${data.name} - NetFilm Watch HD movies online for free`}
+        title={`${data.name} - NetFilm`}
         description={data.introduction}
         image={resizeImageLoklok(data.coverHorizontalUrl, 800, 418)}
       />

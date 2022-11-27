@@ -4,6 +4,7 @@ import { FormGroup } from "components/FormGroup";
 import { Input } from "components/Input";
 import { InputPassword } from "components/InputPassword";
 import { Label } from "components/Label";
+import { Meta } from "components/Meta";
 import { userRole, userStatus } from "constants/global";
 import { PATH } from "constants/path";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -57,6 +58,7 @@ const SignUpPage = () => {
   };
   return (
     <CheckLoggedIn>
+      <Meta title="Sign Up - NetFilm" />
       <div className={styles.section}>
         <div className={styles.container}>
           <form onSubmit={handleSignUp}>

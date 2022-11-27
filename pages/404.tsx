@@ -1,9 +1,11 @@
+import { Meta } from "components/Meta";
 import { PATH } from "constants/path";
 import Link from "next/link";
 
 const PageNotFound = () => {
   return (
     <div className="page">
+      <Meta title="Page Not Found - NetFilm" />
       <h1 className="heading text-gradient">404</h1>
       <h2 className="title">Something is not right</h2>
       <p className="description">We can not find the page you are looking for.</p>

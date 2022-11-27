@@ -10,6 +10,7 @@ import { GetServerSidePropsContext } from "next";
 import { useCallback, useState } from "react";
 import useSWRInfinite from "swr/infinite";
 import queryString from "query-string";
+import { Meta } from "components/Meta";
 
 interface ExplorePageProps {
   filters: IFilter[];
@@ -54,6 +55,7 @@ const ExplorePage = ({ filters, results }: ExplorePageProps) => {
   }, [setSize]);
   return (
     <LayoutPrimary>
+      <Meta title="Explore - NetFilm" />
       <div className="container">
         <MovieList>
           <Dropdown placeholder="All type">

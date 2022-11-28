@@ -34,7 +34,7 @@ const PageNotFound = () => {
           font-weight: 700;
         }
         .description {
-          color: #c4c1ea;
+          color: var(--grayc4);
           font-size: 1.9rem;
         }
         .goback {

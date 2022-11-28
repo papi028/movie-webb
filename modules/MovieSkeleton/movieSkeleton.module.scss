@@ -4,20 +4,20 @@
 .poster {
   max-width: 190px;
   height: 266px;
-  background-color: #333;
+  background-color: var(--dark33);
   border-radius: 6px;
 }
 .heading {
   margin: 20px 0;
   width: 200px;
   height: 28px;
-  background-color: #333;
+  background-color: var(--dark33);
   border-radius: 4px;
 }
 .title {
   margin-top: 10px;
   height: 29px;
-  background-color: #333;
+  background-color: var(--dark33);
   max-width: 190px;
   border-radius: 4px;
 }

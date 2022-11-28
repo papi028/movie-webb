@@ -2,34 +2,28 @@ import { CheckLoggedIn } from "components/Authentication";
 import { CustomLink } from "components/CustomLink";
 import { FormGroup } from "components/FormGroup";
 import { Input } from "components/Input";
-import { InputPassword } from "components/InputPassword";
 import { Label } from "components/Label";
 import { Meta } from "components/Meta";
 import { PATH } from "constants/path";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import useInputChange from "hooks/useInputChange";
+import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "libs/firebase-app";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 import styles from "styles/auth.module.scss";
 import classNames from "utils/classNames";
 
-const SignInPage = () => {
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-  });
-  const { onChange } = useInputChange(values, setValues);
-  const handleSignIn = async (e: FormEvent<HTMLFormElement>) => {
+const ResetPasswordPage = () => {
+  const [email, setEmail] = useState("");
+  const handleResetPassword = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const isAllInputFilled = Object.values(values).every((value) => value !== "");
-    if (!isAllInputFilled) {
-      toast.error("Please fill all inputs!");
+    if (!email) {
+      toast.error("Please input email!");
       return;
     }
     try {
-      await signInWithEmailAndPassword(auth, values.email, values.password);
-      toast.success("Sign in successfully!");
+      e.preventDefault();
+      await sendPasswordResetEmail(auth, email);
+      toast.success("Reset link has been sent, please check your email!");
     } catch (error: any) {
       toast.error(error.message);
     }
@@ -39,17 +33,17 @@ const SignInPage = () => {
       <Meta title="Sign In - NetFilm" />
       <div className={styles.section}>
         <div className={styles.container}>
-          <form onSubmit={handleSignIn}>
-            <h1 className={styles.heading}>Welcome to Netfilm</h1>
-            <span className={styles.label}>SignIn to continue</span>
+          <form onSubmit={handleResetPassword}>
+            <h1 className={styles.heading}>Reset password</h1>
             <div className={styles.main}>
               <FormGroup>
                 <Label htmlFor="email">Email</Label>
-                <Input name="email" type="email" placeholder="Email" onChange={onChange} />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlFor="password">Password</Label>
-                <InputPassword name="password" placeholder="Password" onChange={onChange} />
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </FormGroup>
               <button type="submit" className={classNames(styles.button, styles.buttonLarge)}>
                 Sign In
@@ -58,9 +52,6 @@ const SignInPage = () => {
             <div className={styles.alreadyAccount}>
               Do not have an account? <CustomLink href={PATH.signUp}>Sign Up Here</CustomLink>
             </div>
-            <CustomLink href={PATH.resetPassword} className={styles.forgot}>
-              Forgot password?
-            </CustomLink>
           </form>
         </div>
       </div>
@@ -68,4 +59,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default ResetPasswordPage;

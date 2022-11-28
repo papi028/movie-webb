@@ -21,6 +21,7 @@
 .container {
   position: relative;
   max-width: 500px;
+  width: 100%;
   padding: 50px 60px;
   background-color: var(--dark);
   border-radius: 10px;
@@ -91,6 +92,12 @@
   a {
     color: blue;
   }
+}
+.forgot {
+  padding-top: 10px;
+  color: var(--grayc4);
+  text-align: center;
+  display: block;
 }
 @media screen and (max-width: 767.98px) {
   .container {

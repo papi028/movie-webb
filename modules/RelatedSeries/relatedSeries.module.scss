@@ -22,7 +22,7 @@
 .relatedThumb img {
   border-radius: 4px;
   transition: all 0.25s linear;
-  background: #333;
+  background: var(--dark33);
 }
 .relatedInfo {
   flex: 1;

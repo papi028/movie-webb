@@ -7,7 +7,7 @@
   flex-shrink: 0;
   img {
     object-fit: cover;
-    background-color: #333;
+    background-color: var(--dark33);
     border-radius: 50%;
   }
 }

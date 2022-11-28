@@ -88,6 +88,9 @@ const SignUpPage = () => {
             <div className={styles.alreadyAccount}>
               Have an account? <CustomLink href={PATH.signIn}>Sign In Here</CustomLink>
             </div>
+            <CustomLink href={PATH.resetPassword} className={styles.forgot}>
+              Forgot password?
+            </CustomLink>
           </form>
         </div>
       </div>

@@ -74,8 +74,9 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
  <summary>Home page</summary>
  <p>
 
- </p>![home](https://user-images.githubusercontent.com/61537853/204232492-0ac367a2-26bd-4f56-8805-c9e0e126edb8.png)
+![home](https://user-images.githubusercontent.com/61537853/204232492-0ac367a2-26bd-4f56-8805-c9e0e126edb8.png)
 
+ </p>
 </details>
 
 <details>
@@ -89,8 +90,9 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 <details>
  <summary>Search Page</summary>
  <p>
+ 
+![search](https://user-images.githubusercontent.com/61537853/204234288-3b141675-968d-4b02-9e5c-b4ebdbddc9fd.png)
 
-![search](https://user-images.githubusercontent.com/61537853/204232669-eb1369f1-f821-4701-9258-05589e2dc47e.png)
 </details>
 
 <details>

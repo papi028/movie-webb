@@ -16,7 +16,7 @@ const NewsDetailsApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const content = data.content.replace(/LOKLOK/g, "Netfilm");
   const response = {
     message: "Get news details successfully!",
-    data: { ...data, content },
+    data: { ...data, content }
   };
   responseSuccess(res, response);
 };

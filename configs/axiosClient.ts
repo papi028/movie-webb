@@ -2,7 +2,7 @@ import axios from "axios";
 import { server } from "./server";
 
 const axiosClient = axios.create({
-  baseURL: server,
+  baseURL: server
 });
 
 axiosClient.interceptors.response.use(

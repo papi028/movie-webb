@@ -18,7 +18,7 @@ const DiscoveryPage = ({ initialVideos }: DiscoveryPageProps) => {
   const {
     data: videos,
     error,
-    setSize,
+    setSize
   } = useSWRInfinite(
     getApiUrl,
     async (apiUrl: string) => {
@@ -58,8 +58,8 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   const { data } = await axiosClient.get(`/api/discovery`, { params: query });
   return {
     props: {
-      initialVideos: data,
-    },
+      initialVideos: data
+    }
   };
 };
 

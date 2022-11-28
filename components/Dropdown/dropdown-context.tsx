@@ -7,7 +7,7 @@ import {
   useContext,
   useMemo,
   useRef,
-  useState,
+  useState
 } from "react";
 
 interface IDropdownContext {

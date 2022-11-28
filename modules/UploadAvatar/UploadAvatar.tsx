@@ -14,7 +14,7 @@ const UploadAvatar = () => {
     if (!currentUser) return;
     const colRef = doc(db, "users", currentUser.uid);
     await updateDoc(colRef, {
-      photoURL: "",
+      photoURL: ""
     });
     setAvatar("");
   };

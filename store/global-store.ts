@@ -6,9 +6,9 @@ import followSlice from "./follow.slice";
 export const store = configureStore({
   reducer: {
     auth: authSlice,
-    follow: followSlice,
+    follow: followSlice
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false })
 });
 
 export type RootState = ReturnType<typeof store.getState>;

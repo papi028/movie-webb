@@ -11,5 +11,5 @@ export const PATH_API = {
   searchSuggest: "/search/searchLenovo",
   media: "/media/previewInfo",
   loklok: "https://loklok.com",
-  srtToVtt: "https://convert-srt-to-vtt.vercel.app/?url=",
+  srtToVtt: "https://convert-srt-to-vtt.vercel.app/?url="
 };

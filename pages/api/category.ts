@@ -15,7 +15,7 @@ const searchWithCategoryApi = async (req: NextApiRequest, res: NextApiResponse) 
     params = "",
     sort = "",
     subtitles = "",
-    year = "",
+    year = ""
   } = query;
   if (method !== "GET") {
     const error = new ApiError(STATUS.METHOD_NOT_ALLOWED, "Method not allowed");
@@ -29,12 +29,12 @@ const searchWithCategoryApi = async (req: NextApiRequest, res: NextApiResponse) 
     size,
     sort,
     subtitles,
-    year,
+    year
   });
   const { data: filters } = await axiosLoklok(PATH_API.genres);
   const response = {
     message: "Get search by category successfully!",
-    data: { filters, results: data.searchResults },
+    data: { filters, results: data.searchResults }
   };
   responseSuccess(res, response);
 };

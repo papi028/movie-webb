@@ -13,7 +13,7 @@ interface HomeBannerProps {
 
 const stylesSwiper = {
   borderRadius: "8px",
-  overflow: "hidden",
+  overflow: "hidden"
 };
 
 const HomeBanner = ({ banners }: HomeBannerProps) => {

@@ -38,7 +38,7 @@ const CommentItem = ({ comment }: CommentItemProps) => {
         userId: currentUser.uid,
         avatar: currentUser.photoURL || defaultAvatar,
         fullname: currentUser.displayName,
-        reaction: value,
+        reaction: value
       });
       await updateDoc(colRef, { reactions: comment.reactions });
       setEmoji(value);
@@ -60,7 +60,7 @@ const CommentItem = ({ comment }: CommentItemProps) => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, delete it!"
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {

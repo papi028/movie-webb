@@ -20,7 +20,7 @@ const SignUpPage = () => {
   const [values, setValues] = useState({
     email: "",
     password: "",
-    confirmPassword: "",
+    confirmPassword: ""
   });
   const { onChange } = useInputChange(values, setValues);
   const handleSignUp = async (e: FormEvent<HTMLFormElement>) => {
@@ -38,7 +38,7 @@ const SignUpPage = () => {
       await createUserWithEmailAndPassword(auth, values.email, values.password);
       if (!auth.currentUser) return;
       await updateProfile(auth.currentUser, {
-        photoURL: "https://avatars.githubusercontent.com/u/61537853?v=4",
+        photoURL: "https://avatars.githubusercontent.com/u/61537853?v=4"
       });
       await setDoc(doc(db, "users", auth.currentUser.uid as string), {
         uid: auth.currentUser.uid,
@@ -49,7 +49,7 @@ const SignUpPage = () => {
         status: userStatus.ACTIVE,
         role: userRole.USER,
         createdAt: serverTimestamp(),
-        follows: [],
+        follows: []
       });
       toast.success("Sign up successfully!");
     } catch (error: any) {

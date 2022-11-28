@@ -17,7 +17,7 @@ import classNames from "utils/classNames";
 const SignInPage = () => {
   const [values, setValues] = useState({
     email: "",
-    password: "",
+    password: ""
   });
   const { onChange } = useInputChange(values, setValues);
   const handleSignIn = async (e: FormEvent<HTMLFormElement>) => {

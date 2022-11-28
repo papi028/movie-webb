@@ -6,7 +6,7 @@ export interface IFollowState {
 }
 
 const initialState: IFollowState = {
-  follows: [],
+  follows: []
 };
 
 const followSlice = createSlice({
@@ -15,8 +15,8 @@ const followSlice = createSlice({
   reducers: {
     setFollows: (state, action: PayloadAction<IMovieCard[]>) => {
       state.follows = action.payload;
-    },
-  },
+    }
+  }
 });
 
 export const { setFollows } = followSlice.actions;

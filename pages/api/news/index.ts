@@ -15,7 +15,7 @@ const NewsApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const { data } = await axiosLoklokSub(PATH_API.news, { params: { page, size } });
   const response = {
     message: "Get news successfully!",
-    data,
+    data
   };
   responseSuccess(res, response);
 };

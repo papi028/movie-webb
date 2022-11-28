@@ -58,8 +58,8 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   const { data } = await axiosClient.get(`/api/star`, { params: query });
   return {
     props: {
-      data,
-    },
+      data
+    }
   };
 };
 

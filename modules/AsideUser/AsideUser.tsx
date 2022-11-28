@@ -11,18 +11,18 @@ const links = [
   {
     path: PATH.profile,
     icon: <IconUser />,
-    display: "Profile",
+    display: "Profile"
   },
   {
     path: PATH.changePassword,
     icon: <IconKeyPassword />,
-    display: "Password",
+    display: "Password"
   },
   {
     path: PATH.follow,
     icon: <IconFollow />,
-    display: "Follow",
-  },
+    display: "Follow"
+  }
 ];
 
 const AsideUser = () => {

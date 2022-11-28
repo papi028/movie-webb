@@ -33,12 +33,12 @@ export const getStaticProps: GetStaticProps = async () => {
       info: {
         title: "NetFilm Api",
         version: "1.0.0",
-        description: "A api NetFilm from LokLok app",
-      },
-    },
+        description: "A api NetFilm from LokLok app"
+      }
+    }
   });
   return {
-    props: { spec },
+    props: { spec }
   };
 };
 

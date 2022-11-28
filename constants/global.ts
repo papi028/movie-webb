@@ -10,16 +10,16 @@ export const resizeImageLoklok = (url: string, width: number = 0, height: number
 export const IMAGE_SIZE = {
   banner: {
     width: 1240,
-    height: 450,
+    height: 450
   },
   movieCard: {
     width: 190,
-    height: 266,
+    height: 266
   },
   newCard: {
     width: 500,
-    height: 282,
-  },
+    height: 282
+  }
 };
 
 export const defaultAvatar =
@@ -28,16 +28,16 @@ export const defaultAvatar =
 export const userRole = {
   USER: "USER",
   MOD: "MOD",
-  ADMIN: "ADMIN",
+  ADMIN: "ADMIN"
 };
 
 export const userStatus = {
   ACTIVE: "ACTIVE",
   WARNING: "WARNING",
-  BANNED: "BANNED",
+  BANNED: "BANNED"
 };
 export const commentStatus = {
   APPROVED: "APPROVED",
   WARNING: "WARNING",
-  BANNED: "BANNED",
+  BANNED: "BANNED"
 };

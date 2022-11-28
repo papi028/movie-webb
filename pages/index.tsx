@@ -19,7 +19,7 @@ const HomePage = ({ banners, initialHomeSections }: HomePageProps) => {
   const {
     data: homeSections,
     error,
-    setSize,
+    setSize
   } = useSWRInfinite(
     getApiUrl,
     async (apiURL: string) => {
@@ -58,8 +58,8 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   return {
     props: {
       banners: data.banners,
-      initialHomeSections: data.homeSections,
-    },
+      initialHomeSections: data.homeSections
+    }
   };
 };
 

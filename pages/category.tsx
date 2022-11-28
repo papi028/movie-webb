@@ -33,7 +33,7 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
   const {
     data: movies,
     setSize,
-    error,
+    error
   } = useSWRInfinite(
     getApiUrl,
     async (apiURL: string) => {
@@ -82,8 +82,8 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   return {
     props: {
       filters: data.filters,
-      results: data.results,
-    },
+      results: data.results
+    }
   };
 };
 

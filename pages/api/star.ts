@@ -15,7 +15,7 @@ const StarInfoApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const { data } = await axiosLoklok(PATH_API.star, { params: { starId } });
   const response = {
     message: "Get star info successfully!",
-    data,
+    data
   };
   responseSuccess(res, response);
 };

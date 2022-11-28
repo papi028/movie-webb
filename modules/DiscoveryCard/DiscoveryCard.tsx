@@ -9,7 +9,7 @@ import { Image } from "components/Image";
 import { useRef, useState } from "react";
 import styles from "./discoveryCard.module.scss";
 const ReactHlsPlayer = dynamic(() => import("react-hls-player"), {
-  ssr: false,
+  ssr: false
 });
 
 interface DiscoveryCardProps {
@@ -21,14 +21,14 @@ const DiscoveryCard = ({ info }: DiscoveryCardProps) => {
   const options = {
     root: null,
     rootMargin: "0px",
-    threshold: 1,
+    threshold: 1
   };
   const isVisible = useElementOnScreen(options, playerRef);
   const movie = info.refList?.[0];
   const [isLove, setIsLove] = useState(false);
   const [playerStyles, setPlayerStyles] = useState({
     maxWidth: "0px",
-    aspectRatio: 1,
+    aspectRatio: 1
   });
   const isLoading = playerStyles.maxWidth === "0px";
   const handleLoadedMetadata = (event: any) => {

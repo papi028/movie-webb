@@ -6,8 +6,8 @@ const axiosLoklok = axios.create({
     lang: "en",
     versioncode: "11",
     clienttype: "ios_jike_default",
-    deviceid: Math.random().toString(36).slice(-8),
-  },
+    deviceid: Math.random().toString(36).slice(-8)
+  }
 });
 
 axiosLoklok.interceptors.response.use(

@@ -30,7 +30,7 @@ const Authentication = ({ children }: AuthenticationProps) => {
               displayName: userData.displayName,
               role: userData.role,
               status: userData.status,
-              emailVerified: user.emailVerified,
+              emailVerified: user.emailVerified
             })
           );
           dispatch(setFollows(userData.follows));

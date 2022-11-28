@@ -18,7 +18,7 @@ const getMovieDetailsPageApi = async (req: NextApiRequest, res: NextApiResponse)
   }
   const response = {
     message: `Get details ${data.name} successfully!`,
-    data,
+    data
   };
   responseSuccess(res, response);
 };

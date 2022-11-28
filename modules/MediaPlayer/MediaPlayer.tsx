@@ -1,5 +1,5 @@
 const ReactHlsPlayer = dynamic(() => import("react-hls-player"), {
-  ssr: false,
+  ssr: false
 });
 import { IQuality, ISubtitle } from "@types";
 import dynamic from "next/dynamic";

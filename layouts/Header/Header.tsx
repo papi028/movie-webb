@@ -11,20 +11,20 @@ import styles from "./header.module.scss";
 const links = [
   {
     path: PATH.news,
-    display: "News",
+    display: "News"
   },
   {
     path: PATH.history,
-    display: "History",
+    display: "History"
   },
   {
     path: PATH.discovery,
-    display: "Discovery",
+    display: "Discovery"
   },
   {
     path: PATH.explore,
-    display: "Explore",
-  },
+    display: "Explore"
+  }
 ];
 
 const Header = () => {

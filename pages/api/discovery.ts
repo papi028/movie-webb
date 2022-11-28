@@ -13,7 +13,7 @@ const discoveryApi = async (req: NextApiRequest, res: NextApiResponse) => {
     return responseError(error, res);
   }
   const { data } = await axiosLoklok.get(`/recommendPool/getVideoFromRecommondPool`, {
-    params: { page },
+    params: { page }
   });
   const payloadGetMedia = data.map((item: IMediaPreview) => {
     const { definitionList } = item.mediaInfo;
@@ -21,19 +21,19 @@ const discoveryApi = async (req: NextApiRequest, res: NextApiResponse) => {
       contentId: item.id,
       episodeId: item.mediaInfo.id,
       category: item.category,
-      definition: definitionList[definitionList.length - 1]?.code,
+      definition: definitionList[definitionList.length - 1]?.code
     };
   });
   const request = await axiosLoklok.post(`/media/bathGetplayInfo`, payloadGetMedia);
   const videos = data.map((item: IMediaPreview, index: number) => {
     return {
       ...item,
-      mediaInfoUrl: request.data[index],
+      mediaInfoUrl: request.data[index]
     };
   });
   const response = {
     message: "Get media video successfully!",
-    data: videos,
+    data: videos
   };
   responseSuccess(res, response);
 };

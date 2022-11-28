@@ -14,7 +14,7 @@ const getEpisodeApi = async (req: NextApiRequest, res: NextApiResponse) => {
     return responseError(error, res);
   }
   const { data } = await axiosLoklok.get(PATH_API.detail, {
-    params: { id, category, episode },
+    params: { id, category, episode }
   });
   const movieDetails: IMovieDetailsLoklok = data;
   if (!movieDetails) {
@@ -30,7 +30,7 @@ const getEpisodeApi = async (req: NextApiRequest, res: NextApiResponse) => {
       category,
       contentId: id,
       episodeId: currentEpisode?.id,
-      definition: code,
+      definition: code
     };
     return await axiosLoklok.get(PATH_API.media, { params });
   };
@@ -39,7 +39,7 @@ const getEpisodeApi = async (req: NextApiRequest, res: NextApiResponse) => {
       const { data } = await getEpisode(definition.code);
       return {
         quality: Number(definition.description.replace(/[\p\P]/g, "")),
-        url: data.mediaUrl,
+        url: data.mediaUrl
       };
     })
   );
@@ -47,7 +47,7 @@ const getEpisodeApi = async (req: NextApiRequest, res: NextApiResponse) => {
     .map((sub) => ({
       lang: sub.languageAbbr,
       language: `${sub.language}${sub.translateType ? " (Auto)" : ""}`,
-      url: `${PATH_API.srtToVtt}${sub.subtitlingUrl}`,
+      url: `${PATH_API.srtToVtt}${sub.subtitlingUrl}`
     }))
     .reduce((acc, curr) => {
       if (curr.lang === "en") return [curr, ...acc];
@@ -64,8 +64,8 @@ const getEpisodeApi = async (req: NextApiRequest, res: NextApiResponse) => {
       currentEpName: movieDetails.episodeVo.length === 1 ? "" : `Ep ${currentEpisode?.seriesNo}`,
       qualities,
       subtitles,
-      episode,
-    },
+      episode
+    }
   };
   responseSuccess(res, response);
 };

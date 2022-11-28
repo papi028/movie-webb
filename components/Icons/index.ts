@@ -39,5 +39,5 @@ export {
   IconHeart,
   IconShare,
   Icon404,
-  Icon3Dot,
+  Icon3Dot
 };

@@ -5,7 +5,7 @@ export const checkTimeAgo = (timeCreated: number) => {
     week: 7 * 24 * 60 * 60 * 1000,
     day: 24 * 60 * 60 * 1000,
     hour: 60 * 60 * 1000,
-    minute: 60 * 1000,
+    minute: 60 * 1000
   };
   let diff = Date.now() - new Date(timeCreated).getTime();
 

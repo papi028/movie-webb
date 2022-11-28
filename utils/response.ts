@@ -24,6 +24,6 @@ export const responseError = (err: ApiError, res: NextApiResponse) => {
     status,
     success: false,
     message,
-    error,
+    error
   });
 };

@@ -1,10 +1,11 @@
 # NetFilm
+
 A Website To Watch HD Movies, Anime And TV Online For Free Using NextJS
 
 ## Overview
 
- - Official website: https://net-film.vercel.app
--  Author: Nguyễn Hoàng Lâm ( [@lamhoang1256](https://github.com/lamhoang1256) )
+- Official website: https://net-film.vercel.app
+- Author: Nguyễn Hoàng Lâm ( [@lamhoang1256](https://github.com/lamhoang1256) )
 
 ## Preview
 
@@ -54,18 +55,18 @@ NEXT_PUBLIC_SERVER = https://net-film.vercel.app (Link vercel)
 NEXT_PUBLIC_LOCALHOST = http://localhost:3000
 
 # See: https://firebase.google.com
-NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY= 
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN= 
-NEXT_PUBLIC_FIREBASE_PROJECT_ID= 
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET= 
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID= 
-NEXT_PUBLIC_FIREBASE_APP_ID= 
+NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
 ```
 
 ## Deployment
 
 - Create a new project on the vercel dashboard -> Add Environment Variables from .env.example
-- Go to Settings -> Functions  -> Function Region -> Change the region to "Sydney, Australia"
+- Go to Settings -> Functions -> Function Region -> Change the region to "Sydney, Australia"
 - Redeploy the project
 
 ## Screenshots
@@ -132,18 +133,16 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
  <p>
 
 ![explore](https://user-images.githubusercontent.com/61537853/204232929-7e0b4547-dc03-480a-9224-dd4c5acc13a0.png)
-  
-</details>
 
+</details>
 
 <details>
  <summary>Discovery Page</summary>
  <p>
 
-  ![discovery](https://user-images.githubusercontent.com/61537853/204233019-5b1114a3-174d-43fb-a263-ae571e118e42.png)
+![discovery](https://user-images.githubusercontent.com/61537853/204233019-5b1114a3-174d-43fb-a263-ae571e118e42.png)
 
 </details>
-
 
 <details>
  <summary>History Page</summary>
@@ -189,7 +188,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
  <summary>Mobile</summary>
  <p>
 
-  ![mobile](https://user-images.githubusercontent.com/61537853/204233446-ddb1164d-c8b0-4c3c-a49e-3b967a6ccf8b.jpg)
+![mobile](https://user-images.githubusercontent.com/61537853/204233446-ddb1164d-c8b0-4c3c-a49e-3b967a6ccf8b.jpg)
 
 </details>
 

@@ -39,8 +39,8 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   return {
     props: {
       results: data.results,
-      keyword: data.keyword,
-    },
+      keyword: data.keyword
+    }
   };
 };
 

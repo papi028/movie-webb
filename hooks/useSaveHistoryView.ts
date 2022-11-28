@@ -17,7 +17,7 @@ const useSaveHistoryView = (data: IEpisode) => {
       coverHorizontalUrl: data.coverHorizontalUrl,
       episode: data.episode,
       episodeName: data.currentEpName,
-      currentEpName: data.currentEpName,
+      currentEpName: data.currentEpName
     };
     const firstHistory = historyLocalStorage[0];
     if (!firstHistory) {

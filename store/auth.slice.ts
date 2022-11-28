@@ -8,7 +8,7 @@ export interface IUserState {
 }
 
 const initialState: IUserState = {
-  currentUser: null,
+  currentUser: null
 };
 
 const authSlice = createSlice({
@@ -21,8 +21,8 @@ const authSlice = createSlice({
     logout: (state) => {
       signOut(auth);
       state.currentUser = null;
-    },
-  },
+    }
+  }
 });
 
 export const { setCurrentUser, logout } = authSlice.actions;

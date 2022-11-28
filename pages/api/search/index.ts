@@ -16,12 +16,12 @@ const searchWithKeywordApi = async (req: NextApiRequest, res: NextApiResponse) =
     searchKeyWord: keyword,
     size,
     sort,
-    searchType,
+    searchType
   });
   const results = data.searchResults;
   const response = {
     message: "Get search successfully !",
-    data: { keyword, results },
+    data: { keyword, results }
   };
   responseSuccess(res, response);
 };

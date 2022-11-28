@@ -16,7 +16,7 @@ const ChangePasswordPage = () => {
   const [values, setValues] = useState({
     password: "",
     newPassword: "",
-    confirmPassword: "",
+    confirmPassword: ""
   });
   const { onChange } = useInputChange(values, setValues);
   const handleChangePassword = async (e: FormEvent<HTMLFormElement>) => {

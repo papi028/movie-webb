@@ -89,7 +89,7 @@ const WatchTVPage = ({ data }: WatchTVPageProps) => {
 export const getStaticPaths: GetStaticPaths = () => {
   return {
     paths: [],
-    fallback: "blocking",
+    fallback: "blocking"
   };
 };
 
@@ -98,17 +98,17 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   const id = params?.id as string;
   try {
     const { data } = await axiosClient.get(`/api/episode/`, {
-      params: { category, id },
+      params: { category, id }
     });
     return {
       props: { data },
-      revalidate: 300,
+      revalidate: 300
     };
   } catch (error) {
     return {
       props: {},
       revalidate: 60,
-      notFound: true,
+      notFound: true
     };
   }
 };

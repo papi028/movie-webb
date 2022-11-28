@@ -17,5 +17,5 @@ export const PATH = {
   changePassword: "/change-password",
   userManage: "/manage/user",
   resetPassword: "reset-password",
-  projectGithub: "https://github.com/lamhoang1256/netfilm",
+  projectGithub: "https://github.com/lamhoang1256/netfilm"
 };

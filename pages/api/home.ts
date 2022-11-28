@@ -18,7 +18,7 @@ const HomePageApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     page: currentPage,
     recommendItems,
-    searchKeyWord,
+    searchKeyWord
   }: IResponseHome = (await axiosLoklok(PATH_API.home, { params: { page } })).data;
   const homeSections = recommendItems.filter(
     (section) => section.homeSectionType !== "BLOCK_GROUP" && section.homeSectionName !== ""
@@ -32,9 +32,9 @@ const HomePageApi = async (req: NextApiRequest, res: NextApiResponse) => {
       searchKeyWord,
       homeSections: homeSections.map((section) => ({
         ...section,
-        homeSectionName: section.homeSectionName.replace("Loklok", "Netfilm"),
-      })),
-    },
+        homeSectionName: section.homeSectionName.replace("Loklok", "Netfilm")
+      }))
+    }
   };
   responseSuccess(res, response);
 };

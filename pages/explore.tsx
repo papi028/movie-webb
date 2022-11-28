@@ -27,7 +27,7 @@ const ExplorePage = ({ filters, results }: ExplorePageProps) => {
     params: filters[0].params,
     sort: "",
     subtitles: "",
-    year: "",
+    year: ""
   });
   const getApiUrl = (index: number, prevData: ICategoryResult[] | null) => {
     const isEmptyData = prevData?.length === 0;
@@ -39,7 +39,7 @@ const ExplorePage = ({ filters, results }: ExplorePageProps) => {
   const {
     data: movies = [],
     setSize,
-    error,
+    error
   } = useSWRInfinite(
     getApiUrl,
     async (apiURL: string) => {
@@ -126,8 +126,8 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   return {
     props: {
       filters: data.filters,
-      results: data.results,
-    },
+      results: data.results
+    }
   };
 };
 

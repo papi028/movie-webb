@@ -14,7 +14,7 @@ const getTopSearchesApi = async (req: NextApiRequest, res: NextApiResponse) => {
   const { data } = await axiosLoklok.get(PATH_API.trending);
   const response = {
     message: "Get top searches successfully !",
-    data: data.list,
+    data: data.list
   };
   responseSuccess(res, response);
 };

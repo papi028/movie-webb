@@ -14,12 +14,12 @@ interface LayoutDashboardProps extends HTMLAttributes<HTMLDivElement> {
 const links = [
   {
     path: PATH.home,
-    display: "Home",
+    display: "Home"
   },
   {
     path: PATH.userManage,
-    display: "User",
-  },
+    display: "User"
+  }
 ];
 
 const LayoutDashboard = ({ title, desc, subtitle, children }: LayoutDashboardProps) => {

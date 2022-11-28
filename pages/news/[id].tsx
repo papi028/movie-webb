@@ -41,7 +41,7 @@ const NewsDetailsPage = ({ news }: NewsDetailsPageProps) => {
 export const getStaticPaths: GetStaticPaths = () => {
   return {
     paths: [],
-    fallback: "blocking",
+    fallback: "blocking"
   };
 };
 
@@ -51,13 +51,13 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
     const { data } = await axiosClient.get(`/api/news/${id}`);
     return {
       props: { news: data },
-      revalidate: 300,
+      revalidate: 300
     };
   } catch (error) {
     return {
       props: {},
       revalidate: 60,
-      notFound: true,
+      notFound: true
     };
   }
 };

@@ -14,12 +14,12 @@ const getSuggestApi = async (req: NextApiRequest, res: NextApiResponse) => {
   }
   const { data } = await axiosLoklok.post(PATH_API.searchSuggest, {
     searchKeyWord: keyword,
-    size,
+    size
   });
   const results = data.searchResults;
   const response = {
     message: "Get search keywords successfully !",
-    data: results,
+    data: results
   };
   responseSuccess(res, response);
 };

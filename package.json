@@ -9,7 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "npx prettier --write ."
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",
@@ -24,6 +25,7 @@
     "next": "12.3.0",
     "next-swagger-doc": "^0.3.6",
     "nprogress": "^0.2.0",
+    "prettier": "^2.8.0",
     "query-string": "^7.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",

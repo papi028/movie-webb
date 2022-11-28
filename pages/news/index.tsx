@@ -18,7 +18,7 @@ const NewsPage = ({ initialNews }: NewsPageProps) => {
   const {
     data: news,
     error,
-    setSize,
+    setSize
   } = useSWRInfinite(
     getApiUrl,
     async (apiURL: string) => {
@@ -70,8 +70,8 @@ export const getServerSideProps = async ({ query }: GetServerSidePropsContext) =
   const { data } = await axiosClient.get(`/api/news`, { params: query });
   return {
     props: {
-      initialNews: data.list,
-    },
+      initialNews: data.list
+    }
   };
 };
 

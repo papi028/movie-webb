@@ -40,7 +40,7 @@ const CommentAddNew = () => {
         categoryId: router.query.category,
         movieId: router.query.id,
         episodeId: router.query.episode || 0,
-        reactions: [],
+        reactions: []
       });
       toast.success("Add new comment successfully!");
     } catch (error: any) {

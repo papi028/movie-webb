@@ -17,7 +17,7 @@ import styles from "styles/profile.module.scss";
 const ProfilePage = () => {
   const { currentUser } = useAppSelector((state) => state.auth);
   const [values, setValues] = useState({
-    displayName: currentUser?.displayName || "",
+    displayName: currentUser?.displayName || ""
   });
   const { onChange } = useInputChange(values, setValues);
   const handleUpdateProfile = async (e: FormEvent<HTMLFormElement>) => {

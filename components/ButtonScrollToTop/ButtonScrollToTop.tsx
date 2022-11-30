@@ -57,7 +57,7 @@ const ButtonScrollToTop = () => {
             <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" />
           </filter>
         </defs>
-        <g fill="none" fill-rule="evenodd">
+        <g fill="none" fillRule="evenodd">
           <g transform="matrix(-1 0 0 1 44 2)">
             <use fill="#000" filter="url(#a)" xlinkHref="#b" />
             <use fill="#995aff" stroke="#995aff" xlinkHref="#b" />
@@ -65,9 +65,9 @@ const ButtonScrollToTop = () => {
           <path d="M32 14v16H16V14z" />
           <path
             stroke="#fff"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M25.5 17.5L21 22l4.5 4.5"
           />
         </g>

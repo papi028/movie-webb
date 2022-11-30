@@ -15,6 +15,7 @@ import { WatchMeta } from "modules/WatchMeta";
 import { WatchStar } from "modules/WatchStar";
 import { WatchSummary } from "modules/WatchSummary";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
+import { useEffect, useState } from "react";
 import styles from "styles/watch.module.scss";
 import classNames from "utils/classNames";
 
@@ -24,6 +25,19 @@ interface WatchMoviePageProps {
 
 const WatchMoviePage = ({ data }: WatchMoviePageProps) => {
   useSaveHistoryView(data);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) {
+    return (
+      <Meta
+        title={`${data.name} - NetFilm`}
+        description={data.introduction}
+        image={resizeImageLoklok(data.coverHorizontalUrl, 800, 418)}
+      />
+    );
+  }
   return (
     <LayoutPrimary>
       <Meta

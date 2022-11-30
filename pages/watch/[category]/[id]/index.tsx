@@ -18,6 +18,7 @@ import { WatchSummary } from "modules/WatchSummary";
 import { GetStaticPaths, GetStaticPropsContext } from "next";
 import classNames from "utils/classNames";
 import styles from "styles/watch.module.scss";
+import { useEffect, useState } from "react";
 
 interface WatchTVPageProps {
   data: IEpisode;
@@ -25,6 +26,19 @@ interface WatchTVPageProps {
 
 const WatchTVPage = ({ data }: WatchTVPageProps) => {
   useSaveHistoryView(data);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) {
+    return (
+      <Meta
+        title={`${data.name} - NetFilm`}
+        description={data.introduction}
+        image={resizeImageLoklok(data.coverHorizontalUrl, 800, 418)}
+      />
+    );
+  }
   return (
     <LayoutPrimary>
       <Meta

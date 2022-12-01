@@ -68,8 +68,8 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 - Create a new project on the vercel dashboard -> Add Environment Variables from .env.example
 - Go to Settings -> Functions -> Function Region -> Change the region to "Sydney, Australia"
 - Redeploy the project
-
-- How to fix npm ERR! code ERESOLVE, npm ERR! ERESOLVE unable to resolve dependency tree -> Change Install Command
+- #### If an error occurs npm ERR! code ERESOLVE, npm ERR! ERESOLVE unable to resolve dependency tree -> Change Install Command
+- See more: https://vercel.com/changelog/customizing-the-install-command-while-creating-projects
 ![Fix](https://user-images.githubusercontent.com/61537853/204084412-62207266-7082-48ed-bf42-1256b2073a28.png)
 
 ## Screenshots

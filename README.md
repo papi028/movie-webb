@@ -69,6 +69,9 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 - Go to Settings -> Functions -> Function Region -> Change the region to "Sydney, Australia"
 - Redeploy the project
 
+- How to fix npm ERR! code ERESOLVE, npm ERR! ERESOLVE unable to resolve dependency tree -> Change Install Command
+![Fix](https://user-images.githubusercontent.com/61537853/204084412-62207266-7082-48ed-bf42-1256b2073a28.png)
+
 ## Screenshots
 
 <details>

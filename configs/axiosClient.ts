@@ -11,7 +11,6 @@ axiosClient.interceptors.response.use(
     return response;
   },
   async (error) => {
-    console.log("error: ", error);
     const { response } = error;
     const errorResult = { ...response.data, status: response.status };
     return Promise.reject(errorResult);

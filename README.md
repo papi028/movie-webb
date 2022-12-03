@@ -69,8 +69,8 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 - Go to Settings -> Functions -> Function Region -> Change the region to "Sydney, Australia"
 - Redeploy the project
 - #### If an error occurs npm ERR! code ERESOLVE, npm ERR! ERESOLVE unable to resolve dependency tree -> Change Install Command
-- See more: https://vercel.com/changelog/customizing-the-install-command-while-creating-projects
 ![Fix](https://user-images.githubusercontent.com/61537853/204084412-62207266-7082-48ed-bf42-1256b2073a28.png)
+- See more: https://vercel.com/changelog/customizing-the-install-command-while-creating-projects
 
 ## Screenshots
 
@@ -89,6 +89,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
   
 ![watch](https://user-images.githubusercontent.com/61537853/204232614-e0a41e92-5c6d-47c7-b938-bad7c27b85a2.png)
 
+ </p>
 </details>
 
 <details>
@@ -97,6 +98,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
  
 ![search](https://user-images.githubusercontent.com/61537853/204234288-3b141675-968d-4b02-9e5c-b4ebdbddc9fd.png)
 
+ </p>
 </details>
 
 <details>
@@ -105,6 +107,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
   
 ![profile](https://user-images.githubusercontent.com/61537853/204232724-e76baba7-34eb-47bf-bc83-ffa0325c00ff.png)
 
+ </p>
 </details>
 
 <details>
@@ -121,6 +124,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
   
 ![news](https://user-images.githubusercontent.com/61537853/204232812-5f6fe634-2835-4226-ba02-bd934f03f30a.png)
   
+  </p>
 </details>
 
 <details>
@@ -129,6 +133,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 
 ![news-details](https://user-images.githubusercontent.com/61537853/204232877-cb698a79-1ed9-410a-9381-a74e922473f6.png)
 
+ </p>
 </details>
 
 <details>
@@ -137,6 +142,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 
 ![explore](https://user-images.githubusercontent.com/61537853/204232929-7e0b4547-dc03-480a-9224-dd4c5acc13a0.png)
 
+ </p>
 </details>
 
 <details>
@@ -145,6 +151,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 
 ![discovery](https://user-images.githubusercontent.com/61537853/204233019-5b1114a3-174d-43fb-a263-ae571e118e42.png)
 
+ </p>
 </details>
 
 <details>
@@ -153,6 +160,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 
 ![history](https://user-images.githubusercontent.com/61537853/204233059-0601154e-2591-4f55-b9a5-bc5a892fb251.png)
 
+ </p>
 </details>
 
 <details>
@@ -161,6 +169,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 
 ![sign-in](https://user-images.githubusercontent.com/61537853/204233151-a5b04107-37ff-47fb-a2f7-6307449875eb.png)
 
+ </p>
 </details>
 
 <details>
@@ -169,6 +178,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 
 ![sign-up](https://user-images.githubusercontent.com/61537853/204233224-0e3f827e-f149-4d76-be1c-1dd6bcb6dae1.png)
 
+ </p>
 </details>
 
 <details>
@@ -177,6 +187,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 
 ![star](https://user-images.githubusercontent.com/61537853/204233253-c88384ee-265f-4111-b365-a65000a25673.png)
 
+ </p>
 </details>
 
 <details>
@@ -185,6 +196,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 
 ![404](https://user-images.githubusercontent.com/61537853/204233336-52b20cca-603d-47da-b419-606599332ce6.png)
 
+ </p>
 </details>
 
 <details>
@@ -193,6 +205,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 
 ![mobile](https://user-images.githubusercontent.com/61537853/204233446-ddb1164d-c8b0-4c3c-a49e-3b967a6ccf8b.jpg)
 
+ </p>
 </details>
 
 ### 👉 If you like this project, give it a star ✨ and share 👨🏻‍💻 it to your friends 👈

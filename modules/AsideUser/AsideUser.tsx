@@ -1,4 +1,4 @@
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { IconFollow, IconKeyPassword, IconLogout, IconUser } from "components/Icons";
 import { Image } from "components/Image";
 import { defaultAvatar } from "constants/global";
@@ -44,10 +44,10 @@ const AsideUser = () => {
       </div>
       <div className={styles.links}>
         {links.map((link, index) => (
-          <CustomLink href={link.path} className={styles.link} key={index}>
+          <WrapLink href={link.path} className={styles.link} key={index}>
             {link.icon}
             <span>{link.display}</span>
-          </CustomLink>
+          </WrapLink>
         ))}
         <button onClick={handleLogout} className={styles.logout}>
           <IconLogout />

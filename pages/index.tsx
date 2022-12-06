@@ -1,11 +1,12 @@
 import { IBanner, IHomeSection } from "@types";
 import axiosClient from "configs/axiosClient";
+import { REVALIDATE_TIME } from "constants/global";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { CheckInView } from "modules/CheckInView";
 import { HomeBanner } from "modules/HomeBanner";
 import { HomeSection } from "modules/HomeSection";
 import { MovieListSkeleton } from "modules/MovieSkeleton";
-import { GetServerSidePropsContext } from "next";
+import { GetStaticProps } from "next";
 import { useCallback } from "react";
 import useSWRInfinite from "swr/infinite";
 
@@ -53,13 +54,14 @@ const HomePage = ({ banners, initialHomeSections }: HomePageProps) => {
   );
 };
 
-export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
-  const { data } = await axiosClient.get(`/api/home`, { params: query });
+export const getStaticProps: GetStaticProps = async () => {
+  const { data } = await axiosClient.get(`/api/home`);
   return {
     props: {
       banners: data.banners,
       initialHomeSections: data.homeSections
-    }
+    },
+    revalidate: REVALIDATE_TIME.success
   };
 };
 

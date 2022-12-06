@@ -6,7 +6,7 @@ import { CheckInView } from "modules/CheckInView";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
 import { MovieListSkeleton } from "modules/MovieSkeleton";
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import queryString from "query-string";
 import { useCallback } from "react";
@@ -77,7 +77,7 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
   );
 };
 
-export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { data } = await axiosClient.get(`/api/category`, { params: query });
   return {
     props: {

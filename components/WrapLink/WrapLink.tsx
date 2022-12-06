@@ -3,7 +3,7 @@ import { AnchorHTMLAttributes } from "react";
 
 interface CustomLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {}
 
-const CustomLink = ({ children, href = "/", ...props }: CustomLinkProps) => {
+const WrapLink = ({ children, href = "/", ...props }: CustomLinkProps) => {
   return (
     <Link href={href}>
       <a {...props}>{children}</a>
@@ -11,4 +11,4 @@ const CustomLink = ({ children, href = "/", ...props }: CustomLinkProps) => {
   );
 };
 
-export default CustomLink;
+export default WrapLink;

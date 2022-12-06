@@ -2,7 +2,7 @@ import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { IBanner } from "@types";
 import styles from "./homeBanner.module.scss";
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { PATH } from "constants/path";
 import { Image } from "components/Image";
 import { IMAGE_SIZE, resizeImageLoklok } from "constants/global";
@@ -22,7 +22,7 @@ const HomeBanner = ({ banners }: HomeBannerProps) => {
       <Swiper loop navigation={true} modules={[Navigation]} style={stylesSwiper}>
         {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
-            <CustomLink href={`${PATH.watch}/${banner.jumpType}/${banner.id}`}>
+            <WrapLink href={`${PATH.watch}/${banner.jumpType}/${banner.id}`}>
               <Image
                 alt={banner.title}
                 className={styles.banner}
@@ -32,7 +32,7 @@ const HomeBanner = ({ banners }: HomeBannerProps) => {
                   IMAGE_SIZE.banner.height
                 )}
               />
-            </CustomLink>
+            </WrapLink>
           </SwiperSlide>
         ))}
       </Swiper>

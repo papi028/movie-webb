@@ -1,58 +1,19 @@
 import { Meta } from "components/Meta";
+import { WrapLink } from "components/WrapLink";
 import { PATH } from "constants/path";
-import Link from "next/link";
+import styles from "styles/page404.module.scss";
+import classNames from "utils/classNames";
 
 const PageNotFound = () => {
   return (
-    <div className="page">
+    <div className={styles.page}>
       <Meta title="Page Not Found - NetFilm" />
-      <h1 className="heading text-gradient">404</h1>
-      <h2 className="title">Something is not right</h2>
-      <p className="description">We can not find the page you are looking for.</p>
-      <Link href={PATH.home}>
-        <a className="goback">Return Home</a>
-      </Link>
-      <style jsx>{`
-        .page {
-          gap: 14px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          text-align: center;
-          min-height: 100vh;
-          padding: 10px;
-        }
-        .heading {
-          font-size: 8rem;
-          line-height: 1;
-          background-image: var(--gradient-purple);
-        }
-        .title {
-          color: #f6eafb;
-          font-size: 2.2rem;
-          font-weight: 700;
-        }
-        .description {
-          color: var(--grayc4);
-          font-size: 1.9rem;
-        }
-        .goback {
-          color: white;
-          padding: 10px 24px;
-          font-weight: 600;
-          border-radius: 8px;
-          background-image: var(--gradient-purple);
-        }
-        @media screen and (max-width: 767.98px) {
-          .title {
-            font-size: 2.4rem;
-          }
-          .description {
-            font-size: 2rem;
-          }
-        }
-      `}</style>
+      <h1 className={classNames("text-gradient", styles.heading)}>404</h1>
+      <h2 className={styles.title}>Something is not right</h2>
+      <p className={styles.description}>We can not find the page you are looking for.</p>
+      <WrapLink href={PATH.home} className={styles.goback}>
+        Return Home
+      </WrapLink>
     </div>
   );
 };

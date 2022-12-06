@@ -1,5 +1,5 @@
 import { IconPlay } from "components/Icons";
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { PATH } from "constants/path";
 import { useRouter } from "next/router";
 import { IEpisode } from "@types";
@@ -19,9 +19,9 @@ const WatchAnthology = ({ detailMovie }: WatchAnthologyProps) => {
         const href = `${PATH.watch}/${detailMovie.category}/${detailMovie.id}/${id}`;
         const active = id === Number(episode);
         return (
-          <CustomLink href={href} key={id}>
+          <WrapLink href={href} key={id}>
             <button>{active ? <IconPlay fill="#8a3cff" /> : seriesNo}</button>
-          </CustomLink>
+          </WrapLink>
         );
       })}
     </div>

@@ -1,5 +1,5 @@
 import { IHistoryView } from "@types";
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { PATH } from "constants/path";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MovieListSkeleton } from "modules/MovieSkeleton";
@@ -37,7 +37,7 @@ const HistoryPage = () => {
                 const href = `${PATH.watch}/${movie.category}/${movie.id}`;
                 return (
                   <div className={styles.movieCard} key={movie.key}>
-                    <CustomLink href={href} className={styles.movieCardMedia}>
+                    <WrapLink href={href} className={styles.movieCardMedia}>
                       <Image
                         alt={movie.name}
                         width={312}
@@ -48,7 +48,7 @@ const HistoryPage = () => {
                       <picture>
                         <img src="/icon-play.png" alt="play" className={styles.movieCardPlay} />
                       </picture>
-                    </CustomLink>
+                    </WrapLink>
                     <MovieTitle href={href} className={styles.movieCardTitle}>
                       {movie.name} {movie.currentEpName && `- ${movie.currentEpName}`}
                     </MovieTitle>

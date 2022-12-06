@@ -1,5 +1,5 @@
 import { CheckAdmin } from "components/Authentication";
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { PATH } from "constants/path";
 import { HTMLAttributes } from "react";
 import styles from "./layoutDashboard.module.scss";
@@ -32,9 +32,9 @@ const LayoutDashboard = ({ title, desc, subtitle, children }: LayoutDashboardPro
               <ul>
                 {links.map((link) => (
                   <li key={link.path}>
-                    <CustomLink className={styles.link} href={link.path}>
+                    <WrapLink className={styles.link} href={link.path}>
                       {link.display}
-                    </CustomLink>
+                    </WrapLink>
                   </li>
                 ))}
               </ul>

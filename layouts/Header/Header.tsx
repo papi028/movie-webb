@@ -1,4 +1,4 @@
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { IconClose, IconMenu, IconSearch } from "components/Icons";
 import { defaultAvatar } from "constants/global";
 import { PATH } from "constants/path";
@@ -38,13 +38,13 @@ const Header = () => {
       <div className="container">
         <nav className={styles.navbar}>
           <div className={styles.left}>
-            <CustomLink className={styles.logo}>Netfilm</CustomLink>
+            <WrapLink className={styles.logo}>Netfilm</WrapLink>
             <ul className={classNames(styles.menu, "menu-hidden")} ref={menuRef}>
               {links.map((link) => (
                 <li key={link.path}>
-                  <CustomLink className={styles.link} href={link.path}>
+                  <WrapLink className={styles.link} href={link.path}>
                     {link.display}
-                  </CustomLink>
+                  </WrapLink>
                 </li>
               ))}
               <button className={styles.buttonCloseMenu} onClick={toggleMenu}>
@@ -55,26 +55,26 @@ const Header = () => {
           <div className={styles.right}>
             <SearchBox className={styles.searchBox} />
             <div className={styles.mobileAction}>
-              <CustomLink href={PATH.search}>
+              <WrapLink href={PATH.search}>
                 <IconSearch fill="#fff" />
-              </CustomLink>
+              </WrapLink>
               <button className={styles.buttonOpenMenu} onClick={toggleMenu}>
                 <IconMenu fill="#fff" />
               </button>
             </div>
             {currentUser ? (
-              <CustomLink href={PATH.profile} className={styles.avatar}>
+              <WrapLink href={PATH.profile} className={styles.avatar}>
                 <picture>
                   <img
                     src={currentUser?.photoURL || defaultAvatar}
                     alt={currentUser?.displayName}
                   />
                 </picture>
-              </CustomLink>
+              </WrapLink>
             ) : (
-              <CustomLink href={PATH.signIn} className={styles.signIn}>
+              <WrapLink href={PATH.signIn} className={styles.signIn}>
                 Sign In
-              </CustomLink>
+              </WrapLink>
             )}
           </div>
         </nav>

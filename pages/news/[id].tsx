@@ -1,9 +1,10 @@
 import { INewsDetails } from "@types";
 import { Meta } from "components/Meta";
 import axiosClient from "configs/axiosClient";
+import { REVALIDATE_TIME } from "constants/global";
 import { PATH } from "constants/path";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
-import { GetStaticPaths, GetStaticPropsContext } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { useEffect } from "react";
 import styles from "styles/news.module.scss";
 
@@ -45,18 +46,18 @@ export const getStaticPaths: GetStaticPaths = () => {
   };
 };
 
-export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id as string;
   try {
     const { data } = await axiosClient.get(`/api/news/${id}`);
     return {
       props: { news: data },
-      revalidate: 300
+      revalidate: REVALIDATE_TIME.success
     };
   } catch (error) {
     return {
       props: {},
-      revalidate: 60,
+      revalidate: REVALIDATE_TIME.fail,
       notFound: true
     };
   }

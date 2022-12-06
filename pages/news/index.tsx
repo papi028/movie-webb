@@ -1,11 +1,12 @@
 import { INewsCard } from "@types";
 import { Meta } from "components/Meta";
 import axiosClient from "configs/axiosClient";
+import { REVALIDATE_TIME } from "constants/global";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { CheckInView } from "modules/CheckInView";
 import { NewsCard } from "modules/NewsCard";
 import { NewsList, NewsListSkeleton } from "modules/NewsList";
-import { GetServerSidePropsContext } from "next";
+import { GetServerSidePropsContext, GetStaticProps } from "next";
 import { useCallback } from "react";
 import useSWRInfinite from "swr/infinite";
 
@@ -66,12 +67,11 @@ const NewsPage = ({ initialNews }: NewsPageProps) => {
   );
 };
 
-export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
-  const { data } = await axiosClient.get(`/api/news`, { params: query });
+export const getStaticProps: GetStaticProps = async () => {
+  const { data } = await axiosClient.get(`/api/news`);
   return {
-    props: {
-      initialNews: data.list
-    }
+    props: { initialNews: data.list },
+    revalidate: REVALIDATE_TIME.success
   };
 };
 

@@ -1,16 +1,16 @@
 import { ICategoryResult, IFilter, IFilterOptions } from "@types";
 import { Dropdown } from "components/Dropdown";
+import { Meta } from "components/Meta";
 import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { CheckInView } from "modules/CheckInView";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
 import { MovieListSkeleton } from "modules/MovieSkeleton";
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps } from "next";
+import queryString from "query-string";
 import { useCallback, useState } from "react";
 import useSWRInfinite from "swr/infinite";
-import queryString from "query-string";
-import { Meta } from "components/Meta";
 
 interface ExplorePageProps {
   filters: IFilter[];
@@ -121,13 +121,10 @@ const ExplorePage = ({ filters, results }: ExplorePageProps) => {
   );
 };
 
-export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { data } = await axiosClient.get(`/api/category`, { params: query });
   return {
-    props: {
-      filters: data.filters,
-      results: data.results
-    }
+    props: { filters: data.filters, results: data.results }
   };
 };
 

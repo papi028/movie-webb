@@ -1,5 +1,5 @@
 import { IObjIdName } from "@types";
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { PATH } from "constants/path";
 import styles from "./watchCategory.module.scss";
 
@@ -11,13 +11,13 @@ const WatchCategory = ({ categories }: WatchCategoryProps) => {
   return (
     <div className={styles.categories}>
       {categories.map((category) => (
-        <CustomLink
+        <WrapLink
           key={category.id}
           href={`${PATH.category}?category=${category.id}`}
           className={styles.category}
         >
           {category.name}
-        </CustomLink>
+        </WrapLink>
       ))}
     </div>
   );

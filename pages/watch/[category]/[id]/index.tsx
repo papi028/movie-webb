@@ -1,7 +1,8 @@
 import { IEpisode } from "@types";
 import axiosClient from "configs/axiosClient";
+import { REVALIDATE_TIME } from "constants/global";
 import { WatchPage } from "modules/WatchPage";
-import { GetStaticPaths, GetStaticPropsContext } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 interface WatchTVPageProps {
   data: IEpisode;
@@ -18,21 +19,21 @@ export const getStaticPaths: GetStaticPaths = () => {
   };
 };
 
-export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const category = params?.category as string;
   const id = params?.id as string;
   try {
-    const { data } = await axiosClient.get(`/api/episode/`, {
+    const { data } = await axiosClient.get(`/api/episode`, {
       params: { category, id }
     });
     return {
       props: { data },
-      revalidate: 300
+      revalidate: REVALIDATE_TIME.success
     };
   } catch (error) {
     return {
       props: {},
-      revalidate: 60,
+      revalidate: REVALIDATE_TIME.fail,
       notFound: true
     };
   }

@@ -1,5 +1,5 @@
 import { IDiscovery } from "@types";
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { IconHeart, IconShare } from "components/Icons";
 import { LoadingSpinner } from "components/Loading";
 import { PATH } from "constants/path";
@@ -56,12 +56,9 @@ const DiscoveryCard = ({ info }: DiscoveryCardProps) => {
           <h4>{info.upInfo.upName}</h4>
           <p className={styles.introduction}>{info.introduction}</p>
           {movie && (
-            <CustomLink
-              className={styles.link}
-              href={`${PATH.watch}/${movie.category}/${movie.id}`}
-            >
+            <WrapLink className={styles.link} href={`${PATH.watch}/${movie.category}/${movie.id}`}>
               {movie.name}
-            </CustomLink>
+            </WrapLink>
           )}
         </div>
       </div>

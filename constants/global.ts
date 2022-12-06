@@ -36,8 +36,14 @@ export const userStatus = {
   WARNING: "WARNING",
   BANNED: "BANNED"
 };
+
 export const commentStatus = {
   APPROVED: "APPROVED",
   WARNING: "WARNING",
   BANNED: "BANNED"
+};
+
+export const REVALIDATE_TIME = {
+  success: 360,
+  fail: 60
 };

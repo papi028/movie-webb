@@ -1,5 +1,5 @@
 import { CheckLoggedIn } from "components/Authentication";
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { FormGroup } from "components/FormGroup";
 import { Input } from "components/Input";
 import { InputPassword } from "components/InputPassword";
@@ -86,11 +86,11 @@ const SignUpPage = () => {
               </button>
             </div>
             <div className={styles.alreadyAccount}>
-              Have an account? <CustomLink href={PATH.signIn}>Sign In Here</CustomLink>
+              Have an account? <WrapLink href={PATH.signIn}>Sign In Here</WrapLink>
             </div>
-            <CustomLink href={PATH.resetPassword} className={styles.forgot}>
+            <WrapLink href={PATH.resetPassword} className={styles.forgot}>
               Forgot password?
-            </CustomLink>
+            </WrapLink>
           </form>
         </div>
       </div>

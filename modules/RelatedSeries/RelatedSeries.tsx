@@ -1,5 +1,5 @@
 import { IRefItem } from "@types";
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { PATH } from "constants/path";
 import { Image } from "components/Image";
 import styles from "./relatedSeries.module.scss";
@@ -15,16 +15,14 @@ const RelatedSeries = ({ refList }: RelatedSeriesProps) => {
       <span className={styles.relatedHeading}>Related series</span>
       {refList.map((movie) => (
         <div key={movie.id} className={styles.relatedMovie}>
-          <CustomLink
+          <WrapLink
             href={`${PATH.watch}/${movie.category}/${movie.id}`}
             className={styles.relatedThumb}
           >
             <Image src={movie.coverHorizontalUrl} width={130} height={70} alt={movie.name} />
-          </CustomLink>
+          </WrapLink>
           <div className={styles.relatedInfo}>
-            <CustomLink href={`${PATH.watch}/${movie.category}/${movie.id}`}>
-              {movie.name}
-            </CustomLink>
+            <WrapLink href={`${PATH.watch}/${movie.category}/${movie.id}`}>{movie.name}</WrapLink>
           </div>
         </div>
       ))}

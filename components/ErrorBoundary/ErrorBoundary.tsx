@@ -1,4 +1,4 @@
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { Icon404 } from "components/Icons";
 import { PATH } from "constants/path";
 import React, { Component, ErrorInfo } from "react";
@@ -34,9 +34,9 @@ class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundaryState> 
         <div className={styles.error}>
           <Icon404 />
           <span className={styles.message}>Something went wrong, please try again later !</span>
-          <CustomLink href={PATH.home} className={styles.backlink}>
+          <WrapLink href={PATH.home} className={styles.backlink}>
             Return Home
-          </CustomLink>
+          </WrapLink>
         </div>
       );
     }

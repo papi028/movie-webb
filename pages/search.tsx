@@ -5,7 +5,7 @@ import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { MovieCard } from "modules/MovieCard";
 import { MovieList } from "modules/MovieList";
 import { SearchBox } from "modules/SearchBox";
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps } from "next";
 
 interface SearchPageProps {
   keyword: string;
@@ -34,13 +34,10 @@ const SearchPage = ({ results, keyword }: SearchPageProps) => {
   );
 };
 
-export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { data } = await axiosClient.get("/api/search", { params: query });
   return {
-    props: {
-      results: data.results,
-      keyword: data.keyword
-    }
+    props: { results: data.results, keyword: data.keyword }
   };
 };
 

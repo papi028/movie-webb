@@ -1,4 +1,4 @@
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { PATH } from "constants/path";
 import { Image } from "components/Image";
 import styles from "./newsCard.module.scss";
@@ -15,17 +15,17 @@ const NewsCard = ({ image, title, introduction, id }: NewsCardProps) => {
   return (
     <div>
       <div className={styles.thumbnail}>
-        <CustomLink href={`${PATH.news}/${id}`}>
+        <WrapLink href={`${PATH.news}/${id}`}>
           <Image
             src={resizeImageLoklok(image, IMAGE_SIZE.newCard.width, IMAGE_SIZE.newCard.height)}
             alt={title}
           />
-        </CustomLink>
+        </WrapLink>
       </div>
       <div>
-        <CustomLink href={`${PATH.news}/${id}`}>
+        <WrapLink href={`${PATH.news}/${id}`}>
           <h3 dangerouslySetInnerHTML={{ __html: title }} className={styles.title} />
-        </CustomLink>
+        </WrapLink>
         <p className={styles.description}>{introduction}</p>
       </div>
     </div>

@@ -5,7 +5,7 @@ import axiosClient from "configs/axiosClient";
 import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { CheckInView } from "modules/CheckInView";
 import { DiscoveryCard } from "modules/DiscoveryCard";
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps } from "next";
 import { useCallback } from "react";
 import useSWRInfinite from "swr/infinite";
 
@@ -54,12 +54,10 @@ const DiscoveryPage = ({ initialVideos }: DiscoveryPageProps) => {
   );
 };
 
-export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { data } = await axiosClient.get(`/api/discovery`, { params: query });
   return {
-    props: {
-      initialVideos: data
-    }
+    props: { initialVideos: data }
   };
 };
 

@@ -1,4 +1,4 @@
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { IconSearch } from "components/Icons";
 import axiosClient from "configs/axiosClient";
 import { PATH } from "constants/path";
@@ -55,7 +55,7 @@ const SearchBox = ({ className = "" }: SearchBoxProps) => {
           const name = encodeURIComponent(removeTag);
           return (
             <li key={name}>
-              <CustomLink
+              <WrapLink
                 href={`${PATH.search}?keyword=${name}`}
                 dangerouslySetInnerHTML={{ __html: suggest }}
                 className={styles.suggest}

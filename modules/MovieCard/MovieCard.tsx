@@ -1,5 +1,5 @@
 import { IMovieCard } from "@types";
-import { CustomLink } from "components/CustomLink";
+import { WrapLink } from "components/WrapLink";
 import { Image } from "components/Image";
 import { IMAGE_SIZE, resizeImageLoklok } from "constants/global";
 import { PATH } from "constants/path";
@@ -10,7 +10,7 @@ const MovieCard = ({ id, domainType, title, poster }: IMovieCard) => {
   const href = `${PATH.watch}/${domainType}/${id}`;
   return (
     <div className={styles.movieCard}>
-      <CustomLink href={href} className={styles.movieCardMedia}>
+      <WrapLink href={href} className={styles.movieCardMedia}>
         <Image
           alt={title}
           className={styles.movieCardPoster}
@@ -19,7 +19,7 @@ const MovieCard = ({ id, domainType, title, poster }: IMovieCard) => {
         <picture>
           <img src="/icon-play.png" alt="play" className={styles.movieCardPlay} />
         </picture>
-      </CustomLink>
+      </WrapLink>
       <MovieTitle href={href} className={styles.movieCardTitle}>
         {title}
       </MovieTitle>

@@ -89,13 +89,13 @@ const CommentItem = ({ comment }: CommentItemProps) => {
           )}
           {comment.reactions.length > 0 && (
             <div className={styles.reactions} onClick={toggleModal}>
-              {comment.reactions.slice(0, 3).map((item, index) => {
+              {comment.reactions.slice(0, 3).map((item) => {
                 const foundTypeIndex = reactionTypes.findIndex((type) => type === item.reaction);
                 if (foundTypeIndex !== -1) return null;
                 reactionTypes.push(item.reaction);
                 return (
                   <Image
-                    key={index}
+                    key={item.id}
                     alt={item.reaction}
                     className={styles.reaction}
                     src={`/icon-${item.reaction}.png`}

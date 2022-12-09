@@ -23,7 +23,7 @@ const MediaPlayer = ({
   return (
     <Player src={qualities} subtitles={subtitles} playerRef={playerRef}>
       {(ref, props) => (
-        <ReactHlsPlayer {...props} {...HlsProps} playerRef={ref} autoPlay={false} poster={poster} />
+        <ReactHlsPlayer {...props} {...HlsProps} playerRef={ref} autoPlay={true} poster={poster} />
       )}
     </Player>
   );

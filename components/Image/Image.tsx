@@ -8,7 +8,6 @@ interface ImageProps {
 
 const Image: FC<HTMLProps<HTMLImageElement> & ImageProps> = ({
   src,
-  key,
   alt = "",
   crossOrigin: _,
   opacity = 1,

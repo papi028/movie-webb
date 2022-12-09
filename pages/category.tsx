@@ -14,10 +14,9 @@ import useSWRInfinite from "swr/infinite";
 
 interface CategoryPageProps {
   filters: IFilter[];
-  results: ICategoryResult[];
 }
 
-const CategoryPage = ({ filters, results }: CategoryPageProps) => {
+const CategoryPage = ({ filters }: CategoryPageProps) => {
   const { query } = useRouter();
   const { category } = query;
   const nameCategory = filters[0]?.screeningItems
@@ -80,10 +79,7 @@ const CategoryPage = ({ filters, results }: CategoryPageProps) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { data } = await axiosClient.get(`/api/category`, { params: query });
   return {
-    props: {
-      filters: data.filters,
-      results: data.results
-    }
+    props: { filters: data.filters }
   };
 };
 

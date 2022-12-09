@@ -14,10 +14,9 @@ import useSWRInfinite from "swr/infinite";
 
 interface ExplorePageProps {
   filters: IFilter[];
-  results: ICategoryResult[];
 }
 
-const ExplorePage = ({ filters, results }: ExplorePageProps) => {
+const ExplorePage = ({ filters }: ExplorePageProps) => {
   const [options, setOptions] = useState<IFilterOptions[]>(filters[0].screeningItems);
   const [params, setParams] = useState({
     area: "",
@@ -124,7 +123,7 @@ const ExplorePage = ({ filters, results }: ExplorePageProps) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { data } = await axiosClient.get(`/api/category`, { params: query });
   return {
-    props: { filters: data.filters, results: data.results }
+    props: { filters: data.filters }
   };
 };
 

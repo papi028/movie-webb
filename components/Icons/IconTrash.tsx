@@ -3,20 +3,16 @@ interface IconTrashProps extends React.SVGProps<SVGSVGElement> {}
 const IconTrash = ({ ...props }: IconTrashProps) => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
       stroke="currentColor"
-      strokeWidth="2"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 448 512"
+      xmlns="http://www.w3.org/2000/svg"
       width={24}
       height={24}
       {...props}
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-      />
+      <path d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path>
     </svg>
   );
 };

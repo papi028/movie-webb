@@ -39,8 +39,7 @@ const getEpisodeApi = async (req: NextApiRequest, res: NextApiResponse) => {
       const { data } = await getEpisode(definition.code);
       return {
         quality: Number(definition.description.replace(/[\p\P]/g, "")),
-        // url: data.mediaUrl.replace(/^http:\/\//i, "https://")
-        url: data.mediaUrl
+        url: data.mediaUrl.replace(/^http:\/\//i, "https://")
       };
     })
   );

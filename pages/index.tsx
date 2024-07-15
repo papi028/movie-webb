@@ -54,6 +54,10 @@ const HomePage = ({ banners, initialHomeSections }: HomePageProps) => {
   );
 };
 
+import { GetStaticProps } from 'next';
+import axiosClient from 'configs/axiosClient';
+import { REVALIDATE_TIME } from 'constants/global';
+
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const { data } = await axiosClient.get(`/api/home`);
@@ -70,16 +74,17 @@ export const getStaticProps: GetStaticProps = async () => {
       revalidate: REVALIDATE_TIME.success,
     };
   } catch (error) {
-    console.error('Error fetching home data:', error.message);
+    console.error('Error fetching home data:', (error as Error).message);
     return {
       props: {
-        banners: [], // Provide an empty array as fallback
-        initialHomeSections: [], // Provide an empty array as fallback
+        banners: [],
+        initialHomeSections: [],
       },
-      revalidate: REVALIDATE_TIME.error, // Adjust this as necessary
+      revalidate: REVALIDATE_TIME.error,
     };
   }
 };
+
 
 
 export default HomePage;

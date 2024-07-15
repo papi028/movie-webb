@@ -55,14 +55,31 @@ const HomePage = ({ banners, initialHomeSections }: HomePageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await axiosClient.get(`/api/home`);
-  return {
-    props: {
-      banners: data.banners,
-      initialHomeSections: data.homeSections
-    },
-    revalidate: REVALIDATE_TIME.success
-  };
+  try {
+    const { data } = await axiosClient.get(`/api/home`);
+    
+    if (!data || !data.banners || !data.homeSections) {
+      throw new Error('Invalid data structure');
+    }
+
+    return {
+      props: {
+        banners: data.banners,
+        initialHomeSections: data.homeSections,
+      },
+      revalidate: REVALIDATE_TIME.success,
+    };
+  } catch (error) {
+    console.error('Error fetching home data:', error.message);
+    return {
+      props: {
+        banners: [], // Provide an empty array as fallback
+        initialHomeSections: [], // Provide an empty array as fallback
+      },
+      revalidate: REVALIDATE_TIME.error, // Adjust this as necessary
+    };
+  }
 };
+
 
 export default HomePage;

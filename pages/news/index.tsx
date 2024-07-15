@@ -68,11 +68,25 @@ const NewsPage = ({ initialNews }: NewsPageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await axiosClient.get(`/api/news`);
-  return {
-    props: { initialNews: data.list },
-    revalidate: REVALIDATE_TIME.success
-  };
+  try {
+    const { data } = await axiosClient.get(`/api/news`);
+    
+    if (!data || !data.list) {
+      throw new Error('Invalid data structure');
+    }
+
+    return {
+      props: { initialNews: data.list },
+      revalidate: REVALIDATE_TIME.success,
+    };
+  } catch (error) {
+    console.error('Error fetching news data:', error.message);
+    return {
+      props: { initialNews: [] }, // Provide an empty array as fallback
+      revalidate: REVALIDATE_TIME.error, // Adjust this as necessary
+    };
+  }
 };
+
 
 export default NewsPage;

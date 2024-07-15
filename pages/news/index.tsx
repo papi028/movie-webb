@@ -67,6 +67,10 @@ const NewsPage = ({ initialNews }: NewsPageProps) => {
   );
 };
 
+import { GetStaticProps } from 'next';
+import axiosClient from 'configs/axiosClient';
+import { REVALIDATE_TIME } from 'constants/global';
+
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const { data } = await axiosClient.get(`/api/news`);
@@ -80,13 +84,14 @@ export const getStaticProps: GetStaticProps = async () => {
       revalidate: REVALIDATE_TIME.success,
     };
   } catch (error) {
-    console.error('Error fetching news data:', error.message);
+    console.error('Error fetching news data:', (error as Error).message);
     return {
-      props: { initialNews: [] }, // Provide an empty array as fallback
-      revalidate: REVALIDATE_TIME.error, // Adjust this as necessary
+      props: { initialNews: [] },
+      revalidate: REVALIDATE_TIME.error,
     };
   }
 };
+
 
 
 export default NewsPage;

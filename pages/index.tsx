@@ -54,10 +54,6 @@ const HomePage = ({ banners, initialHomeSections }: HomePageProps) => {
   );
 };
 
-import { GetStaticProps } from 'next';
-import axiosClient from 'configs/axiosClient';
-import { REVALIDATE_TIME } from 'constants/global';
-
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const { data } = await axiosClient.get(`/api/home`);
@@ -84,7 +80,5 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   }
 };
-
-
 
 export default HomePage;

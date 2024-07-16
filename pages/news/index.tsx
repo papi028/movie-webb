@@ -83,7 +83,7 @@ export const getStaticProps: GetStaticProps = async () => {
     console.error('Error fetching news data:', (error as Error).message);
     return {
       props: { initialNews: [] },
-      revalidate: REVALIDATE_TIME.error,
+      revalidate: REVALIDATE_TIME.fail,
     };
   }
 };

@@ -6,7 +6,7 @@ import { LayoutPrimary } from "layouts/LayoutPrimary";
 import { CheckInView } from "modules/CheckInView";
 import { NewsCard } from "modules/NewsCard";
 import { NewsList, NewsListSkeleton } from "modules/NewsList";
-import { GetServerSidePropsContext, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 import { useCallback } from "react";
 import useSWRInfinite from "swr/infinite";
 
@@ -67,10 +67,6 @@ const NewsPage = ({ initialNews }: NewsPageProps) => {
   );
 };
 
-import { GetStaticProps } from 'next';
-import axiosClient from 'configs/axiosClient';
-import { REVALIDATE_TIME } from 'constants/global';
-
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const { data } = await axiosClient.get(`/api/news`);
@@ -91,7 +87,5 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   }
 };
-
-
 
 export default NewsPage;

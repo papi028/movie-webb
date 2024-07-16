@@ -76,7 +76,7 @@ export const getStaticProps: GetStaticProps = async () => {
         banners: [],
         initialHomeSections: [],
       },
-      revalidate: REVALIDATE_TIME.error,
+      revalidate: REVALIDATE_TIME.fail,
     };
   }
 };
